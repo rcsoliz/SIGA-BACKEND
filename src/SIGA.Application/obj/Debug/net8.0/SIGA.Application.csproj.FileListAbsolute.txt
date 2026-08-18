@@ -1,0 +1,15 @@
+D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.Application\bin\Debug\net8.0\SIGA.Application.deps.json
+D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.Application\bin\Debug\net8.0\SIGA.Application.dll
+D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.Application\bin\Debug\net8.0\SIGA.Application.pdb
+D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.Application\bin\Debug\net8.0\SIGA.Domain.dll
+D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.Application\bin\Debug\net8.0\SIGA.Domain.pdb
+D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.Application\obj\Debug\net8.0\SIGA.Application.csproj.AssemblyReference.cache
+D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.Application\obj\Debug\net8.0\SIGA.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.Application\obj\Debug\net8.0\SIGA.Application.AssemblyInfoInputs.cache
+D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.Application\obj\Debug\net8.0\SIGA.Application.AssemblyInfo.cs
+D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.Application\obj\Debug\net8.0\SIGA.Application.csproj.CoreCompileInputs.cache
+D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.Application\obj\Debug\net8.0\SIGA.App.9E02524E.Up2Date
+D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.Application\obj\Debug\net8.0\SIGA.Application.dll
+D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.Application\obj\Debug\net8.0\refint\SIGA.Application.dll
+D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.Application\obj\Debug\net8.0\SIGA.Application.pdb
+D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.Application\obj\Debug\net8.0\ref\SIGA.Application.dll
