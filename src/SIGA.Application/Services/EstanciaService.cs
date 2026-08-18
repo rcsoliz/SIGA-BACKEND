@@ -107,5 +107,6 @@ public class EstanciaService(
         e.Provincia,
         e.Municipio,
         e.Captaciones?.Count ?? 0,
+        e.Captaciones?.Sum(c => c.CalcularTotalCabezas()) ?? 0,
         e.EstadoSync.ToString());
 }

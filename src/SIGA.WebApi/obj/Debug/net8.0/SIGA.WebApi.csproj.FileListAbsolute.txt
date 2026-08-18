@@ -126,3 +126,4 @@ D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.WebApi\bin\D
 D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.WebApi\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.WebApi\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.WebApi\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.WebApi\obj\Debug\net8.0\SIGA.WebApi.sourcelink.json

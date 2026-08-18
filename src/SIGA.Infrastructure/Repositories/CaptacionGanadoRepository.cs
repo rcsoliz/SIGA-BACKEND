@@ -11,6 +11,9 @@ public class CaptacionGanadoRepository(SigaDbContext context)
     public override async Task<CaptacionGanado?> GetByIdAsync(Guid id, CancellationToken ct = default) =>
         await DbSet.Include(c => c.Detalles).FirstOrDefaultAsync(c => c.Id == id, ct);
 
+    public override async Task<IReadOnlyList<CaptacionGanado>> GetAllAsync(CancellationToken ct = default) =>
+        await DbSet.Include(c => c.Detalles).ToListAsync(ct);
+
     public async Task<IReadOnlyList<CaptacionGanado>> GetByEstanciaAsync(Guid estanciaId, CancellationToken ct = default) =>
         await DbSet.Include(c => c.Detalles).Where(c => c.EstanciaId == estanciaId).ToListAsync(ct);
 

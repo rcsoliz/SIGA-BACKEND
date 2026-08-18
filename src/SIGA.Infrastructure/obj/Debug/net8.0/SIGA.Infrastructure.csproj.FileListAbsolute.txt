@@ -17,3 +17,4 @@ D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.Infrastructu
 D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.Infrastructure\obj\Debug\net8.0\SIGA.Infrastructure.pdb
 D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.Infrastructure\obj\Debug\net8.0\SIGA.Infrastructure.genruntimeconfig.cache
 D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.Infrastructure\obj\Debug\net8.0\ref\SIGA.Infrastructure.dll
+D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.Infrastructure\obj\Debug\net8.0\SIGA.Infrastructure.sourcelink.json

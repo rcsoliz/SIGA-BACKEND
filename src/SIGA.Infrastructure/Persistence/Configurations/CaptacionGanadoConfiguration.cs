@@ -36,5 +36,10 @@ public class CaptacionGanadoConfiguration : IEntityTypeConfiguration<CaptacionGa
             .WithOne(m => m.CaptacionGanado)
             .HasForeignKey(m => m.CaptacionGanadoId)
             .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasMany(c => c.RegistrosPesaje)
+            .WithOne(r => r.CaptacionGanado)
+            .HasForeignKey(r => r.CaptacionGanadoId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

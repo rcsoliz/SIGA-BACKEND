@@ -17,4 +17,6 @@ public class EstanciaRepository(SigaDbContext context) : Repository<Estancia>(co
         await DbSet.Include(e => e.Captaciones).ThenInclude(c => c.Detalles)
             .Where(e => e.CaptadorId == captadorId).ToListAsync(ct);
 
-    public async Task<Estancia?> GetWithCaptacionesAsync(Guid id, CancellationToken ct = defa
+    public async Task<Estancia?> GetWithCaptacionesAsync(Guid id, CancellationToken ct = default) =>
+        await DbSet.Include(e => e.Captaciones).ThenInclude(c => c.Detalles).FirstOrDefaultAsync(e => e.Id == id, ct);
+}

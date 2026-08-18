@@ -6,11 +6,12 @@ namespace SIGA.Application.Services;
 public class RegistroCampoService(
     IMovimientoGanadoRepository movimientoRepository,
     IRegistroAlimentacionRepository alimentacionRepository,
-    IRegistroSanitarioRepository sanitarioRepository) : IRegistroCampoService
+    IRegistroSanitarioRepository sanitarioRepository,
+    IRegistroPesajeRepository pesajeRepository) : IRegistroCampoService
 {
     public async Task<IReadOnlyList<RegistroCampoDto>> BuscarAsync(BuscarRegistrosQuery query, CancellationToken ct = default)
     {
-        // Unifica las tres bitácoras en memoria. Con volumen alto de registros esto se
+        // Unifica las cuatro bitácoras en memoria. Con volumen alto de registros esto se
         // reemplaza por una vista SQL o una consulta UNION en el repositorio.
         var registros = new List<RegistroCampoDto>();
 
@@ -57,6 +58,21 @@ public class RegistroCampoService(
                 s.ProductoTratamiento,
                 s.RegistradoPor?.Nombre ?? string.Empty,
                 s.EstadoSync.ToString())));
+        }
+
+        if (query.Tipo is null or "Pesaje")
+        {
+            var pesajes = await pesajeRepository.GetAllAsync(ct);
+            registros.AddRange(pesajes.Select(p => new RegistroCampoDto(
+                p.Id,
+                p.Fecha,
+                "Pesaje",
+                p.CaptacionGanadoId,
+                p.CaptacionGanado?.Nombre ?? string.Empty,
+                $"Promedio: {p.PesoPromedioKg:0.0} kg" + (p.CantidadCabezasPesadas is { } n ? $" ({n} cabezas)" : string.Empty),
+                null,
+                p.CaptacionGanado?.Estancia?.Captador?.Nombre ?? string.Empty,
+                p.EstadoSync.ToString())));
         }
 
         var filtrados = registros.AsEnumerable();

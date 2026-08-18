@@ -61,6 +61,12 @@ namespace SIGA.Infrastructure.Persistence.Migrations
                     b.Property<DateTime?>("FechaSincronizacion")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<double?>("Latitud")
+                        .HasColumnType("double precision");
+
+                    b.Property<double?>("Longitud")
+                        .HasColumnType("double precision");
+
                     b.Property<Guid?>("ModificadoPorUsuarioId")
                         .HasColumnType("uuid");
 
@@ -421,6 +427,55 @@ namespace SIGA.Infrastructure.Persistence.Migrations
                     b.ToTable("RegistrosAlimentacion", (string)null);
                 });
 
+            modelBuilder.Entity("SIGA.Domain.Entities.RegistroPesaje", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int?>("CantidadCabezasPesadas")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid>("CaptacionGanadoId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CreadoPorUsuarioId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("EstadoSync")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("FechaCreacionLocal")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("FechaSincronizacion")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModificadoPorUsuarioId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Observaciones")
+                        .HasMaxLength(1000)
+                        .HasColumnType("character varying(1000)");
+
+                    b.Property<double>("PesoPromedioKg")
+                        .HasColumnType("double precision");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CaptacionGanadoId");
+
+                    b.ToTable("RegistrosPesaje", (string)null);
+                });
+
             modelBuilder.Entity("SIGA.Domain.Entities.RegistroSanitario", b =>
                 {
                     b.Property<Guid>("Id")
@@ -659,6 +714,17 @@ namespace SIGA.Infrastructure.Persistence.Migrations
                     b.Navigation("CaptacionGanado");
                 });
 
+            modelBuilder.Entity("SIGA.Domain.Entities.RegistroPesaje", b =>
+                {
+                    b.HasOne("SIGA.Domain.Entities.CaptacionGanado", "CaptacionGanado")
+                        .WithMany("RegistrosPesaje")
+                        .HasForeignKey("CaptacionGanadoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CaptacionGanado");
+                });
+
             modelBuilder.Entity("SIGA.Domain.Entities.RegistroSanitario", b =>
                 {
                     b.HasOne("SIGA.Domain.Entities.CaptacionGanado", "CaptacionGanado")
@@ -696,6 +762,8 @@ namespace SIGA.Infrastructure.Persistence.Migrations
                     b.Navigation("Movimientos");
 
                     b.Navigation("RegistrosAlimentacion");
+
+                    b.Navigation("RegistrosPesaje");
 
                     b.Navigation("RegistrosSanitarios");
                 });

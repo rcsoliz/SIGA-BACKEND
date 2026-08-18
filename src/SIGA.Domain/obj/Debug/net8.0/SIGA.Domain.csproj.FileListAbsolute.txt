@@ -9,3 +9,4 @@ D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.Domain\obj\D
 D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.Domain\obj\Debug\net8.0\refint\SIGA.Domain.dll
 D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.Domain\obj\Debug\net8.0\SIGA.Domain.pdb
 D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.Domain\obj\Debug\net8.0\ref\SIGA.Domain.dll
+D:\USFX\2025-Funde\9 INGENIERIA DE SOFTWARE 1\siga_backend\src\SIGA.Domain\obj\Debug\net8.0\SIGA.Domain.sourcelink.json

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SIGA.WebApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9d97f92fb418d477cb1bfe84815255ca5e53ffd9")]
 [assembly: System.Reflection.AssemblyProductAttribute("SIGA.WebApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SIGA.WebApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

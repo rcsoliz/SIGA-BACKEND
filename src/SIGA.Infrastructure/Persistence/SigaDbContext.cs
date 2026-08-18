@@ -12,6 +12,7 @@ public class SigaDbContext(DbContextOptions<SigaDbContext> options) : DbContext(
     public DbSet<RegistroAlimentacion> RegistrosAlimentacion => Set<RegistroAlimentacion>();
     public DbSet<MovimientoGanado> MovimientosGanado => Set<MovimientoGanado>();
     public DbSet<RegistroSanitario> RegistrosSanitarios => Set<RegistroSanitario>();
+    public DbSet<RegistroPesaje> RegistrosPesaje => Set<RegistroPesaje>();
     public DbSet<SectorAsignado> SectoresAsignados => Set<SectorAsignado>();
     public DbSet<Dispositivo> Dispositivos => Set<Dispositivo>();
     public DbSet<PermisoUsuario> PermisosUsuario => Set<PermisoUsuario>();

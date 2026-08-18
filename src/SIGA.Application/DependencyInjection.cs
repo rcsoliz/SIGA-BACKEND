@@ -15,8 +15,10 @@ public static class DependencyInjection
         services.AddScoped<IRegistroAlimentacionService, RegistroAlimentacionService>();
         services.AddScoped<IMovimientoGanadoService, MovimientoGanadoService>();
         services.AddScoped<IRegistroSanitarioService, RegistroSanitarioService>();
+        services.AddScoped<IRegistroPesajeService, RegistroPesajeService>();
         services.AddScoped<IUsuarioService, UsuarioService>();
         services.AddScoped<IRegistroCampoService, RegistroCampoService>();
+        services.AddScoped<IDashboardService, DashboardService>();
 
         return services;
     }

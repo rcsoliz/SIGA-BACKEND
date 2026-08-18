@@ -34,6 +34,7 @@ public class CaptacionGanado : AuditableEntity
     public ICollection<RegistroAlimentacion> RegistrosAlimentacion { get; set; } = new List<RegistroAlimentacion>();
     public ICollection<RegistroSanitario> RegistrosSanitarios { get; set; } = new List<RegistroSanitario>();
     public ICollection<MovimientoGanado> Movimientos { get; set; } = new List<MovimientoGanado>();
+    public ICollection<RegistroPesaje> RegistrosPesaje { get; set; } = new List<RegistroPesaje>();
 
     public void AgregarDetalleLote(DetalleLoteGanado detalle)
     {

@@ -14,4 +14,5 @@ public record EstanciaDto(
     string? Provincia,
     string? Municipio,
     int CantidadCaptaciones,
+    int TotalCabezas,
     string EstadoSync);
