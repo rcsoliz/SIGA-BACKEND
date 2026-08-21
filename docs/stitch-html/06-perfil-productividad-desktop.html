@@ -1,0 +1,292 @@
+<!DOCTYPE html><html class="light" lang="es" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Perfil de Productividad de Captador - SIGA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "on-surface-variant": "#404943",
+                            "on-secondary-container": "#795548",
+                            "tertiary": "#274f3d",
+                            "on-tertiary-fixed-variant": "#274e3d",
+                            "surface-container-highest": "#e1e3e4",
+                            "surface-container-low": "#f3f4f5",
+                            "tertiary-container": "#3f6754",
+                            "on-background": "#191c1d",
+                            "tertiary-fixed-dim": "#a5d0b9",
+                            "on-error": "#ffffff",
+                            "error": "#ba1a1a",
+                            "tertiary-fixed": "#c1ecd4",
+                            "primary-container": "#2d6a4f",
+                            "on-secondary-fixed": "#2e150b",
+                            "secondary-fixed-dim": "#ebbcac",
+                            "surface-dim": "#d9dadb",
+                            "outline-variant": "#bfc9c1",
+                            "inverse-on-surface": "#f0f1f2",
+                            "surface-container": "#edeeef",
+                            "primary-fixed": "#b1f0ce",
+                            "on-primary-fixed": "#002114",
+                            "primary-fixed-dim": "#95d4b3",
+                            "outline": "#707973",
+                            "on-tertiary-fixed": "#002114",
+                            "error-container": "#ffdad6",
+                            "on-error-container": "#93000a",
+                            "surface-container-high": "#e7e8e9",
+                            "on-tertiary": "#ffffff",
+                            "on-tertiary-container": "#b8e3cb",
+                            "primary": "#0f5238",
+                            "on-primary-fixed-variant": "#0e5138",
+                            "on-primary-container": "#a8e7c5",
+                            "on-primary": "#ffffff",
+                            "surface-container-lowest": "#ffffff",
+                            "on-surface": "#191c1d",
+                            "secondary-fixed": "#ffdbcf",
+                            "inverse-surface": "#2e3132",
+                            "background": "#f8f9fa",
+                            "surface": "#f8f9fa",
+                            "secondary": "#7a5649",
+                            "on-secondary-fixed-variant": "#603f33",
+                            "inverse-primary": "#95d4b3",
+                            "surface-tint": "#2c694e",
+                            "surface-bright": "#f8f9fa",
+                            "secondary-container": "#fdcdbc",
+                            "on-secondary": "#ffffff",
+                            "surface-variant": "#e1e3e4"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "full": "9999px"
+                    },
+                    "spacing": {
+                            "stack-md": "16px",
+                            "stack-lg": "24px",
+                            "touch-target-min": "48px",
+                            "margin-mobile": "16px",
+                            "stack-sm": "8px",
+                            "gutter-mobile": "12px",
+                            "base": "4px"
+                    },
+                    "fontFamily": {
+                            "body-md": ["Inter"],
+                            "button": ["Inter"],
+                            "headline-lg": ["Inter"],
+                            "headline-md": ["Inter"],
+                            "body-lg": ["Inter"],
+                            "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                            "button": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                            "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                            "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[style*="FILL' 1"] {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-hidden flex h-screen">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col fixed left-0 top-0 h-full w-64 bg-surface-container-low py-4 z-40 border-r border-outline-variant/30">
+<div class="px-6 mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">agriculture</span>
+<div>
+<h1 class="font-headline-md text-headline-md font-extrabold text-primary tracking-tight">SIGA</h1>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Gestión Ganadera</p>
+</div>
+</div>
+<div class="flex-1 px-4 space-y-2">
+<a class="text-on-surface-variant hover:bg-surface-container-highest rounded-lg px-4 py-3 flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-button text-button">Dashboard</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-highest rounded-lg px-4 py-3 flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined">pets</span>
+<span class="font-button text-button">Ganado</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-highest rounded-lg px-4 py-3 flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined">grass</span>
+<span class="font-button text-button">Potreros</span>
+</a>
+<a class="bg-primary-container text-on-primary-container font-bold rounded-lg px-4 py-3 flex items-center gap-3 transition-colors shadow-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assessment</span>
+<span class="font-button text-button">Reportes</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-highest rounded-lg px-4 py-3 flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined">security</span>
+<span class="font-button text-button">Seguridad</span>
+</a>
+</div>
+<div class="px-4 mt-auto space-y-2 pt-4 border-t border-outline-variant/30">
+<a class="text-on-surface-variant hover:bg-surface-container-highest rounded-lg px-4 py-3 flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-button text-button">Configuración</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-highest rounded-lg px-4 py-3 flex items-center gap-3 transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-button text-button">Cerrar Sesión</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col md:ml-64 h-full overflow-hidden bg-background">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center h-16 px-6 w-full sticky top-0 z-50 bg-surface shadow-sm border-b border-outline-variant/20">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">Perfil de Productividad de Captador</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-primary-container/20 rounded-full border border-primary/20">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-md text-label-md text-primary font-bold tracking-wide">ONLINE</span>
+</div>
+<button class="w-10 h-10 rounded-full hover:bg-surface-container-high flex items-center justify-center text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">sync</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-surface-variant border border-outline-variant overflow-hidden flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a rugged agricultural field worker wearing a wide-brimmed hat, slightly weathered face, warm natural sunlight, against a blurred background of a green pasture. Shot on 35mm lens, high quality, realistic lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKXWnPFKb_ssWfwxHUYnVjFQsp4YTPRbr2guLp580TgDUZ4S0ULjZYDVd83kfqbHtrguH0hueC12X7NBznWpiP7X9Q9iC9CCxhE8CyMYhCOsa589hdBLh3gCopy3tOu96-aoL9Jx7qVRZMOoZASS564cmsLGvnW8PiTCP5xftXrm_sd0oDrcAvXJzm22Bx6HMZkX5KjTN-VgNoNkwa2_e8TIsV5r1MCIPgMZ6cwhMnYJjRLMW1nmgQDA">
+</div>
+</div>
+</header>
+<!-- Scrollable Content -->
+<main class="flex-1 overflow-y-auto p-6 md:p-8 space-y-8">
+<!-- SECTION 1: Encabezado de Perfil -->
+<section class="bg-surface rounded-xl p-8 shadow-sm border border-outline-variant/30 flex flex-col md:flex-row gap-8 items-start md:items-center justify-between">
+<div class="flex items-center gap-6">
+<div class="w-24 h-24 rounded-full bg-surface-variant border-4 border-surface shadow-sm overflow-hidden flex-shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a rugged agricultural field worker wearing a wide-brimmed hat, slightly weathered face, warm natural sunlight, against a blurred background of a green pasture. Shot on 35mm lens, high quality, realistic lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpjwIervSjaaMo45s-YacLDhy2ZKI7hQvXRtLqvRwxlLlv0jC0SMvvyPlrhDIW0Yi1ls5SCzi-rmzcHT2brYfnsV65ZxEldacxbGy0b0ub9klCSnuqGGa3CWuY_6OwDvFN0hEPCL0tjIeX0vBpACdkpGaEwfu3T_iCv7-BB4eJvatbCDYlycM-ro_MH8SSbRXOUVKIJymhLFTtx_S77PFrLWcRmpgFwJNtzmI0T04qkQT0IckdzuzpSg">
+</div>
+<div class="space-y-2">
+<div class="flex items-center gap-3">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Roberto Salinas</h2>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-primary-container text-on-primary-container border border-primary/20">
+<span class="w-1.5 h-1.5 rounded-full bg-primary mr-1.5"></span>
+                                Activo
+                            </span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">badge</span>
+                            Captador de Campo
+                        </p>
+<div class="flex flex-wrap gap-2 pt-2">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-surface-container text-on-surface text-sm font-medium border border-outline-variant/50">
+<span class="material-symbols-outlined text-[16px] text-outline">location_on</span>
+                                Sector Norte
+                            </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-surface-container text-on-surface text-sm font-medium border border-outline-variant/50">
+<span class="material-symbols-outlined text-[16px] text-outline">location_on</span>
+                                Sector Cuarentena
+                            </span>
+</div>
+</div>
+</div>
+<!-- Filters -->
+<div class="w-full md:w-auto bg-surface-container-lowest p-4 rounded-lg border border-outline-variant/30 flex flex-col sm:flex-row gap-4 items-end">
+<div class="w-full sm:w-auto">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1.5">Desde</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline">calendar_today</span>
+</div>
+<input class="block w-full pl-10 pr-4 py-2 border border-outline-variant rounded-md bg-surface text-on-surface focus:ring-primary focus:border-primary sm:text-sm h-[48px] cursor-default" readonly="" type="text" value="01/05/2024">
+</div>
+</div>
+<div class="w-full sm:w-auto">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1.5">Hasta</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline">calendar_today</span>
+</div>
+<input class="block w-full pl-10 pr-4 py-2 border border-outline-variant rounded-md bg-surface text-on-surface focus:ring-primary focus:border-primary sm:text-sm h-[48px] cursor-default" readonly="" type="text" value="24/05/2024">
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: Métricas de Productividad -->
+<section>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6">Métricas de Productividad</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Primary Metric (Prominent) -->
+<div class="lg:col-span-2 bg-primary-container rounded-xl p-6 shadow-sm border border-primary/20 flex items-center justify-between relative overflow-hidden group">
+<div class="absolute -right-12 -bottom-12 opacity-10">
+<span class="material-symbols-outlined text-[200px]" style="font-variation-settings: 'FILL' 1;">pets</span>
+</div>
+<div class="relative z-10 space-y-2">
+<h4 class="font-body-lg text-body-lg text-on-primary-container opacity-90 font-medium">Total Cabezas Capturadas</h4>
+<div class="font-headline-lg text-[48px] leading-tight font-extrabold text-on-primary-container tracking-tighter">
+                                1,245
+                            </div>
+</div>
+<div class="w-16 h-16 rounded-full bg-surface-container-lowest/20 flex items-center justify-center backdrop-blur-sm relative z-10 border border-white/20">
+<span class="material-symbols-outlined text-[32px] text-on-primary-container" style="font-variation-settings: 'FILL' 1;">pets</span>
+</div>
+</div>
+<!-- Secondary Metric -->
+<div class="bg-surface rounded-xl p-6 shadow-sm border border-outline-variant/30 flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-full bg-tertiary-container/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">home_work</span>
+</div>
+</div>
+<div>
+<h4 class="font-body-md text-body-md text-on-surface-variant font-medium mb-1">Estancias Registradas</h4>
+<div class="font-headline-lg text-[32px] font-bold text-on-surface">12</div>
+</div>
+</div>
+<!-- Secondary Metric -->
+<div class="bg-surface rounded-xl p-6 shadow-sm border border-outline-variant/30 flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-full bg-tertiary-container/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">assignment</span>
+</div>
+</div>
+<div>
+<h4 class="font-body-md text-body-md text-on-surface-variant font-medium mb-1">Captaciones Registradas</h4>
+<div class="font-headline-lg text-[32px] font-bold text-on-surface">45</div>
+</div>
+</div>
+<!-- Secondary Metric -->
+<div class="bg-surface rounded-xl p-6 shadow-sm border border-outline-variant/30 flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">task_alt</span>
+</div>
+</div>
+<div>
+<h4 class="font-body-md text-body-md text-on-surface-variant font-medium mb-1">Captaciones Activas</h4>
+<div class="font-headline-lg text-[32px] font-bold text-on-surface">38</div>
+</div>
+</div>
+<!-- Timestamp Metric -->
+<div class="bg-surface-container rounded-xl p-6 border border-outline-variant/30 flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-outline mb-3 text-[32px]">update</span>
+<h4 class="font-body-md text-body-md text-on-surface-variant mb-1">Última Actividad</h4>
+<div class="font-headline-md text-headline-md text-on-surface font-semibold">
+                            24/05/2024 <span class="text-on-surface-variant font-normal ml-1">15:30</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+
+
+</body></html>

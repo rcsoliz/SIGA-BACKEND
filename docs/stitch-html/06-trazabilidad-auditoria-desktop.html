@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SIGA - Trazabilidad y Auditoría</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-lowest": "#ffffff",
+                      "surface": "#f8f9fa",
+                      "outline": "#707973",
+                      "on-secondary": "#ffffff",
+                      "outline-variant": "#bfc9c1",
+                      "on-tertiary-fixed": "#002114",
+                      "on-secondary-fixed-variant": "#603f33",
+                      "inverse-primary": "#95d4b3",
+                      "on-error-container": "#93000a",
+                      "primary-fixed": "#b1f0ce",
+                      "tertiary": "#274f3d",
+                      "surface-container-highest": "#e1e3e4",
+                      "on-primary-fixed-variant": "#0e5138",
+                      "error-container": "#ffdad6",
+                      "on-background": "#191c1d",
+                      "secondary-fixed-dim": "#ebbcac",
+                      "surface-container": "#edeeef",
+                      "on-tertiary-fixed-variant": "#274e3d",
+                      "inverse-surface": "#2e3132",
+                      "primary-fixed-dim": "#95d4b3",
+                      "on-error": "#ffffff",
+                      "surface-container-low": "#f3f4f5",
+                      "on-tertiary": "#ffffff",
+                      "on-surface-variant": "#404943",
+                      "on-primary-fixed": "#002114",
+                      "on-secondary-fixed": "#2e150b",
+                      "surface-variant": "#e1e3e4",
+                      "on-primary-container": "#a8e7c5",
+                      "on-secondary-container": "#795548",
+                      "on-surface": "#191c1d",
+                      "primary": "#0f5238",
+                      "background": "#f8f9fa",
+                      "surface-bright": "#f8f9fa",
+                      "tertiary-fixed-dim": "#a5d0b9",
+                      "on-tertiary-container": "#b8e3cb",
+                      "on-primary": "#ffffff",
+                      "surface-tint": "#2c694e",
+                      "surface-dim": "#d9dadb",
+                      "error": "#ba1a1a",
+                      "secondary-container": "#fdcdbc",
+                      "primary-container": "#2d6a4f",
+                      "tertiary-fixed": "#c1ecd4",
+                      "secondary": "#7a5649",
+                      "inverse-on-surface": "#f0f1f2",
+                      "tertiary-container": "#3f6754",
+                      "surface-container-high": "#e7e8e9",
+                      "secondary-fixed": "#ffdbcf"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-sm": "8px",
+                      "base": "4px",
+                      "stack-md": "16px",
+                      "margin-mobile": "16px",
+                      "gutter-mobile": "12px",
+                      "stack-lg": "24px",
+                      "touch-target-min": "48px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "button": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "button": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface h-screen flex overflow-hidden">
+<!-- SideNavBar -->
+<aside class="bg-surface border-r border-outline-variant h-full w-64 fixed left-0 top-0 flex flex-col py-stack-lg z-20 md:flex hidden">
+<div class="px-margin-mobile mb-stack-lg">
+<h1 class="font-headline-md text-headline-md font-black text-primary">SIGA</h1>
+</div>
+<div class="px-margin-mobile mb-stack-md flex items-center gap-stack-sm">
+<img alt="System Administrator" class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="A professional headshot of a system administrator in an agricultural setting, wearing practical outdoor clothing. The lighting is bright and natural, indicating a sunny day. The background is slightly blurred showing a vast green field, emphasizing the agricultural context. The image has a clean, high-contrast corporate feel consistent with modern enterprise tools." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-H8R5xIuwf7ZY2FhbypJvXDmyg0ERjIL3PZTO6FaKDshFKnrf_xQnpE2gBS8BGDd6eql8rChHLo_QD9wYx4BLWCGvTywfleMnQilOC__PyWe4C8CwNUOGb_zwtYAL5MYxROh2YZrMnafRv81TmlCleRNEl2Cj3cFglehzmdOPUm0fAQtc_x8WQ-Bv768Vuu-QEoD4EECGNyQzb1bhgLxisYBSkPe44JkUZ1OzN4bPE1zvZ0CA_JMuGQ"/>
+<div>
+<p class="font-button text-button text-on-surface">Admin SIGA</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Audit &amp; Security</p>
+</div>
+</div>
+<nav class="flex-1 px-stack-sm flex flex-col gap-base mt-stack-md">
+<a class="flex items-center gap-stack-md text-on-surface-variant px-4 py-3 hover:bg-surface-container-high active:opacity-80 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-stack-md text-on-surface-variant px-4 py-3 hover:bg-surface-container-high active:opacity-80 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="font-label-md text-label-md">Registros</span>
+</a>
+<a class="flex items-center gap-stack-md text-on-surface-variant px-4 py-3 hover:bg-surface-container-high active:opacity-80 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-label-md text-label-md">Mapa</span>
+</a>
+<a class="flex items-center gap-stack-md bg-primary-container text-on-primary-container px-4 py-3 rounded-lg active:opacity-80 transition-all" href="#">
+<span class="material-symbols-outlined filled" data-icon="security" data-weight="fill">security</span>
+<span class="font-label-md text-label-md font-bold">Seguridad</span>
+</a>
+<a class="flex items-center gap-stack-md text-on-surface-variant px-4 py-3 hover:bg-surface-container-high active:opacity-80 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="agriculture">agriculture</span>
+<span class="font-label-md text-label-md">Farm Management</span>
+</a>
+</nav>
+<div class="px-stack-sm mt-auto">
+<a class="flex items-center gap-stack-md text-on-surface-variant px-4 py-3 hover:bg-surface-container-high active:opacity-80 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Ajustes</span>
+</a>
+<a class="flex items-center gap-stack-md text-on-surface-variant px-4 py-3 hover:bg-surface-container-high active:opacity-80 transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-md text-label-md">Cerrar Sesión</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col md:ml-64 relative h-full">
+<!-- TopNavBar -->
+<header class="bg-surface-container-lowest shadow-sm w-full h-16 flex justify-between items-center px-margin-mobile border-b border-outline-variant z-10 shrink-0">
+<div class="flex items-center gap-stack-md">
+<h2 class="font-headline-lg text-headline-lg font-bold text-on-surface">Trazabilidad y Auditoría</h2>
+</div>
+<div class="flex items-center gap-stack-md">
+<div class="flex bg-surface-container rounded-full px-3 py-1 items-center gap-2 border border-outline-variant">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-md text-label-md text-on-surface-variant">Online</span>
+</div>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-highest transition-colors active:scale-95 duration-100 rounded-full">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-highest transition-colors active:scale-95 duration-100 rounded-full">
+<span class="material-symbols-outlined" data-icon="wifi">wifi</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-highest transition-colors active:scale-95 duration-100 rounded-full">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+</button>
+</div>
+</header>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-margin-mobile bg-background">
+<div class="max-w-7xl mx-auto flex flex-col gap-stack-lg">
+<!-- Filtros Section -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant p-stack-md">
+<div class="flex items-center gap-2 mb-stack-md">
+<span class="material-symbols-outlined text-primary" data-icon="filter_list">filter_list</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Filtros de Búsqueda</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter-mobile">
+<!-- Fecha Desde -->
+<div class="flex flex-col gap-base bg-surface-container-lowest border border-outline-variant p-4 rounded-lg">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Desde</label>
+<div class="flex items-center gap-2 h-10">
+<span class="material-symbols-outlined text-outline" data-icon="calendar_today">calendar_today</span>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-body-md text-on-surface" type="date" value="2023-10-01"/>
+</div>
+</div>
+<!-- Fecha Hasta -->
+<div class="flex flex-col gap-base bg-surface-container-lowest border border-outline-variant p-4 rounded-lg">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Hasta</label>
+<div class="flex items-center gap-2 h-10">
+<span class="material-symbols-outlined text-outline" data-icon="calendar_today">calendar_today</span>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-body-md text-on-surface" type="date" value="2023-10-24"/>
+</div>
+</div>
+<!-- Usuario -->
+<div class="flex flex-col gap-base bg-surface-container-lowest border border-outline-variant p-4 rounded-lg">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Usuario</label>
+<div class="flex items-center gap-2 h-10">
+<span class="material-symbols-outlined text-outline" data-icon="person">person</span>
+<select class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-body-md text-on-surface appearance-none">
+<option value="todos">Todos los usuarios</option>
+<option value="carlos">Carlos Mamani</option>
+<option value="ana">Ana Quispe</option>
+<option value="luis">Luis Condori</option>
+</select>
+</div>
+</div>
+<!-- Módulo -->
+<div class="flex flex-col gap-base bg-surface-container-lowest border border-outline-variant p-4 rounded-lg">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Módulo</label>
+<div class="flex items-center gap-2 h-10">
+<span class="material-symbols-outlined text-outline" data-icon="view_module">view_module</span>
+<select class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-md text-body-md text-on-surface appearance-none">
+<option value="Todos">Todos</option>
+<option value="Usuario">Usuario</option>
+<option value="Estancia">Estancia</option>
+<option value="CaptacionGanado">CaptacionGanado</option>
+<option value="Pesaje">Pesaje</option>
+<option value="Sanitario">Sanitario</option>
+<option value="Movimiento">Movimiento</option>
+<option value="Alimentacion">Alimentacion</option>
+</select>
+</div>
+</div>
+</div>
+<div class="flex justify-end mt-stack-md gap-stack-sm">
+<button class="min-h-[48px] px-6 rounded-lg border-2 border-outline text-on-surface-variant font-button text-button hover:bg-surface-container-low transition-colors">Limpiar</button>
+<button class="min-h-[48px] px-6 rounded-lg bg-primary text-on-primary font-button text-button hover:bg-surface-tint transition-colors shadow-sm">Aplicar Filtros</button>
+</div>
+</section>
+<!-- Tabla de Auditoría Section -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant flex flex-col flex-1 overflow-hidden">
+<div class="p-stack-md border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="history">history</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Registro de Auditoría</h3>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant bg-surface-container-high px-3 py-1 rounded-full">245 Registros</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant bg-surface-container-lowest">
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Fecha y Hora</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Usuario</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Acción</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Módulo</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Detalle</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface transition-colors group">
+<td class="p-4 text-on-surface whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline-variant text-sm" data-icon="schedule">schedule</span>
+                                            24/10/2023 14:30
+                                        </div>
+</td>
+<td class="p-4 text-on-surface font-semibold">Carlos Mamani</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-md text-label-md bg-primary-container text-on-primary-container border border-primary/20">
+                                            Creación
+                                        </span>
+</td>
+<td class="p-4 text-on-surface-variant">CaptacionGanado</td>
+<td class="p-4 text-on-surface max-w-xs truncate" title="Captación Norte A - Invernada">Captación Norte A - Invernada</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface transition-colors group">
+<td class="p-4 text-on-surface whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline-variant text-sm" data-icon="schedule">schedule</span>
+                                            24/10/2023 15:15
+                                        </div>
+</td>
+<td class="p-4 text-on-surface font-semibold">Ana Quispe</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-md text-label-md bg-[#e3f2fd] text-[#0d47a1] border border-[#90caf9]">
+                                            Modificación
+                                        </span>
+</td>
+<td class="p-4 text-on-surface-variant">Pesaje</td>
+<td class="p-4 text-on-surface max-w-xs truncate" title="Actualización peso: 450kg">Actualización peso: 450kg</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface transition-colors group">
+<td class="p-4 text-on-surface whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline-variant text-sm" data-icon="schedule">schedule</span>
+                                            23/10/2023 09:10
+                                        </div>
+</td>
+<td class="p-4 text-on-surface font-semibold">Luis Condori</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-md text-label-md bg-error-container text-on-error-container border border-error/20">
+                                            Eliminación
+                                        </span>
+</td>
+<td class="p-4 text-on-surface-variant">Movimiento</td>
+<td class="p-4 text-on-surface max-w-xs truncate" title="Registro errado en Corral 4">Registro errado en Corral 4</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface transition-colors group">
+<td class="p-4 text-on-surface whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline-variant text-sm" data-icon="schedule">schedule</span>
+                                            23/10/2023 11:45
+                                        </div>
+</td>
+<td class="p-4 text-on-surface font-semibold">María Vargas</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-md text-label-md bg-primary-container text-on-primary-container border border-primary/20">
+                                            Creación
+                                        </span>
+</td>
+<td class="p-4 text-on-surface-variant">Sanitario</td>
+<td class="p-4 text-on-surface max-w-xs truncate" title="Vacunación Fiebre Aftosa">Vacunación Fiebre Aftosa</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface transition-colors group">
+<td class="p-4 text-on-surface whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline-variant text-sm" data-icon="schedule">schedule</span>
+                                            22/10/2023 16:20
+                                        </div>
+</td>
+<td class="p-4 text-on-surface font-semibold">Roberto Flores</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-md text-label-md bg-[#e3f2fd] text-[#0d47a1] border border-[#90caf9]">
+                                            Modificación
+                                        </span>
+</td>
+<td class="p-4 text-on-surface-variant">Alimentacion</td>
+<td class="p-4 text-on-surface max-w-xs truncate" title="Ajuste ración: 5kg Maíz">Ajuste ración: 5kg Maíz</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-surface transition-colors group">
+<td class="p-4 text-on-surface whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline-variant text-sm" data-icon="schedule">schedule</span>
+                                            22/10/2023 10:00
+                                        </div>
+</td>
+<td class="p-4 text-on-surface font-semibold">Carlos Mamani</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-md text-label-md bg-primary-container text-on-primary-container border border-primary/20">
+                                            Creación
+                                        </span>
+</td>
+<td class="p-4 text-on-surface-variant">Usuario</td>
+<td class="p-4 text-on-surface max-w-xs truncate" title="Alta de nuevo captador: Juan Pérez">Alta de nuevo captador: Juan Pérez</td>
+</tr>
+<!-- Row 7 -->
+<tr class="hover:bg-surface transition-colors group">
+<td class="p-4 text-on-surface whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline-variant text-sm" data-icon="schedule">schedule</span>
+                                            21/10/2023 13:05
+                                        </div>
+</td>
+<td class="p-4 text-on-surface font-semibold">Ana Quispe</td>
+<td class="p-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-md text-label-md bg-[#e3f2fd] text-[#0d47a1] border border-[#90caf9]">
+                                            Modificación
+                                        </span>
+</td>
+<td class="p-4 text-on-surface-variant">Estancia</td>
+<td class="p-4 text-on-surface max-w-xs truncate" title="Cambio de nombre: La Esperanza">Cambio de nombre: La Esperanza</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="p-4 border-t border-outline-variant bg-surface-container-lowest flex justify-between items-center">
+<span class="font-body-md text-body-md text-on-surface-variant">Mostrando 1 - 7 de 245 resultados</span>
+<div class="flex gap-2">
+<button class="p-2 rounded hover:bg-surface-container-high text-on-surface-variant disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="p-2 rounded hover:bg-surface-container-high text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ranking de Productividad por Captador - SIGA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed-dim": "#ebbcac",
+                      "on-tertiary-fixed-variant": "#274e3d",
+                      "on-error": "#ffffff",
+                      "on-secondary-fixed-variant": "#603f33",
+                      "on-surface-variant": "#404943",
+                      "on-tertiary-fixed": "#002114",
+                      "on-surface": "#191c1d",
+                      "surface-container-low": "#f3f4f5",
+                      "secondary": "#7a5649",
+                      "on-primary-container": "#a8e7c5",
+                      "surface-container-high": "#e7e8e9",
+                      "secondary-container": "#fdcdbc",
+                      "surface-variant": "#e1e3e4",
+                      "surface": "#f8f9fa",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed": "#b1f0ce",
+                      "on-tertiary-container": "#b8e3cb",
+                      "inverse-on-surface": "#f0f1f2",
+                      "surface-container-highest": "#e1e3e4",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "on-primary-fixed-variant": "#0e5138",
+                      "tertiary-fixed-dim": "#a5d0b9",
+                      "on-secondary-container": "#795548",
+                      "outline": "#707973",
+                      "on-error-container": "#93000a",
+                      "surface-tint": "#2c694e",
+                      "primary": "#0f5238",
+                      "error-container": "#ffdad6",
+                      "on-background": "#191c1d",
+                      "surface-bright": "#f8f9fa",
+                      "tertiary": "#274f3d",
+                      "primary-fixed-dim": "#95d4b3",
+                      "inverse-primary": "#95d4b3",
+                      "on-primary-fixed": "#002114",
+                      "secondary-fixed": "#ffdbcf",
+                      "on-primary": "#ffffff",
+                      "inverse-surface": "#2e3132",
+                      "surface-dim": "#d9dadb",
+                      "background": "#f8f9fa",
+                      "outline-variant": "#bfc9c1",
+                      "tertiary-container": "#3f6754",
+                      "primary-container": "#2d6a4f",
+                      "on-secondary-fixed": "#2e150b",
+                      "surface-container": "#edeeef",
+                      "tertiary-fixed": "#c1ecd4",
+                      "error": "#ba1a1a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter-mobile": "12px",
+                      "stack-md": "16px",
+                      "touch-target-min": "48px",
+                      "stack-sm": "8px",
+                      "base": "4px",
+                      "margin-mobile": "16px",
+                      "stack-lg": "24px"
+              },
+              "fontFamily": {
+                      "button": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "button": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen">
+<!-- SideNavBar -->
+<nav class="h-screen w-64 fixed left-0 top-0 bg-surface-container-lowest border-r border-outline-variant shadow-sm flex flex-col h-full p-4 z-20">
+<div class="mb-8 px-4 mt-2 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center">
+<span class="font-headline-md font-bold">S</span>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight leading-none">SIGA</h1>
+<p class="font-label-md text-label-md text-on-surface-variant">Gestión Ganadera</p>
+</div>
+</div>
+<ul class="flex-1 space-y-2">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 ease-in-out active:scale-95 rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 ease-in-out active:scale-95 rounded-lg" href="#">
+<span class="material-symbols-outlined">pets</span>
+<span class="font-body-md text-body-md">Ganado</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 ease-in-out active:scale-95 rounded-lg" href="#">
+<span class="material-symbols-outlined">landscape</span>
+<span class="font-body-md text-body-md">Potreros</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg font-bold transition-all duration-200 ease-in-out active:scale-95" href="#">
+<span class="material-symbols-outlined fill">analytics</span>
+<span class="font-body-md text-body-md font-bold">Reportes</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 ease-in-out active:scale-95 rounded-lg" href="#">
+<span class="material-symbols-outlined">security</span>
+<span class="font-body-md text-body-md">Seguridad</span>
+</a>
+</li>
+</ul>
+<div class="mt-auto">
+<div class="px-4 py-3 text-label-md text-outline flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+                 Sistema Online
+             </div>
+</div>
+</nav>
+<!-- TopAppBar -->
+<header class="h-16 fixed top-0 right-0 left-64 z-10 bg-surface border-b border-outline-variant flex justify-between items-center px-6 h-full w-full">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-md text-headline-md text-primary">SIGA</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-opacity active:opacity-70 rounded-full hover:bg-surface-container-high">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-opacity active:opacity-70 rounded-full hover:bg-surface-container-high">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-opacity active:opacity-70 rounded-full hover:bg-surface-container-high">
+<span class="material-symbols-outlined">sync</span>
+</button>
+<div class="h-8 w-px bg-outline-variant mx-2"></div>
+<button class="h-10 px-4 bg-primary text-on-primary font-button text-button rounded-full hover:bg-primary-fixed-variant transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined">download</span>
+                Descargar Reporte
+            </button>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant ml-2">
+<img alt="Admin Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a system administrator. The lighting is clean and corporate, featuring a soft white background. The subject is wearing a professional button-down shirt. The aesthetic aligns with a modern enterprise software interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCISwymHlDonF1Fjx9EzlY2GmSi5mknzLqoVhTq28NW4RAP-0eWPQdHkcCR3nfaOVyVYCWHdzwwDpPqbfNgkDdgE9ldgpqIc_DCn4bAarDUdr6G5veopfbVXzNjWf9KMy9tCj4KlabytZBHPEjnZJ_wDriKdNp39vCTxkYoyzD_Yp8VuNVcAMpEluWlVQaK6uAHg5ARUHmWD3AtFQvVfTeEtzAtBU2wsrTFMDkUIQcC0ODrY-RfteU9kg"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-16 p-8 min-h-[calc(100vh-4rem)]">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-bold">Ranking de Productividad por Captador</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Análisis de rendimiento de personal de campo</p>
+</div>
+<div class="flex items-center gap-3 bg-surface-container-lowest p-2 rounded-lg border border-outline-variant shadow-sm">
+<div class="flex items-center gap-2 px-3">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">calendar_month</span>
+<div class="flex flex-col">
+<label class="font-label-md text-label-md text-outline uppercase text-[10px]">Desde</label>
+<span class="font-body-md text-body-md text-on-surface font-semibold">01/01/2024</span>
+</div>
+</div>
+<div class="w-px h-8 bg-outline-variant"></div>
+<div class="flex items-center gap-2 px-3">
+<div class="flex flex-col">
+<label class="font-label-md text-label-md text-outline uppercase text-[10px]">Hasta</label>
+<span class="font-body-md text-body-md text-on-surface font-semibold">31/10/2024</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Ranking Table Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="py-4 px-6 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider w-20 text-center">Posición</th>
+<th class="py-4 px-6 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Captador</th>
+<th class="py-4 px-6 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider text-right">Estancias Reg.</th>
+<th class="py-4 px-6 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider text-right">Captaciones Reg.</th>
+<th class="py-4 px-6 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider text-right">Captaciones Act.</th>
+<th class="py-4 px-6 font-label-md text-label-md text-primary font-bold uppercase tracking-wider text-right bg-primary-container/10">Total Cabezas</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md divide-y divide-outline-variant/50">
+<!-- Pos 1 -->
+<tr class="hover:bg-surface-container-lowest/50 transition-colors">
+<td class="py-4 px-6 text-center">
+<div class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container font-bold text-lg border-2 border-secondary">
+                                    1
+                                </div>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center font-bold">
+                                        CM
+                                    </div>
+<div>
+<div class="font-semibold text-on-surface">Carlos Mamani</div>
+<div class="text-xs text-on-surface-variant">Captador de Campo</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6 text-right font-medium text-on-surface">5</td>
+<td class="py-4 px-6 text-right font-medium text-on-surface">42</td>
+<td class="py-4 px-6 text-right font-medium text-on-surface">8</td>
+<td class="py-4 px-6 text-right font-headline-md text-headline-md text-primary font-bold bg-primary-container/5">1.250</td>
+</tr>
+<!-- Pos 2 -->
+<tr class="hover:bg-surface-container-lowest/50 transition-colors">
+<td class="py-4 px-6 text-center">
+<div class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-surface-container-high text-on-surface font-bold text-lg border-2 border-outline">
+                                    2
+                                </div>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center font-bold">
+                                        MC
+                                    </div>
+<div>
+<div class="font-semibold text-on-surface">María Eugenia Choque</div>
+<div class="text-xs text-on-surface-variant">Captador de Campo</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6 text-right font-medium text-on-surface">4</td>
+<td class="py-4 px-6 text-right font-medium text-on-surface">38</td>
+<td class="py-4 px-6 text-right font-medium text-on-surface">5</td>
+<td class="py-4 px-6 text-right font-headline-md text-headline-md text-primary font-bold bg-primary-container/5">1.080</td>
+</tr>
+<!-- Pos 3 -->
+<tr class="hover:bg-surface-container-lowest/50 transition-colors">
+<td class="py-4 px-6 text-center">
+<div class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-secondary-fixed-dim text-on-secondary-fixed-variant font-bold text-lg border-2 border-secondary-fixed-dim">
+                                    3
+                                </div>
+</td>
+<td class="py-4 px-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center font-bold">
+                                        JV
+                                    </div>
+<div>
+<div class="font-semibold text-on-surface">José Luis Vargas</div>
+<div class="text-xs text-on-surface-variant">Captador de Campo</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-6 text-right font-medium text-on-surface">3</td>
+<td class="py-4 px-6 text-right font-medium text-on-surface">31</td>
+<td class="py-4 px-6 text-right font-medium text-on-surface">4</td>
+<td class="py-4 px-6 text-right font-headline-md text-headline-md text-primary font-bold bg-primary-container/5">920</td>
+</tr>
+<!-- Pos 4 -->
+<tr class="hover:bg-surface-container-lowest/50 transition-colors">
+<td class="py-4 px-6 text-center font-semibold text-on-surface-variant">4</td>
+<td class="py-4 px-6">
+<div>
+<div class="font-semibold text-on-surface">Ricardo Soliz</div>
+<div class="text-xs text-on-surface-variant">Captador de Campo</div>
+</div>
+</td>
+<td class="py-4 px-6 text-right text-on-surface-variant">3</td>
+<td class="py-4 px-6 text-right text-on-surface-variant">28</td>
+<td class="py-4 px-6 text-right text-on-surface-variant">6</td>
+<td class="py-4 px-6 text-right font-body-lg text-body-lg text-primary font-semibold bg-primary-container/5">840</td>
+</tr>
+<!-- Pos 5 -->
+<tr class="hover:bg-surface-container-lowest/50 transition-colors">
+<td class="py-4 px-6 text-center font-semibold text-on-surface-variant">5</td>
+<td class="py-4 px-6">
+<div>
+<div class="font-semibold text-on-surface">Ana Belén Quiroga</div>
+<div class="text-xs text-on-surface-variant">Captador de Campo</div>
+</div>
+</td>
+<td class="py-4 px-6 text-right text-on-surface-variant">2</td>
+<td class="py-4 px-6 text-right text-on-surface-variant">22</td>
+<td class="py-4 px-6 text-right text-on-surface-variant">3</td>
+<td class="py-4 px-6 text-right font-body-lg text-body-lg text-primary font-semibold bg-primary-container/5">610</td>
+</tr>
+<!-- Pos 6 -->
+<tr class="hover:bg-surface-container-lowest/50 transition-colors">
+<td class="py-4 px-6 text-center font-semibold text-on-surface-variant">6</td>
+<td class="py-4 px-6">
+<div>
+<div class="font-semibold text-on-surface">Pedro Flores</div>
+<div class="text-xs text-on-surface-variant">Captador de Campo</div>
+</div>
+</td>
+<td class="py-4 px-6 text-right text-on-surface-variant">2</td>
+<td class="py-4 px-6 text-right text-on-surface-variant">19</td>
+<td class="py-4 px-6 text-right text-on-surface-variant">2</td>
+<td class="py-4 px-6 text-right font-body-lg text-body-lg text-primary font-semibold bg-primary-container/5">530</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="bg-surface-container-low py-3 px-6 border-t border-outline-variant flex justify-between items-center text-sm text-on-surface-variant">
+<span>Mostrando 1-6 de 24 captadores</span>
+<div class="flex gap-2">
+<button class="p-1 rounded hover:bg-surface-container-high disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container-high">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

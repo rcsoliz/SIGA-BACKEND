@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>SIGA - Trazabilidad y Auditoría</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#a8e7c5",
+                        "on-tertiary-fixed-variant": "#274e3d",
+                        "secondary-container": "#fdcdbc",
+                        "surface-dim": "#d9dadb",
+                        "on-primary-fixed-variant": "#0e5138",
+                        "on-background": "#191c1d",
+                        "outline": "#707973",
+                        "inverse-surface": "#2e3132",
+                        "tertiary-container": "#3f6754",
+                        "primary-fixed": "#b1f0ce",
+                        "surface-container-low": "#f3f4f5",
+                        "surface-container": "#edeeef",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#002114",
+                        "surface": "#f8f9fa",
+                        "surface-tint": "#2c694e",
+                        "on-tertiary-fixed": "#002114",
+                        "on-secondary-fixed-variant": "#603f33",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#f0f1f2",
+                        "inverse-primary": "#95d4b3",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "primary-container": "#2d6a4f",
+                        "on-tertiary-container": "#b8e3cb",
+                        "surface-container-highest": "#e1e3e4",
+                        "primary": "#0f5238",
+                        "background": "#f8f9fa",
+                        "surface-container-high": "#e7e8e9",
+                        "tertiary-fixed-dim": "#a5d0b9",
+                        "tertiary-fixed": "#c1ecd4",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "secondary-fixed-dim": "#ebbcac",
+                        "primary-fixed-dim": "#95d4b3",
+                        "surface-variant": "#e1e3e4",
+                        "surface-bright": "#f8f9fa",
+                        "on-secondary-container": "#795548",
+                        "on-surface": "#191c1d",
+                        "outline-variant": "#bfc9c1",
+                        "tertiary": "#274f3d",
+                        "on-surface-variant": "#404943",
+                        "secondary": "#7a5649",
+                        "on-secondary-fixed": "#2e150b",
+                        "secondary-fixed": "#ffdbcf"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "24px",
+                        "base": "4px",
+                        "stack-sm": "8px",
+                        "gutter-mobile": "12px",
+                        "margin-mobile": "16px",
+                        "touch-target-min": "48px",
+                        "stack-md": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "button": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "button": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { -webkit-tap-highlight-color: transparent; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col pt-16 pb-safe">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-surface-dim shadow-sm flex justify-between items-center h-16 px-margin-mobile">
+<button aria-label="Atrás" class="h-touch-target-min w-touch-target-min flex items-center justify-center text-primary dark:text-primary-fixed hover:bg-surface-variant/50 transition-colors active:scale-95 duration-100 rounded-full">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">arrow_back</span>
+</button>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed truncate px-4">Trazabilidad</h1>
+<button aria-label="Sincronizar" class="h-touch-target-min w-touch-target-min flex items-center justify-center text-primary dark:text-primary-fixed hover:bg-surface-variant/50 transition-colors active:scale-95 duration-100 rounded-full">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">wifi</span>
+</button>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 overflow-y-auto px-margin-mobile py-stack-md flex flex-col gap-stack-md">
+<!-- Filters Section -->
+<section class="bg-surface-container-low rounded-lg p-4 border border-outline-variant/30 shadow-sm flex flex-col gap-stack-sm">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full h-touch-target-min pl-12 pr-4 bg-surface rounded-DEFAULT border-none ring-1 ring-inset ring-outline-variant focus:ring-2 focus:ring-primary text-body-md placeholder-on-surface-variant text-on-surface" placeholder="Buscar usuario o acción..." type="text"/>
+</div>
+<div class="flex gap-gutter-mobile">
+<div class="flex-1 relative">
+<select class="w-full h-touch-target-min pl-4 pr-10 appearance-none bg-surface rounded-DEFAULT border-none ring-1 ring-inset ring-outline-variant focus:ring-2 focus:ring-primary text-body-md text-on-surface">
+<option value="todos">Todos los módulos</option>
+<option value="usuario">Usuario</option>
+<option value="estancia">Estancia</option>
+<option value="captacion">CaptacionGanado</option>
+<option value="pesaje">Pesaje</option>
+<option value="sanitario">Sanitario</option>
+<option value="movimiento">Movimiento</option>
+<option value="alimentacion">Alimentacion</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">arrow_drop_down</span>
+</div>
+<button aria-label="Filtro de fecha" class="h-touch-target-min w-touch-target-min flex-shrink-0 flex items-center justify-center bg-surface border border-outline-variant rounded-DEFAULT text-on-surface-variant active:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">calendar_today</span>
+</button>
+</div>
+</section>
+<!-- Audit Log List -->
+<section class="flex flex-col gap-gutter-mobile">
+<!-- Log Card 1 -->
+<article class="bg-surface-lowest rounded-lg border border-outline-variant/50 shadow-sm p-4 flex flex-col gap-2 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-container"></div>
+<div class="flex justify-between items-start w-full pl-2">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">24 Oct 2023, 14:32</span>
+<span class="font-button text-button text-on-surface">Carlos Mamani</span>
+</div>
+<span class="inline-flex items-center px-2 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-md text-label-md border border-tertiary-fixed-dim">
+                        Creación
+                    </span>
+</div>
+<div class="pl-2 mt-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">pets</span>
+<span class="font-body-md text-body-md font-semibold text-on-surface-variant">CaptacionGanado</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface break-words">Se registró un nuevo lote de 50 cabezas (Lote-A45) en la zona norte.</p>
+</div>
+</article>
+<!-- Log Card 2 -->
+<article class="bg-surface-lowest rounded-lg border border-outline-variant/50 shadow-sm p-4 flex flex-col gap-2 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary-container"></div>
+<div class="flex justify-between items-start w-full pl-2">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">24 Oct 2023, 11:15</span>
+<span class="font-button text-button text-on-surface">Lucía Quispe</span>
+</div>
+<span class="inline-flex items-center px-2 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md border border-secondary-fixed-dim">
+                        Modificación
+                    </span>
+</div>
+<div class="pl-2 mt-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">monitor_weight</span>
+<span class="font-body-md text-body-md font-semibold text-on-surface-variant">Pesaje</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface break-words">Actualización de registro de peso para animal ID-9021. Peso anterior: 450kg, Nuevo peso: 455kg.</p>
+</div>
+</article>
+<!-- Log Card 3 -->
+<article class="bg-surface-lowest rounded-lg border border-outline-variant/50 shadow-sm p-4 flex flex-col gap-2 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-error-container"></div>
+<div class="flex justify-between items-start w-full pl-2">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">23 Oct 2023, 16:45</span>
+<span class="font-button text-button text-on-surface">Roberto Choque</span>
+</div>
+<span class="inline-flex items-center px-2 py-1 rounded-full bg-error-container text-on-error-container font-label-md text-label-md border border-error/20">
+                        Eliminación
+                    </span>
+</div>
+<div class="pl-2 mt-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">vaccines</span>
+<span class="font-body-md text-body-md font-semibold text-on-surface-variant">Sanitario</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface break-words">Se eliminó el registro de vacunación duplicado para el lote Lote-B12. Motivo: Error de digitación.</p>
+</div>
+</article>
+<!-- Log Card 4 -->
+<article class="bg-surface-lowest rounded-lg border border-outline-variant/50 shadow-sm p-4 flex flex-col gap-2 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary-container"></div>
+<div class="flex justify-between items-start w-full pl-2">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">23 Oct 2023, 09:10</span>
+<span class="font-button text-button text-on-surface">Admin Sistema</span>
+</div>
+<span class="inline-flex items-center px-2 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-md text-label-md border border-tertiary-fixed-dim">
+                        Creación
+                    </span>
+</div>
+<div class="pl-2 mt-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">person_add</span>
+<span class="font-body-md text-body-md font-semibold text-on-surface-variant">Usuario</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface break-words">Se creó un nuevo usuario con rol de Operador de Campo: 'jcondori'.</p>
+</div>
+</article>
+<!-- Log Card 5 -->
+<article class="bg-surface-lowest rounded-lg border border-outline-variant/50 shadow-sm p-4 flex flex-col gap-2 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary-container"></div>
+<div class="flex justify-between items-start w-full pl-2">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface-variant">22 Oct 2023, 18:20</span>
+<span class="font-button text-button text-on-surface">María Flores</span>
+</div>
+<span class="inline-flex items-center px-2 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md border border-secondary-fixed-dim">
+                        Modificación
+                    </span>
+</div>
+<div class="pl-2 mt-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">local_shipping</span>
+<span class="font-body-md text-body-md font-semibold text-on-surface-variant">Movimiento</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface break-words">Actualización de estado de tránsito de Estancia Sur a Estancia Central. Vehículo PTA-4021 asignado.</p>
+</div>
+</article>
+</section>
+<!-- Bottom padding for scrolling past nav -->
+<div class="h-24"></div>
+</main>
+<!-- BottomNavBar is suppressed as this is a sub-page (Administrator view, implied deeper navigation) -->
+<!-- Removed BottomNavBar to prioritize content canvas as per "Task-Focused" rule -->
+</body></html>

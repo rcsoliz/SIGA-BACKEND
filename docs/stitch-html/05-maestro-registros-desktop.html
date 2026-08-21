@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Maestro de Registros - SIGA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#191c1d",
+                        "on-secondary-fixed": "#2e150b",
+                        "surface-variant": "#e1e3e4",
+                        "tertiary": "#274f3d",
+                        "surface-container-low": "#f3f4f5",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#404943",
+                        "outline-variant": "#bfc9c1",
+                        "primary": "#0f5238",
+                        "tertiary-fixed-dim": "#a5d0b9",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-tertiary-fixed-variant": "#274e3d",
+                        "inverse-surface": "#2e3132",
+                        "secondary-container": "#fdcdbc",
+                        "surface-dim": "#d9dadb",
+                        "tertiary-container": "#3f6754",
+                        "outline": "#707973",
+                        "on-background": "#191c1d",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#b8e3cb",
+                        "secondary": "#7a5649",
+                        "inverse-primary": "#95d4b3",
+                        "background": "#f8f9fa",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#002114",
+                        "on-primary-container": "#a8e7c5",
+                        "primary-fixed": "#b1f0ce",
+                        "surface": "#f8f9fa",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#e1e3e4",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#95d4b3",
+                        "primary-container": "#2d6a4f",
+                        "surface-container-high": "#e7e8e9",
+                        "surface-tint": "#2c694e",
+                        "on-tertiary-fixed": "#002114",
+                        "tertiary-fixed": "#c1ecd4",
+                        "on-primary-fixed-variant": "#0e5138",
+                        "surface-container": "#edeeef",
+                        "on-secondary-fixed-variant": "#603f33",
+                        "secondary-fixed-dim": "#ebbcac",
+                        "surface-bright": "#f8f9fa",
+                        "on-secondary-container": "#795548",
+                        "secondary-fixed": "#ffdbcf",
+                        "on-primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "base": "4px",
+                        "stack-sm": "8px",
+                        "stack-lg": "24px",
+                        "stack-md": "16px",
+                        "touch-target-min": "48px",
+                        "gutter-mobile": "12px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "button": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "button": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<nav class="h-screen w-64 fixed left-0 top-0 bg-surface-container-lowest border-r border-outline-variant shadow-sm flex flex-col p-4 z-20">
+<div class="flex items-center gap-4 mb-stack-lg px-2 pt-2">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined font-headline-lg">eco</span>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">SIGA</h1>
+<p class="font-label-md text-label-md text-on-surface-variant">Gestión Ganadera</p>
+</div>
+</div>
+<ul class="flex flex-col gap-2 flex-grow mt-4">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 ease-in-out active:scale-95 rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-button text-button">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 ease-in-out active:scale-95 rounded-lg" href="#">
+<span class="material-symbols-outlined">pets</span>
+<span class="font-button text-button">Ganado</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 ease-in-out active:scale-95 rounded-lg" href="#">
+<span class="material-symbols-outlined">landscape</span>
+<span class="font-button text-button">Potreros</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg font-bold transition-all duration-200 ease-in-out active:scale-95" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-button text-button">Reportes</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200 ease-in-out active:scale-95 rounded-lg" href="#">
+<span class="material-symbols-outlined">security</span>
+<span class="font-button text-button">Seguridad</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- TopAppBar -->
+<header class="h-16 fixed top-0 right-0 left-64 z-10 bg-surface border-b border-outline-variant flex justify-between items-center px-6">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-md text-headline-md text-on-surface hidden md:block">Reportes</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined">sync</span>
+</button>
+<div class="h-8 w-px bg-outline-variant mx-2"></div>
+<button class="h-10 px-4 rounded-full bg-primary text-on-primary font-button text-button flex items-center gap-2 hover:bg-surface-tint transition-colors">
+<span class="material-symbols-outlined text-[20px]">download</span>
+                Descargar Reporte
+            </button>
+<img alt="Admin Profile" class="w-10 h-10 rounded-full object-cover ml-2 border border-outline-variant" data-alt="A small, professional profile picture of a male system administrator in a clean, modern agricultural setting. Soft, natural lighting. High contrast, clear facial features, realistic photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaoP-EpGdeGiIaHoJ_2d3UQGbd2mbeWCV3zvxJsU0L_t0J6Q1bsl7aVNYncgziscpEdqdEXI4vOY4rAjrgrTxIvg0Qdj7OwVTmqbBzHl5BcJsJeXEzihx4JRsFh-_8VYB20mqR11c2Ub3hfLkfkMcChfrcSM_Kcxp9NN_618aVSC2D8BZApzgdoWFCteoYkV_h8f1C-0xkSUFicBu8hNjalLW2BggwOLnhaXg-_NYTBfcARrpTBgXGiw"/>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-64 mt-16 p-stack-lg w-full h-[calc(100vh-64px)] overflow-y-auto bg-background">
+<div class="max-w-7xl mx-auto space-y-stack-md">
+<!-- Page Header & Actions -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-stack-lg">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Maestro de Registros</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Vista consolidada de todos los registros del sistema.</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative w-full md:w-80">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full h-12 pl-10 pr-4 rounded-full border border-outline-variant bg-surface-container-lowest text-on-surface font-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-shadow" placeholder="Buscar por ID, Captación o Detalles..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Active Filters -->
+<div class="flex items-center gap-2 mb-stack-md">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Filtros Activos:</span>
+<div class="flex items-center gap-2 px-3 py-1.5 bg-secondary-container text-on-secondary-container rounded-lg border border-transparent">
+<span class="material-symbols-outlined text-[16px]">filter_alt</span>
+<span class="font-label-md text-label-md">Captación: Norte A</span>
+<button class="ml-1 flex items-center justify-center w-5 h-5 rounded-full hover:bg-on-secondary-container hover:text-secondary-container transition-colors">
+<span class="material-symbols-outlined text-[14px]">close</span>
+</button>
+</div>
+<button class="text-primary font-label-md text-label-md hover:underline ml-2">Limpiar Filtros</button>
+</div>
+<!-- Data Table Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden flex flex-col">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="p-4 w-12">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">ID Registro</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Fecha y Hora</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Tipo</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Captación Asignada</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Detalles / Métrica</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Estado</th>
+<th class="p-4 w-16 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider text-center">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="p-4">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="p-4 font-body-md text-on-surface font-medium">#REG-8923</td>
+<td class="p-4 font-body-md text-on-surface-variant">24 Oct 2023, 08:30</td>
+<td class="p-4">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-container text-on-surface-variant border border-outline-variant">
+<span class="material-symbols-outlined text-[16px]">swap_horiz</span>
+<span class="font-label-md text-label-md">Movimiento</span>
+</div>
+</td>
+<td class="p-4 font-body-md text-on-surface">Norte A</td>
+<td class="p-4 font-body-md text-on-surface">45 cabezas movidas al pastizal</td>
+<td class="p-4">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#E6F4EA] text-[#137333]">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-md text-label-md">Sincronizado</span>
+</div>
+</td>
+<td class="p-4 text-center">
+<button class="w-8 h-8 rounded-full inline-flex items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="p-4">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="p-4 font-body-md text-on-surface font-medium">#REG-8924</td>
+<td class="p-4 font-body-md text-on-surface-variant">24 Oct 2023, 09:15</td>
+<td class="p-4">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-container text-on-surface-variant border border-outline-variant">
+<span class="material-symbols-outlined text-[16px]">grass</span>
+<span class="font-label-md text-label-md">Alimentación</span>
+</div>
+</td>
+<td class="p-4 font-body-md text-on-surface">Norte A</td>
+<td class="p-4 font-body-md text-on-surface">200kg mezcla de ensilaje dispensada</td>
+<td class="p-4">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#E6F4EA] text-[#137333]">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-md text-label-md">Sincronizado</span>
+</div>
+</td>
+<td class="p-4 text-center">
+<button class="w-8 h-8 rounded-full inline-flex items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group bg-[#FFF8E1]/30">
+<td class="p-4">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="p-4 font-body-md text-on-surface font-medium">#REG-8925</td>
+<td class="p-4 font-body-md text-on-surface-variant">24 Oct 2023, 10:45</td>
+<td class="p-4">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-container text-on-surface-variant border border-outline-variant">
+<span class="material-symbols-outlined text-[16px]">vaccines</span>
+<span class="font-label-md text-label-md">Sanitario</span>
+</div>
+</td>
+<td class="p-4 font-body-md text-on-surface">Norte A</td>
+<td class="p-4 font-body-md text-on-surface">Control de rutina, 3 etiquetados</td>
+<td class="p-4">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FEF7E0] text-[#B06000] border border-[#FBE9A7]">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">pending</span>
+<span class="font-label-md text-label-md">Pendiente</span>
+</div>
+</td>
+<td class="p-4 text-center">
+<button class="w-8 h-8 rounded-full inline-flex items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group bg-error-container/20">
+<td class="p-4">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary" type="checkbox"/>
+</td>
+<td class="p-4 font-body-md text-on-surface font-medium">#REG-8926</td>
+<td class="p-4 font-body-md text-on-surface-variant">24 Oct 2023, 11:30</td>
+<td class="p-4">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-container text-on-surface-variant border border-outline-variant">
+<span class="material-symbols-outlined text-[16px]">monitor_weight</span>
+<span class="font-label-md text-label-md">Pesaje</span>
+</div>
+</td>
+<td class="p-4 font-body-md text-on-surface">Norte A</td>
+<td class="p-4 font-body-md text-on-surface">Control de peso mensual, promedio 385kg</td>
+<td class="p-4">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-error-container text-on-error-container border border-[#FFB4AB]">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">error</span>
+<span class="font-label-md text-label-md">Error</span>
+</div>
+</td>
+<td class="p-4 text-center">
+<button class="w-8 h-8 rounded-full inline-flex items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Footer Pagination -->
+<div class="bg-surface-container-lowest border-t border-outline-variant p-4 flex items-center justify-between">
+<span class="font-body-md text-on-surface-variant">Mostrando 1-4 de 125 registros</span>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-outline border border-outline-variant hover:bg-surface-container-low transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface border border-outline-variant hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

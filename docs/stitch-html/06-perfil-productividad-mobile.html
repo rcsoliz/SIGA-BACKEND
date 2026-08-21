@@ -1,0 +1,208 @@
+<!DOCTYPE html><html lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Perfil de Productividad de Captador - SIGA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#707973",
+                      "surface-container-low": "#f3f4f5",
+                      "tertiary-container": "#3f6754",
+                      "background": "#f8f9fa",
+                      "on-tertiary-fixed-variant": "#274e3d",
+                      "on-primary": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "surface": "#f8f9fa",
+                      "inverse-primary": "#95d4b3",
+                      "secondary": "#7a5649",
+                      "on-primary-fixed": "#002114",
+                      "on-error": "#ffffff",
+                      "error": "#ba1a1a",
+                      "primary-container": "#2d6a4f",
+                      "tertiary-fixed-dim": "#a5d0b9",
+                      "surface-container": "#edeeef",
+                      "tertiary-fixed": "#c1ecd4",
+                      "outline-variant": "#bfc9c1",
+                      "on-primary-fixed-variant": "#0e5138",
+                      "on-primary-container": "#a8e7c5",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed-variant": "#603f33",
+                      "primary": "#0f5238",
+                      "secondary-fixed": "#ffdbcf",
+                      "surface-dim": "#d9dadb",
+                      "on-tertiary-fixed": "#002114",
+                      "on-secondary-container": "#795548",
+                      "surface-tint": "#2c694e",
+                      "error-container": "#ffdad6",
+                      "secondary-container": "#fdcdbc",
+                      "surface-container-highest": "#e1e3e4",
+                      "tertiary": "#274f3d",
+                      "surface-container-lowest": "#ffffff",
+                      "inverse-surface": "#2e3132",
+                      "on-surface": "#191c1d",
+                      "surface-variant": "#e1e3e4",
+                      "on-tertiary-container": "#b8e3cb",
+                      "primary-fixed": "#b1f0ce",
+                      "on-secondary": "#ffffff",
+                      "surface-container-high": "#e7e8e9",
+                      "on-secondary-fixed": "#2e150b",
+                      "inverse-on-surface": "#f0f1f2",
+                      "secondary-fixed-dim": "#ebbcac",
+                      "on-background": "#191c1d",
+                      "surface-bright": "#f8f9fa",
+                      "primary-fixed-dim": "#95d4b3",
+                      "on-surface-variant": "#404943"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "stack-lg": "24px",
+                      "margin-mobile": "16px",
+                      "gutter-mobile": "12px",
+                      "touch-target-min": "48px",
+                      "stack-md": "16px",
+                      "stack-sm": "8px"
+              },
+              "fontFamily": {
+                      "button": ["Inter"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-md": ["Inter"]
+              },
+              "fontSize": {
+                      "button": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "headline-md-mobile": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col md:hidden pb-safe">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-surface shadow-sm shadow-primary/5 h-[64px] z-40 flex justify-between items-center px-margin-mobile">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-[24px]">agriculture</span>
+</div>
+<div class="font-headline-lg-mobile text-primary uppercase tracking-tight">SIGA</div>
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-[24px]">sync</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col gap-stack-lg p-margin-mobile">
+<!-- SECCIÓN 1 - Encabezado de Perfil -->
+<section class="flex flex-col gap-stack-md bg-surface-container-lowest rounded-xl p-4 shadow-sm shadow-primary/5 border border-surface-variant relative">
+<div class="absolute top-4 right-4 flex items-center justify-center w-touch-target-min h-touch-target-min text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a male agricultural field worker in his 40s. He is wearing a simple green collared shirt. The lighting is bright and natural, suggesting an outdoor setting. The mood is reliable and hardworking. The overall color palette features earthy greens and warm skin tones against a clean, out-of-focus rural background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCx6fRDA_6_ygq2F_2qfuqbGkQDvTv6DRLspHLWrPOaG0lB6ObzEYdYr9gls8KkPK1My7-Vw3n8-Rt85XkU4sbW1RAmdFfRmkQwzbswxTBccmHxCCsB1fsLXvD-IOZNFWZcI8OR3__JE7xDkbR20eOpD2sG2ME8hbs_OyPDETsUomD0PtoFrJhysFo4vtpB5yVQhEqirjg6h0YzHibiatl9wpZTVCT9WB-ZC3iGuXGPIpXnvd6c1h0Azg">
+</div>
+<div class="flex flex-col">
+<h1 class="font-headline-md-mobile text-on-surface">Roberto Salinas</h1>
+<p class="font-body-md text-on-surface-variant">Captador de Campo</p>
+<div class="mt-1 flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-md text-primary uppercase tracking-wide">Activo</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2 mt-2">
+<span class="font-label-md text-on-surface-variant uppercase tracking-wider">Sectores Asignados</span>
+<div class="flex flex-wrap gap-2">
+<div class="inline-flex items-center px-3 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-md min-h-[32px]">
+                        Sector Norte
+                    </div>
+<div class="inline-flex items-center px-3 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-md min-h-[32px]">
+                        Sector Cuarentena
+                    </div>
+</div>
+</div>
+</section>
+<!-- SECCIÓN 2 - Métricas de Productividad -->
+<section class="flex flex-col gap-gutter-mobile">
+<h2 class="font-headline-md-mobile text-on-surface mb-2">Productividad</h2>
+<!-- Destacado -->
+<div class="bg-primary-container text-on-primary-container rounded-xl p-4 flex flex-col justify-center min-h-touch-target-min shadow-sm">
+<div class="flex items-center gap-2 mb-1 opacity-80">
+<span class="material-symbols-outlined text-[20px]">pets</span>
+<span class="font-label-md uppercase tracking-wider">Total Cabezas Capturadas</span>
+</div>
+<div class="font-headline-lg-mobile text-[32px] font-bold leading-none mt-1">1,245</div>
+</div>
+<!-- Grid de Métricas Secundarias -->
+<div class="grid grid-cols-2 gap-gutter-mobile">
+<div class="bg-surface-container-lowest rounded-xl p-4 border border-surface-variant flex flex-col justify-center min-h-touch-target-min shadow-sm">
+<span class="material-symbols-outlined text-[20px] text-primary mb-2">home_work</span>
+<span class="font-headline-md-mobile text-on-surface">12</span>
+<span class="font-label-md text-on-surface-variant uppercase tracking-wide mt-1">Estancias Registradas</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-4 border border-surface-variant flex flex-col justify-center min-h-touch-target-min shadow-sm">
+<span class="material-symbols-outlined text-[20px] text-primary mb-2">assignment</span>
+<span class="font-headline-md-mobile text-on-surface">45</span>
+<span class="font-label-md text-on-surface-variant uppercase tracking-wide mt-1">Captaciones Registradas</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-4 border border-surface-variant flex flex-col justify-center min-h-touch-target-min shadow-sm">
+<span class="material-symbols-outlined text-[20px] text-tertiary mb-2">pending_actions</span>
+<span class="font-headline-md-mobile text-on-surface">38</span>
+<span class="font-label-md text-on-surface-variant uppercase tracking-wide mt-1">Captaciones Activas</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-4 border border-surface-variant flex flex-col justify-center min-h-touch-target-min shadow-sm">
+<span class="material-symbols-outlined text-[20px] text-outline mb-2">history</span>
+<span class="font-body-md text-on-surface font-semibold">24/05/2024</span>
+<span class="font-label-md text-on-surface-variant uppercase tracking-wide mt-1">16:30 hrs</span>
+<span class="font-label-md text-on-surface-variant uppercase tracking-wide mt-1">Última Actividad</span></div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-gutter-mobile py-2 pb-safe bg-surface-container shadow-[0_-2px_10px_rgba(0,0,0,0.05)] z-50 rounded-t-xl min-h-[48px]">
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest active:scale-90 transition-all duration-200 p-2">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md mt-1">Inicio</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest active:scale-90 transition-all duration-200 p-2">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-label-md text-label-md mt-1">Registros</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest active:scale-90 transition-all duration-200 p-2">
+<span class="material-symbols-outlined">map</span>
+<span class="font-label-md text-label-md mt-1">Mapa</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-5 py-1.5 active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-md text-label-md mt-1">Perfil</span>
+</div>
+</nav>
+<!-- spacer for fixed bottom nav -->
+<div class="h-[80px]"></div>
+
+
+</body></html>

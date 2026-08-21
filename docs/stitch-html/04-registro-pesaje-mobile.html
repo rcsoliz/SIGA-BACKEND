@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Registro de Pesaje - SIGA</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Design System Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#f3f4f5",
+                    "surface": "#f8f9fa",
+                    "on-secondary-fixed-variant": "#603f33",
+                    "surface-tint": "#2c694e",
+                    "primary": "#0f5238",
+                    "tertiary-container": "#3f6754",
+                    "surface-variant": "#e1e3e4",
+                    "secondary-fixed": "#ffdbcf",
+                    "tertiary-fixed": "#c1ecd4",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#fdcdbc",
+                    "surface-dim": "#d9dadb",
+                    "surface-bright": "#f8f9fa",
+                    "tertiary": "#274f3d",
+                    "secondary-fixed-dim": "#ebbcac",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "primary-container": "#2d6a4f",
+                    "on-primary-fixed": "#002114",
+                    "surface-container-high": "#e7e8e9",
+                    "on-error": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed": "#002114",
+                    "error": "#ba1a1a",
+                    "primary-fixed": "#b1f0ce",
+                    "on-background": "#191c1d",
+                    "inverse-surface": "#2e3132",
+                    "on-primary-container": "#a8e7c5",
+                    "background": "#f8f9fa",
+                    "tertiary-fixed-dim": "#a5d0b9",
+                    "secondary": "#7a5649",
+                    "on-primary-fixed-variant": "#0e5138",
+                    "surface-container": "#edeeef",
+                    "inverse-primary": "#95d4b3",
+                    "on-tertiary-container": "#b8e3cb",
+                    "error-container": "#ffdad6",
+                    "outline-variant": "#bfc9c1",
+                    "on-tertiary-fixed-variant": "#274e3d",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-secondary-fixed": "#2e150b",
+                    "on-surface-variant": "#404943",
+                    "on-surface": "#191c1d",
+                    "on-secondary": "#ffffff",
+                    "outline": "#707973",
+                    "on-secondary-container": "#795548",
+                    "primary-fixed-dim": "#95d4b3"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "stack-md": "16px",
+                    "stack-sm": "8px",
+                    "base": "4px",
+                    "touch-target-min": "48px",
+                    "gutter-mobile": "12px",
+                    "stack-lg": "24px"
+            },
+            "fontFamily": {
+                    "body-md": [
+                            "Inter", "sans-serif"
+                    ],
+                    "headline-md": [
+                            "Inter", "sans-serif"
+                    ],
+                    "button": [
+                            "Inter", "sans-serif"
+                    ],
+                    "headline-lg": [
+                            "Inter", "sans-serif"
+                    ],
+                    "body-lg": [
+                            "Inter", "sans-serif"
+                    ],
+                    "label-md": [
+                            "Inter", "sans-serif"
+                    ]
+            },
+            "fontSize": {
+                    "body-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-md": [
+                            "20px",
+                            {
+                                    "lineHeight": "28px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "button": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-lg": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-md": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        /* Base styles to ensure proper rendering of Inter */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        /* Hide scrollbar for clean mobile look but keep functionality */
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center h-16 px-margin-mobile w-full z-50 bg-surface shadow-sm docked full-width top-0 sticky">
+<button aria-label="Sincronizar" class="hover:bg-surface-variant/50 transition-colors active:scale-95 duration-100 p-2 rounded-full text-primary">
+<span class="material-symbols-outlined">sync</span>
+</button>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary">SIGA</h1>
+<button aria-label="Estado de conexión" class="hover:bg-surface-variant/50 transition-colors active:scale-95 duration-100 p-2 rounded-full text-primary">
+<span class="material-symbols-outlined">wifi</span>
+</button>
+</header>
+<!-- Page Context Header -->
+<div class="px-margin-mobile py-stack-md bg-surface-container-lowest border-b border-surface-variant mb-stack-md sticky top-16 z-40">
+<h2 class="font-headline-md text-headline-md text-on-surface">Registro de Pesaje</h2>
+</div>
+<main class="px-margin-mobile flex flex-col gap-stack-lg pb-10">
+<!-- SECTION 1: Formulario -->
+<section class="flex flex-col gap-stack-md bg-surface-container-lowest p-margin-mobile rounded-lg shadow-sm border border-outline-variant">
+<!-- Select: Captación -->
+<div class="flex flex-col gap-base">
+<label class="font-label-md text-label-md text-on-surface-variant" for="captacion">Captación</label>
+<div class="relative w-full h-touch-target-min">
+<select class="w-full h-full bg-surface-container-lowest border border-outline-variant rounded px-4 py-2 text-body-lg text-on-surface appearance-none focus:border-primary focus:ring-1 focus:ring-primary outline-none" id="captacion">
+<option disabled="" selected="" value="">Seleccione un origen...</option>
+<option value="1">Lote Norte 2024 - Hacienda El Vergel</option>
+<option value="2">Sector Sur - Prado Alto</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">arrow_drop_down</span>
+</div>
+</div>
+<!-- Input: Fecha (Obligatorio) -->
+<div class="flex flex-col gap-base">
+<label class="font-label-md text-label-md text-on-surface-variant" for="fecha">Fecha del Pesaje *</label>
+<div class="relative w-full h-touch-target-min">
+<input class="w-full h-full bg-surface-container-lowest border border-outline-variant rounded px-4 py-2 text-body-lg text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none appearance-none" id="fecha" required="" type="date" value="2024-05-15"/>
+</div>
+</div>
+<!-- Input: Peso (Obligatorio) -->
+<div class="flex flex-col gap-base">
+<label class="font-label-md text-label-md text-on-surface-variant" for="peso">Peso Promedio (Kg) *</label>
+<input class="w-full h-touch-target-min bg-surface-container-lowest border border-outline-variant rounded px-4 py-2 text-body-lg text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none placeholder:text-on-surface-variant/50" id="peso" placeholder="Ej: 420.5" required="" step="0.1" type="number"/>
+</div>
+<!-- Input: Cantidad (Opcional) -->
+<div class="flex flex-col gap-base">
+<label class="font-label-md text-label-md text-on-surface-variant" for="cantidad">Cantidad de Cabezas Pesadas</label>
+<input class="w-full h-touch-target-min bg-surface-container-lowest border border-outline-variant rounded px-4 py-2 text-body-lg text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none placeholder:text-on-surface-variant/50" id="cantidad" placeholder="Ej: 45" type="number"/>
+</div>
+<!-- Textarea: Observaciones (Opcional) -->
+<div class="flex flex-col gap-base">
+<label class="font-label-md text-label-md text-on-surface-variant" for="observaciones">Observaciones</label>
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant rounded px-4 py-3 text-body-lg text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none resize-none placeholder:text-on-surface-variant/50" id="observaciones" placeholder="Añadir notas opcionales..." rows="3"></textarea>
+</div>
+<!-- Botón Submit -->
+<button class="w-full h-touch-target-min mt-stack-sm bg-primary text-on-primary font-button text-button rounded shadow-sm hover:bg-primary-container active:scale-[0.98] transition-all flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined">save</span>
+                Registrar Pesaje
+            </button>
+</section>
+<!-- SECTION 2: Historial -->
+<section class="flex flex-col gap-stack-md mt-stack-sm">
+<div class="flex items-center justify-between border-b border-surface-variant pb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface">Historial de Pesajes</h3>
+<span class="material-symbols-outlined text-on-surface-variant">history</span>
+</div>
+<div class="flex flex-col gap-stack-sm">
+<!-- Tarjeta 1 -->
+<div class="bg-surface-container-lowest p-margin-mobile rounded-lg border border-outline-variant shadow-sm flex flex-col gap-2 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant">10/05/2024</span>
+<span class="font-headline-md text-headline-md text-primary">420.5 Kg</span>
+</div>
+<div class="flex justify-between items-end mt-1">
+<span class="text-body-md text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined" style="font-size: 18px;">pets</span> 
+                            45 cab.
+                        </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant italic mt-2 border-t border-surface-variant/50 pt-2 text-sm">
+                        "Control mensual rutinario"
+                    </p>
+</div>
+<!-- Tarjeta 2 -->
+<div class="bg-surface-container-lowest p-margin-mobile rounded-lg border border-outline-variant shadow-sm flex flex-col gap-2 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-outline-variant"></div>
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant">12/04/2024</span>
+<span class="font-headline-md text-headline-md text-on-surface">385.0 Kg</span>
+</div>
+<div class="flex justify-between items-end mt-1">
+<span class="text-body-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined" style="font-size: 18px;">pets</span> 
+                            —
+                        </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant italic mt-2 border-t border-surface-variant/50 pt-2 text-sm">
+                        "Pesaje parcial de grupo"
+                    </p>
+</div>
+<!-- Tarjeta 3 -->
+<div class="bg-surface-container-lowest p-margin-mobile rounded-lg border border-outline-variant shadow-sm flex flex-col gap-2 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-outline-variant"></div>
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant">15/03/2024</span>
+<span class="font-headline-md text-headline-md text-on-surface">350.2 Kg</span>
+</div>
+<div class="flex justify-between items-end mt-1">
+<span class="text-body-md text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined" style="font-size: 18px;">pets</span> 
+                            45 cab.
+                        </span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-touch-target-min px-gutter-mobile pb-safe bg-surface shadow-sm rounded-t-lg md:hidden pt-2 pb-2" style="padding-bottom: env(safe-area-inset-bottom, 8px);">
+<!-- Inicio -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-all active:scale-90 duration-150 w-16">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md mt-1">Inicio</span>
+</button>
+<!-- Ganado (Active State logically matches weighing livestock) -->
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 hover:bg-surface-container-highest transition-all active:scale-90 duration-150 w-20">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">pets</span>
+<span class="font-label-md text-label-md mt-1">Ganado</span>
+</button>
+<!-- Tareas -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-all active:scale-90 duration-150 w-16">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-label-md text-label-md mt-1">Tareas</span>
+</button>
+<!-- Perfil -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-all active:scale-90 duration-150 w-16">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md mt-1">Perfil</span>
+</button>
+</nav>
+</body></html>

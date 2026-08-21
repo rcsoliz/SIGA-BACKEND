@@ -1,0 +1,386 @@
+<!DOCTYPE html><html class="h-full bg-background antialiased" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Registro de Movimiento - SIGA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-fixed-variant": "#0e5138",
+                      "error-container": "#ffdad6",
+                      "on-surface-variant": "#404943",
+                      "surface-container-highest": "#e1e3e4",
+                      "primary-fixed-dim": "#95d4b3",
+                      "background": "#f8f9fa",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed-variant": "#274e3d",
+                      "on-error-container": "#93000a",
+                      "surface-container-high": "#e7e8e9",
+                      "error": "#ba1a1a",
+                      "on-tertiary-container": "#b8e3cb",
+                      "on-secondary-container": "#795548",
+                      "outline": "#707973",
+                      "on-primary-container": "#a8e7c5",
+                      "secondary-fixed-dim": "#ebbcac",
+                      "tertiary-container": "#3f6754",
+                      "surface-variant": "#e1e3e4",
+                      "outline-variant": "#bfc9c1",
+                      "primary": "#0f5238",
+                      "secondary": "#7a5649",
+                      "on-primary-fixed": "#002114",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed-dim": "#a5d0b9",
+                      "inverse-on-surface": "#f0f1f2",
+                      "on-primary": "#ffffff",
+                      "surface-dim": "#d9dadb",
+                      "surface": "#f8f9fa",
+                      "on-surface": "#191c1d",
+                      "on-secondary-fixed-variant": "#603f33",
+                      "on-secondary": "#ffffff",
+                      "inverse-surface": "#2e3132",
+                      "on-secondary-fixed": "#2e150b",
+                      "surface-tint": "#2c694e",
+                      "inverse-primary": "#95d4b3",
+                      "primary-fixed": "#b1f0ce",
+                      "primary-container": "#2d6a4f",
+                      "secondary-container": "#fdcdbc",
+                      "surface-container-low": "#f3f4f5",
+                      "surface-container": "#edeeef",
+                      "tertiary-fixed": "#c1ecd4",
+                      "tertiary": "#274f3d",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-bright": "#f8f9fa",
+                      "on-background": "#191c1d",
+                      "secondary-fixed": "#ffdbcf",
+                      "on-tertiary-fixed": "#002114"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter-mobile": "12px",
+                      "stack-md": "16px",
+                      "margin-mobile": "16px",
+                      "touch-target-min": "48px",
+                      "stack-lg": "24px",
+                      "stack-sm": "8px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "button": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "label-md": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "button": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="h-full flex text-on-surface">
+<!-- Side Navigation Shell -->
+<nav class="flex flex-col h-full p-4 gap-2 border-r border-outline-variant bg-surface w-72 shrink-0">
+<!-- Header -->
+<div class="flex items-center gap-4 mb-stack-lg p-2">
+<div class="h-10 w-10 bg-primary-container rounded-lg flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="agriculture" data-weight="fill" style="font-variation-settings: 'FILL' 1;">agriculture</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">SIGA</h1>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Agricultural Management</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest rounded-xl transition-all active:scale-[0.98] duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 bg-primary-container text-on-primary-container rounded-xl px-4 py-3 hover:bg-surface-container-highest transition-all active:scale-[0.98] duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="description" data-weight="fill" style="font-variation-settings: 'FILL' 1;">description</span>
+<span class="font-body-md text-body-md font-medium">Records</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest rounded-xl transition-all active:scale-[0.98] duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-body-md text-body-md font-medium">Map</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest rounded-xl transition-all active:scale-[0.98] duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+<span class="font-body-md text-body-md font-medium">Security</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest rounded-xl transition-all active:scale-[0.98] duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="agriculture">agriculture</span>
+<span class="font-body-md text-body-md font-medium">Farm Management</span>
+</a>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col h-full overflow-hidden">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center px-6 w-full h-16 bg-surface-container-low shadow-sm z-10 shrink-0">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-lg text-headline-lg font-bold text-primary tracking-tight">Registro de Movimiento</h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-primary/10 rounded-full border border-primary/20">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="font-label-md text-label-md text-primary">Online</span>
+</div>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<img class="w-10 h-10 rounded-full object-cover ml-2 border border-outline-variant" data-alt="A professional headshot of a corporate user, smiling slightly, bright corporate lighting, modern clear background, realistic photographic style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD95fdrtPrjoILhpF6dmb10_eySTMzG093WLQWPM7MGMU63PvgDBTekh7jP-GyAJrZ0bHKEKEkDobv9Y0H58srCbdPmvZ08-rWfOVLBP2JrBZvNbv0Xa9tL70QgVxn53OGLqs4GMtN-w6JTRbDLJSwoNYQeBXs4oueOzbJc_IfRXlh5nlbCLrfj-pSBXJvFTwz_vKEA1sKEfcWWNLPUa2ZpNqqM7oByzzbexmXTVKAFsuVd7g8oVG_HVw">
+</div>
+</header>
+<!-- Canvas Content -->
+<div class="flex-1 overflow-y-auto p-6 flex gap-6 min-h-0 bg-background">
+<!-- Left Section: Form -->
+<section class="flex-1 max-w-xl flex flex-col gap-6">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm">
+<h3 class="font-headline-md text-headline-md font-semibold text-on-surface mb-6 flex items-center gap-2 border-b border-outline-variant pb-4">
+<span class="material-symbols-outlined text-primary" data-icon="edit_document">edit_document</span>
+                        Registrar Movimiento
+                    </h3>
+<form class="flex flex-col gap-5">
+<!-- Captación -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1" for="captacion">
+                                Captación <span class="text-error">*</span>
+</label>
+<div class="relative">
+<select class="w-full bg-surface appearance-none border border-outline-variant rounded-lg px-4 h-touch-target-min font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-shadow" id="captacion" required="">
+<option disabled="" selected="" value="">Seleccione una captación...</option>
+<option value="norte-a">Captación Norte A - Invernada</option>
+<option value="sur-b">Captación Sur B - Cría</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Fecha del Movimiento -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1" for="fecha">
+                                Fecha del Movimiento <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-4 h-touch-target-min font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-shadow" id="fecha" required="" type="date">
+</div>
+<!-- Tipo de Ganado & Cantidad Row -->
+<div class="grid grid-cols-2 gap-4">
+<!-- Tipo de Ganado -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1" for="tipo_ganado">
+                                    Tipo de Ganado <span class="text-error">*</span>
+</label>
+<div class="relative">
+<select class="w-full bg-surface appearance-none border border-outline-variant rounded-lg px-4 h-touch-target-min font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-shadow" id="tipo_ganado" required="">
+<option disabled="" selected="" value="">Seleccionar...</option>
+<option value="toro">Toro</option>
+<option value="novillo">Novillo</option>
+<option value="vaquilla">Vaquilla</option>
+<option value="vaca_descarte">Vaca Descarte</option>
+<option value="ternero">Ternero</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Cantidad de Cabezas -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1" for="cantidad">
+                                    Cantidad de Cabezas <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-4 h-touch-target-min font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-shadow" id="cantidad" min="1" placeholder="Ej: 45" required="" step="1" type="number">
+</div>
+</div>
+<!-- Origen & Destino Row -->
+<div class="grid grid-cols-2 gap-4">
+<!-- Origen -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1" for="origen">
+                                    Origen <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-4 h-touch-target-min font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-shadow" id="origen" placeholder="Ej: Potrero 1 - Alfalfa" required="" type="text">
+</div>
+<!-- Destino -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1" for="destino">
+                                    Destino <span class="text-error">*</span>
+</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-4 h-touch-target-min font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary transition-shadow" id="destino" placeholder="Ej: Corral de Cuarentena" required="" type="text">
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant">
+<button class="w-full h-touch-target-min bg-primary hover:bg-primary-container text-on-primary hover:text-on-primary-container font-button text-button rounded-lg flex items-center justify-center gap-2 transition-colors duration-200 active:scale-[0.98]" type="submit">
+<span class="material-symbols-outlined" data-icon="save">save</span>
+                                Registrar Movimiento
+                            </button>
+</div>
+</form>
+</div>
+</section>
+<!-- Right Section: History -->
+<section class="flex-[1.5] flex flex-col gap-6">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm flex flex-col h-full">
+<h3 class="font-headline-md text-headline-md font-semibold text-on-surface mb-6 flex items-center justify-between border-b border-outline-variant pb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="history">history</span>
+                            Historial de Movimientos
+                        </div>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors flex items-center justify-center w-10 h-10">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+</button>
+</h3>
+<div class="overflow-x-auto flex-1">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b-2 border-outline-variant/50">
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider bg-surface/50">Fecha</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider bg-surface/50">Tipo de Ganado</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider bg-surface/50 text-right">Cantidad</th>
+<th class="py-3 px-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider bg-surface/50">Origen <span class="material-symbols-outlined text-[14px] align-middle" data-icon="arrow_forward">arrow_forward</span> Destino</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<tr class="hover:bg-surface-container-lowest transition-colors group cursor-default">
+<td class="py-4 px-4 font-body-md text-body-md text-on-surface whitespace-nowrap">24/10/2023</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-md text-[11px] font-medium bg-tertiary-container/10 text-tertiary">Novillo</span>
+</td>
+<td class="py-4 px-4 font-body-md text-body-md text-on-surface font-medium text-right">45</td>
+<td class="py-4 px-4 font-body-md text-body-md text-on-surface-variant flex items-center gap-2">
+<span class="truncate max-w-[120px]" title="Potrero 1 - Alfalfa">Potrero 1</span>
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+<span class="font-medium text-on-surface truncate max-w-[120px]" title="Corral 4">Corral 4</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors group cursor-default">
+<td class="py-4 px-4 font-body-md text-body-md text-on-surface whitespace-nowrap">23/10/2023</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-md text-[11px] font-medium bg-primary-container/10 text-primary">Toro</span>
+</td>
+<td class="py-4 px-4 font-body-md text-body-md text-on-surface font-medium text-right">2</td>
+<td class="py-4 px-4 font-body-md text-body-md text-on-surface-variant flex items-center gap-2">
+<span class="truncate max-w-[120px]" title="Corral Principal">Corral Principal</span>
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+<span class="font-medium text-on-surface truncate max-w-[120px]" title="Potrero 3 - Pastura">Potrero 3</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors group cursor-default">
+<td class="py-4 px-4 font-body-md text-body-md text-on-surface whitespace-nowrap">20/10/2023</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-md text-[11px] font-medium bg-secondary-container/20 text-secondary">Ternero</span>
+</td>
+<td class="py-4 px-4 font-body-md text-body-md text-on-surface font-medium text-right">120</td>
+<td class="py-4 px-4 font-body-md text-body-md text-on-surface-variant flex items-center gap-2">
+<span class="truncate max-w-[120px]" title="Maternidad Norte">Maternidad N.</span>
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+<span class="font-medium text-on-surface truncate max-w-[120px]" title="Corral de Destete">Destete</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors group cursor-default">
+<td class="py-4 px-4 font-body-md text-body-md text-on-surface whitespace-nowrap">18/10/2023</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-md text-[11px] font-medium bg-tertiary-container/10 text-tertiary">Vaquilla</span>
+</td>
+<td class="py-4 px-4 font-body-md text-body-md text-on-surface font-medium text-right">85</td>
+<td class="py-4 px-4 font-body-md text-body-md text-on-surface-variant flex items-center gap-2">
+<span class="truncate max-w-[120px]" title="Potrero 5 - Recría">Potrero 5</span>
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+<span class="font-medium text-on-surface truncate max-w-[120px]" title="Potrero 2 - Engorde">Potrero 2</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pt-4 mt-auto border-t border-outline-variant/50 flex justify-between items-center text-sm">
+<span class="text-on-surface-variant font-body-md text-body-md">Mostrando 4 de 128 registros</span>
+<div class="flex gap-1">
+<button class="w-8 h-8 rounded hover:bg-surface-container flex items-center justify-center text-on-surface-variant disabled:opacity-50"><span class="material-symbols-outlined text-[18px]" data-icon="chevron_left">chevron_left</span></button>
+<button class="w-8 h-8 rounded bg-primary text-on-primary flex items-center justify-center font-medium">1</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container flex items-center justify-center text-on-surface-variant">2</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container flex items-center justify-center text-on-surface-variant">3</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container flex items-center justify-center text-on-surface-variant"><span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span></button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+
+
+</body></html>

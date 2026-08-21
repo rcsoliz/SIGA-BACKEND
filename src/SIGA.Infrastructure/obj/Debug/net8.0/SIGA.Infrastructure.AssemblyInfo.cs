@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SIGA.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9e4935ca3e2c951aaefe6ee251ff056744ef12d1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+451c11b2f11e491f412f34c7cbe32ec37ee61a0a")]
 [assembly: System.Reflection.AssemblyProductAttribute("SIGA.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SIGA.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

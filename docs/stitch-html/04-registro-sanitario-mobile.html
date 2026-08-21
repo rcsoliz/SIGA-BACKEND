@@ -1,0 +1,258 @@
+<!DOCTYPE html><html class="light" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Registro Sanitario - SIGA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#f8f9fa",
+                        "outline": "#707973",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#b1f0ce",
+                        "secondary-fixed-dim": "#ebbcac",
+                        "inverse-primary": "#95d4b3",
+                        "on-surface": "#191c1d",
+                        "tertiary-container": "#3f6754",
+                        "surface-container-high": "#e7e8e9",
+                        "on-primary-container": "#a8e7c5",
+                        "on-tertiary-fixed-variant": "#274e3d",
+                        "secondary-fixed": "#ffdbcf",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "primary": "#0f5238",
+                        "tertiary-fixed-dim": "#a5d0b9",
+                        "primary-container": "#2d6a4f",
+                        "surface-container-low": "#f3f4f5",
+                        "surface-container": "#edeeef",
+                        "on-background": "#191c1d",
+                        "on-secondary-fixed": "#2e150b",
+                        "surface-tint": "#2c694e",
+                        "primary-fixed-dim": "#95d4b3",
+                        "on-error": "#ffffff",
+                        "background": "#f8f9fa",
+                        "inverse-on-surface": "#f0f1f2",
+                        "tertiary-fixed": "#c1ecd4",
+                        "on-secondary-fixed-variant": "#603f33",
+                        "outline-variant": "#bfc9c1",
+                        "tertiary": "#274f3d",
+                        "surface-variant": "#e1e3e4",
+                        "on-primary-fixed": "#002114",
+                        "secondary-container": "#fdcdbc",
+                        "surface": "#f8f9fa",
+                        "on-surface-variant": "#404943",
+                        "secondary": "#7a5649",
+                        "on-primary-fixed-variant": "#0e5138",
+                        "on-tertiary-fixed": "#002114",
+                        "inverse-surface": "#2e3132",
+                        "on-secondary-container": "#795548",
+                        "on-tertiary-container": "#b8e3cb",
+                        "surface-dim": "#d9dadb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "margin-mobile": "16px",
+                        "base": "4px",
+                        "gutter-mobile": "12px",
+                        "stack-lg": "24px",
+                        "touch-target-min": "48px",
+                        "stack-md": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter", "sans-serif"],
+                        "label-md": ["Inter", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "headline-md": ["Inter", "sans-serif"],
+                        "button": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "button": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface-bright font-body-md text-on-surface antialiased min-h-screen pb-[80px] pt-[64px]">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-surface-dim shadow-sm shadow-primary/5 flex justify-between items-center px-margin-mobile h-[64px]">
+<button class="text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors p-2 rounded-full active:scale-95 duration-100 flex items-center justify-center h-touch-target-min w-touch-target-min">
+<span class="material-symbols-outlined" data-icon="signal_cellular_alt">signal_cellular_alt</span>
+</button>
+<h1 class="font-headline-md text-headline-md-mobile text-primary dark:text-primary-fixed-dim tracking-tight">SIGA</h1>
+<button class="text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors p-2 rounded-full active:scale-95 duration-100 flex items-center justify-center h-touch-target-min w-touch-target-min">
+<span class="material-symbols-outlined" data-icon="cloud_done">cloud_done</span>
+</button>
+</header>
+<main class="px-margin-mobile py-stack-md flex flex-col gap-stack-lg">
+<!-- Page Header -->
+<div class="flex flex-col gap-1">
+<h2 class="font-headline-lg text-headline-lg-mobile text-on-surface">Registro Sanitario</h2>
+<p class="font-body-md text-on-surface-variant">Gestión de tratamientos y controles en campo.</p>
+</div>
+<!-- Section 1: Formulario "Registrar Evento Sanitario" -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 shadow-sm p-4 flex flex-col gap-stack-md">
+<h3 class="font-headline-md text-headline-md-mobile text-primary-container">Registrar Evento</h3>
+<form class="flex flex-col gap-gutter-mobile">
+<!-- Captación -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-on-surface-variant" for="captacion">Captación</label>
+<select class="h-touch-target-min bg-surface-container-low border border-outline-variant rounded-DEFAULT px-4 font-body-lg text-on-surface focus:border-primary focus:ring-1 focus:ring-primary w-full outline-none" id="captacion">
+<option disabled="" selected="" value="">Seleccione una captación...</option>
+<option value="1">Lote Norte - 50 cabezas</option>
+<option value="2">Corral Principal - 20 cabezas</option>
+</select>
+</div>
+<!-- Fecha del Evento -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-on-surface-variant" for="fecha">Fecha del Evento <span class="text-error">*</span></label>
+<input class="h-touch-target-min bg-surface-container-low border border-outline-variant rounded-DEFAULT px-4 font-body-lg text-on-surface focus:border-primary focus:ring-1 focus:ring-primary w-full outline-none" id="fecha" required="" type="date">
+</div>
+<!-- Tipo de Evento -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-on-surface-variant" for="tipo_evento">Tipo de Evento <span class="text-error">*</span></label>
+<select class="h-touch-target-min bg-surface-container-low border border-outline-variant rounded-DEFAULT px-4 font-body-lg text-on-surface focus:border-primary focus:ring-1 focus:ring-primary w-full outline-none" id="tipo_evento" required="">
+<option disabled="" selected="" value="">Seleccionar tipo...</option>
+<option value="vacunacion">Vacunación</option>
+<option value="antiparasitario">Antiparasitario</option>
+<option value="control">Control de Rutina</option>
+<option value="tratamiento">Tratamiento</option>
+</select>
+</div>
+<!-- Producto / Tratamiento Aplicado -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-on-surface-variant" for="producto">Producto / Tratamiento Aplicado</label>
+<input class="h-touch-target-min bg-surface-container-low border border-outline-variant rounded-DEFAULT px-4 font-body-lg text-on-surface focus:border-primary focus:ring-1 focus:ring-primary w-full outline-none" id="producto" placeholder="Ej. Ivermectina 1%" type="text">
+</div>
+<!-- Observaciones -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-on-surface-variant" for="observaciones">Observaciones</label>
+<textarea class="bg-surface-container-low border border-outline-variant rounded-DEFAULT p-4 font-body-lg text-on-surface focus:border-primary focus:ring-1 focus:ring-primary w-full outline-none resize-none" id="observaciones" placeholder="Detalles adicionales..." rows="3"></textarea>
+</div>
+<!-- Submit Button -->
+<button class="mt-2 h-touch-target-min bg-primary text-on-primary rounded-full font-button w-full flex items-center justify-center gap-2 active:scale-[0.98] transition-transform duration-200 shadow-sm" type="submit">
+<span class="material-symbols-outlined" data-icon="add_task">add_task</span>
+                    Registrar Evento Sanitario
+                </button>
+</form>
+</section>
+<!-- Section 2: Historial Sanitario -->
+<section class="flex flex-col gap-stack-sm">
+<h3 class="font-headline-md text-headline-md-mobile text-on-surface mb-2">Historial Sanitario</h3>
+<div class="flex flex-col gap-3">
+<!-- Tarjeta 1 -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 p-4 flex flex-col gap-2 shadow-[0_1px_3px_0_rgba(0,0,0,0.02)]">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="calendar_month">calendar_month</span> 10/05/2024
+                        </span>
+<span class="bg-inverse-primary text-on-primary-container font-label-md px-2 py-1 rounded-DEFAULT border border-primary/20">Vacunación</span>
+</div>
+<div class="flex flex-col">
+<p class="font-body-lg text-on-surface font-semibold">Vacuna Aftosa</p>
+<p class="font-body-md text-on-surface-variant">Refuerzo anual</p>
+</div>
+</article>
+<!-- Tarjeta 2 -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 p-4 flex flex-col gap-2 shadow-[0_1px_3px_0_rgba(0,0,0,0.02)]">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="calendar_month">calendar_month</span> 12/04/2024
+                        </span>
+<span class="bg-secondary-container text-on-secondary-container font-label-md px-2 py-1 rounded-DEFAULT border border-secondary/20">Antiparasitario</span>
+</div>
+<div class="flex flex-col">
+<p class="font-body-lg text-on-surface font-semibold">Ivermectina 1%</p>
+<p class="font-body-md text-on-surface-variant">Control preventivo</p>
+</div>
+</article>
+<!-- Tarjeta 3 -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 p-4 flex flex-col gap-2 shadow-[0_1px_3px_0_rgba(0,0,0,0.02)]">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="calendar_month">calendar_month</span> 15/03/2024
+                        </span>
+<span class="bg-tertiary-container text-on-tertiary-container font-label-md px-2 py-1 rounded-DEFAULT border border-tertiary/20">Control de Rutina</span>
+</div>
+</article>
+<!-- Tarjeta 4 -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 p-4 flex flex-col gap-2 shadow-[0_1px_3px_0_rgba(0,0,0,0.02)]">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="calendar_month">calendar_month</span> 10/02/2024
+                        </span>
+<span class="bg-error-container text-on-error-container font-label-md px-2 py-1 rounded-DEFAULT border border-error/20">Tratamiento</span>
+</div>
+<div class="flex flex-col">
+<p class="font-body-lg text-on-surface font-semibold">Antibiótico</p>
+<p class="font-body-md text-on-surface-variant">Herida leve en pata</p>
+</div>
+</article>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-2 pt-2 bg-surface-container dark:bg-surface-container-lowest z-50 h-touch-target-min md:hidden shadow-[0_-1px_3px_0_rgba(0,0,0,0.05)]">
+<!-- Home (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-5 py-1 hover:bg-surface-container-high dark:hover:bg-surface-container active:scale-90 transition-all duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md mt-1">Home</span>
+</a>
+<!-- Registros (Active - Mapped from prompt intent) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-5 py-1 active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="edit_document" style="font-variation-settings: 'FILL' 1;">edit_document</span>
+<span class="font-label-md text-label-md mt-1 font-semibold">Registros</span>
+</a>
+<!-- Mapa (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-5 py-1 hover:bg-surface-container-high dark:hover:bg-surface-container active:scale-90 transition-all duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-label-md text-label-md mt-1">Mapa</span>
+</a>
+<!-- Perfil (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-5 py-1 hover:bg-surface-container-high dark:hover:bg-surface-container active:scale-90 transition-all duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md mt-1">Perfil</span>
+</a>
+</nav>
+
+
+</body></html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html><html class="light" lang="es" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title class="">Registro de Captación - SIGA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#e1e3e4",
+                        "on-tertiary-fixed": "#002114",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#3f6754",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#2d6a4f",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#404943",
+                        "on-primary-fixed-variant": "#0e5138",
+                        "background": "#f8f9fa",
+                        "surface-container-low": "#f3f4f5",
+                        "primary": "#0f5238",
+                        "on-secondary-fixed-variant": "#603f33",
+                        "surface-container-high": "#e7e8e9",
+                        "on-secondary-fixed": "#2e150b",
+                        "on-background": "#191c1d",
+                        "tertiary-fixed": "#c1ecd4",
+                        "on-surface": "#191c1d",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#a5d0b9",
+                        "inverse-surface": "#2e3132",
+                        "surface": "#f8f9fa",
+                        "surface-variant": "#e1e3e4",
+                        "on-tertiary-container": "#b8e3cb",
+                        "on-secondary-container": "#795548",
+                        "surface-tint": "#2c694e",
+                        "surface-bright": "#f8f9fa",
+                        "outline-variant": "#bfc9c1",
+                        "inverse-on-surface": "#f0f1f2",
+                        "secondary": "#7a5649",
+                        "tertiary": "#274f3d",
+                        "primary-fixed-dim": "#95d4b3",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#274e3d",
+                        "on-primary-container": "#a8e7c5",
+                        "error": "#ba1a1a",
+                        "outline": "#707973",
+                        "secondary-container": "#fdcdbc",
+                        "secondary-fixed": "#ffdbcf",
+                        "surface-dim": "#d9dadb",
+                        "inverse-primary": "#95d4b3",
+                        "secondary-fixed-dim": "#ebbcac",
+                        "primary-fixed": "#b1f0ce",
+                        "on-primary-fixed": "#002114",
+                        "surface-container": "#edeeef"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "touch-target-min": "48px",
+                        "base": "4px",
+                        "stack-md": "16px",
+                        "stack-lg": "24px",
+                        "margin-mobile": "16px",
+                        "stack-sm": "8px",
+                        "gutter-mobile": "12px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "button": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "button": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for mobile */
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #bfc9c1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col pt-16 pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-surface-dim shadow-sm shadow-primary/5">
+<div class="flex justify-between items-center h-16 px-margin-mobile w-full">
+<div class="flex items-center gap-4">
+<button class="w-[48px] h-[48px] flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-full active:scale-95">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed-dim">SIGA</h1>
+</div>
+<div class="flex items-center">
+<button class="w-[48px] h-[48px] flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-full active:scale-95">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+</button>
+<button class="w-[48px] h-[48px] flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 rounded-full active:scale-95">
+<span class="material-symbols-outlined" data-icon="signal_cellular_alt">signal_cellular_alt</span>
+</button>
+</div>
+</div>
+<!-- Sync Progress Bar (Static example) -->
+<div class="h-1 w-full bg-surface-container-highest">
+<div class="h-full bg-primary w-1/3 rounded-r-full"></div>
+</div>
+</header>
+<!-- SideNavBar (Hidden on Mobile, Visible on Desktop) -->
+<aside class="hidden md:flex flex-col p-stack-md gap-stack-sm h-full w-64 border-r border-outline-variant bg-surface-container-low dark:bg-surface-container-lowest fixed left-0 top-16 bottom-0 z-40 overflow-y-auto">
+<div class="mb-stack-lg p-stack-sm flex items-center gap-stack-sm bg-surface rounded-xl border border-outline-variant/50">
+<div class="w-12 h-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-lg">
+                U
+            </div>
+<div>
+<p class="font-body-md text-body-md font-bold text-on-surface">Admin Ganadero</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Hacienda El Vergel</p>
+</div>
+</div>
+<button class="w-full h-touch-target-min bg-primary text-on-primary rounded-lg font-button text-button flex items-center justify-center gap-2 mb-stack-md hover:bg-surface-tint transition-colors">
+<span class="material-symbols-outlined">add</span>
+            Nuevo Registro
+        </button>
+<nav class="flex flex-col gap-2 flex-grow">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-all duration-200 cursor-pointer active:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg font-bold transition-all duration-200 cursor-pointer active:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined" data-icon="agriculture">agriculture</span>
+<span class="font-body-md text-body-md">Ganado</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-all duration-200 cursor-pointer active:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-body-md text-body-md">Potreros</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-all duration-200 cursor-pointer active:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-body-md text-body-md">Inventario</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-all duration-200 cursor-pointer active:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-body-md text-body-md">Reportes</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-grow md:ml-64 p-margin-mobile">
+<div class="max-w-3xl mx-auto space-y-stack-lg">
+<!-- Header Section: Context -->
+<section class="bg-surface-container-lowest rounded-xl p-stack-md border border-outline-variant shadow-sm shadow-primary/5">
+<h2 class="font-headline-md text-headline-md text-primary mb-stack-md flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="assignment_add">assignment_add</span>
+                    Registro de Captación
+                </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter-mobile">
+<!-- Estancia -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Estancia</label>
+<div class="relative bg-surface rounded-lg border border-outline-variant h-[56px] flex items-center px-4 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<span class="material-symbols-outlined text-outline mr-3" data-icon="home_work">home_work</span>
+<select class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-lg text-on-surface appearance-none outline-none cursor-pointer">
+<option>El Vergel</option>
+<option>La Esperanza</option>
+<option>San Isidro</option>
+</select>
+<span class="material-symbols-outlined text-outline pointer-events-none absolute right-4">arrow_drop_down</span>
+</div>
+</div>
+<!-- Nombre de Captación -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Nombre de la Captación</label>
+<div class="bg-surface rounded-lg border border-outline-variant h-[56px] flex items-center px-4 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<span class="material-symbols-outlined text-outline mr-3" data-icon="label">label</span>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-lg text-on-surface outline-none" placeholder="Ej. Compra Mayo 2024" type="text">
+</div>
+</div>
+<!-- Potrero -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Potrero Asignado</label>
+<div class="relative bg-surface rounded-lg border border-outline-variant h-[56px] flex items-center px-4 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<span class="material-symbols-outlined text-outline mr-3" data-icon="landscape">landscape</span>
+<select class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-lg text-on-surface appearance-none outline-none cursor-pointer">
+<option>Potrero Norte 1</option>
+<option>Potrero Sur 2</option>
+<option>Cuarentena</option>
+</select>
+<span class="material-symbols-outlined text-outline pointer-events-none absolute right-4">arrow_drop_down</span>
+</div>
+</div>
+<!-- Fecha -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Fecha</label>
+<div class="bg-surface rounded-lg border border-outline-variant h-[56px] flex items-center px-4 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<span class="material-symbols-outlined text-outline mr-3" data-icon="calendar_today">calendar_today</span>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-lg text-on-surface outline-none" type="date" value="2024-05-20">
+</div>
+</div>
+</div>
+<!-- Observaciones Generales -->
+<div class="mt-gutter-mobile flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Observaciones Generales</label>
+<textarea class="bg-surface rounded-lg border border-outline-variant p-4 min-h-[100px] focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-on-surface outline-none resize-none" placeholder="Notas sobre el transporte o condiciones generales..."></textarea>
+</div>
+<!-- GPS Action -->
+<div class="mt-gutter-mobile flex justify-end">
+<button class="h-touch-target-min px-4 rounded-lg border-2 border-outline text-primary font-button flex items-center gap-2 hover:bg-primary-container/10 active:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined fill text-primary" data-icon="my_location">my_location</span>
+                        Capturar Ubicación
+                    </button>
+</div>
+</section>
+<!-- Detalle Repetible (Add New Group Form) -->
+<section class="bg-surface-container-low rounded-xl p-stack-md border border-outline-variant">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-md">Añadir Grupo</h3>
+<!-- Category Selectors (Visual Cards) -->
+<div class="mb-gutter-mobile">
+<label class="font-label-md text-label-md text-on-surface-variant block mb-2">Categoría</label>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
+<button class="relative bg-surface rounded-lg border-2 border-primary ring-1 ring-primary p-3 flex flex-col items-center justify-center gap-1 active:scale-95 transition-transform h-24">
+<div class="absolute top-1 right-1 w-5 h-5 bg-primary rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-[14px]" data-icon="check">check</span>
+</div>
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="pets">pets</span>
+<span class="font-label-md text-label-md text-primary">Toro</span>
+</button>
+<button class="bg-surface rounded-lg border border-outline-variant p-3 flex flex-col items-center justify-center gap-1 hover:bg-surface-container-high active:scale-95 transition-all h-24 text-on-surface-variant">
+<span class="material-symbols-outlined text-3xl" data-icon="pets">pets</span>
+<span class="font-label-md text-label-md">Novillo</span>
+</button>
+<button class="bg-surface rounded-lg border border-outline-variant p-3 flex flex-col items-center justify-center gap-1 hover:bg-surface-container-high active:scale-95 transition-all h-24 text-on-surface-variant">
+<span class="material-symbols-outlined text-3xl" data-icon="pets">pets</span>
+<span class="font-label-md text-label-md">Vaquilla</span>
+</button>
+<button class="bg-surface rounded-lg border border-outline-variant p-3 flex flex-col items-center justify-center gap-1 hover:bg-surface-container-high active:scale-95 transition-all h-24 text-on-surface-variant">
+<span class="material-symbols-outlined text-3xl" data-icon="pets">pets</span>
+<span class="font-label-md text-label-md">Vaca Desc.</span>
+</button>
+<button class="bg-surface rounded-lg border border-outline-variant p-3 flex flex-col items-center justify-center gap-1 hover:bg-surface-container-high active:scale-95 transition-all h-24 text-on-surface-variant">
+<span class="material-symbols-outlined text-3xl" data-icon="pets">pets</span>
+<span class="font-label-md text-label-md">Ternero</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-gutter-mobile mb-gutter-mobile">
+<!-- Cantidad -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Cantidad</label>
+<div class="bg-surface rounded-lg border border-outline-variant h-[56px] flex items-center px-4 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<span class="material-symbols-outlined text-outline mr-3" data-icon="numbers">numbers</span>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-lg text-on-surface outline-none" placeholder="0" type="number">
+</div>
+</div>
+<!-- Peso Promedio -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Peso Prom. (kg)</label>
+<div class="bg-surface rounded-lg border border-outline-variant h-[56px] flex items-center px-4 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<span class="material-symbols-outlined text-outline mr-3" data-icon="scale">scale</span>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-lg text-on-surface outline-none" placeholder="0.0" type="number">
+</div>
+</div>
+</div><div class="grid grid-cols-2 gap-gutter-mobile mb-gutter-mobile"><div class="flex flex-col gap-1"><label class="font-label-md text-label-md text-on-surface-variant">Raza</label><div class="bg-surface rounded-lg border border-outline-variant h-[56px] flex items-center px-4 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all"><span class="material-symbols-outlined text-outline mr-3">badge</span><input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-lg text-on-surface outline-none" placeholder="Ej. Angus" type="text"></div></div><div class="flex flex-col gap-1"><label class="font-label-md text-label-md text-on-surface-variant">Fecha Estimada de Faena</label><div class="bg-surface rounded-lg border border-outline-variant h-[56px] flex items-center px-4 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all"><span class="material-symbols-outlined text-outline mr-3">calendar_month</span><input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-lg text-on-surface outline-none" type="date"></div></div></div><div class="mb-gutter-mobile flex flex-col gap-1"><label class="font-label-md text-label-md text-on-surface-variant">Notas Zootécnicas (Opcional)</label><textarea class="bg-surface rounded-lg border border-outline-variant p-4 min-h-[100px] focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-on-surface outline-none resize-none" placeholder="Detalles adicionales sobre el grupo..."></textarea></div>
+<!-- Alimentación -->
+<div class="mb-gutter-mobile flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Alimentación</label>
+<div class="relative bg-surface rounded-lg border border-outline-variant h-[56px] flex items-center px-4 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<span class="material-symbols-outlined text-outline mr-3" data-icon="grass">grass</span>
+<select class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-lg text-on-surface appearance-none outline-none cursor-pointer"><option>Pastoreo Libre</option><option>Semi-Confinamiento</option><option>Confinamiento</option></select>
+<span class="material-symbols-outlined text-outline pointer-events-none absolute right-4">arrow_drop_down</span>
+</div>
+</div>
+<!-- Add Button -->
+<button class="w-full h-touch-target-min bg-surface-container-highest text-on-surface rounded-lg font-button flex items-center justify-center gap-2 hover:bg-outline-variant transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+                    Añadir a la Lista
+                </button>
+</section>
+<!-- Added Groups List -->
+<section>
+<div class="flex justify-between items-center mb-stack-sm">
+<h3 class="font-headline-md text-headline-md text-on-surface">Grupos Registrados</h3>
+<div class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full font-label-md text-label-md font-bold">
+                        Total: 45 Cabezas
+                    </div>
+</div>
+<div class="space-y-2">
+<!-- List Item 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-high rounded-full flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="pets">pets</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg font-bold text-on-surface">Novillo</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Peso prom: 350 kg • Pasto Natural</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="text-right">
+<span class="block font-headline-md text-headline-md text-primary">30</span>
+<span class="font-label-md text-label-md text-on-surface-variant">cab.</span>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-error hover:bg-error-container/50 active:scale-90 transition-all">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+<!-- List Item 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-high rounded-full flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="pets">pets</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg font-bold text-on-surface">Toro</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Peso prom: 650 kg • Suplemento 1</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="text-right">
+<span class="block font-headline-md text-headline-md text-primary">15</span>
+<span class="font-label-md text-label-md text-on-surface-variant">cab.</span>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-error hover:bg-error-container/50 active:scale-90 transition-all">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Final Action -->
+<div class="pt-stack-md pb-stack-lg">
+<button class="w-full h-[56px] bg-primary text-on-primary rounded-xl font-button text-button flex items-center justify-center gap-2 hover:bg-surface-tint shadow-sm shadow-primary/20 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined" data-icon="save">save</span>
+                    Confirmar y Guardar Todo
+                </button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Visible on Mobile, Hidden on Desktop) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-20 px-4 pb-safe bg-surface border-t-0 shadow-[0_-4px_20px_-10px_rgba(15,82,56,0.1)] rounded-t-xl z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant w-16 h-full hover:bg-surface-container-high active:scale-90 transition-transform duration-150 rounded-xl" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-2 w-20 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined fill mb-1" data-icon="pets">pets</span>
+<span class="font-label-md text-label-md font-bold">Ganado</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant w-16 h-full hover:bg-surface-container-high active:scale-90 transition-transform duration-150 rounded-xl" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="assignment">assignment</span>
+<span class="font-label-md text-label-md">Tareas</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant w-16 h-full hover:bg-surface-container-high active:scale-90 transition-transform duration-150 rounded-xl" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-label-md text-label-md">Perfil</span>
+</a>
+</nav>
+
+
+</body></html>

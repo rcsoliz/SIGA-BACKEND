@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SIGA - Iniciar Sesión</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Design System Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#404943",
+                    "secondary": "#7a5649",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "tertiary": "#274f3d",
+                    "error": "#ba1a1a",
+                    "tertiary-container": "#3f6754",
+                    "on-secondary-fixed-variant": "#603f33",
+                    "secondary-container": "#fdcdbc",
+                    "on-error": "#ffffff",
+                    "on-tertiary-container": "#b8e3cb",
+                    "on-tertiary-fixed-variant": "#274e3d",
+                    "on-primary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#002114",
+                    "on-tertiary-fixed": "#002114",
+                    "on-secondary-container": "#795548",
+                    "on-primary-container": "#a8e7c5",
+                    "surface-container-highest": "#e1e3e4",
+                    "surface": "#f8f9fa",
+                    "tertiary-fixed": "#c1ecd4",
+                    "outline": "#707973",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#f0f1f2",
+                    "primary-container": "#2d6a4f",
+                    "surface-variant": "#e1e3e4",
+                    "surface-bright": "#f8f9fa",
+                    "tertiary-fixed-dim": "#a5d0b9",
+                    "primary-fixed": "#b1f0ce",
+                    "surface-container-low": "#f3f4f5",
+                    "on-surface": "#191c1d",
+                    "surface-dim": "#d9dadb",
+                    "surface-container-high": "#e7e8e9",
+                    "surface-container": "#edeeef",
+                    "secondary-fixed-dim": "#ebbcac",
+                    "inverse-surface": "#2e3132",
+                    "secondary-fixed": "#ffdbcf",
+                    "surface-tint": "#2c694e",
+                    "on-primary-fixed-variant": "#0e5138",
+                    "on-background": "#191c1d",
+                    "primary-fixed-dim": "#95d4b3",
+                    "primary": "#0f5238",
+                    "inverse-primary": "#95d4b3",
+                    "background": "#f8f9fa",
+                    "outline-variant": "#bfc9c1",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed": "#2e150b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-lg": "24px",
+                    "stack-sm": "8px",
+                    "margin-mobile": "16px",
+                    "base": "4px",
+                    "gutter-mobile": "12px",
+                    "stack-md": "16px",
+                    "touch-target-min": "48px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter", "sans-serif"],
+                    "headline-lg": ["Inter", "sans-serif"],
+                    "button": ["Inter", "sans-serif"],
+                    "body-lg": ["Inter", "sans-serif"],
+                    "body-md": ["Inter", "sans-serif"],
+                    "headline-md": ["Inter", "sans-serif"]
+            },
+            "fontSize": {
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "button": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .material-symbols-outlined {
+                font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background min-h-screen flex antialiased">
+<!-- LEFT PANEL: Brand Visuals (Hidden on mobile) -->
+<div class="hidden md:flex w-1/2 relative bg-surface-variant flex-col justify-between">
+<!-- Background Image -->
+<div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAVZ_sEedovpTaLk7DLk7kVMXe0nU7ty1tSUTBEoGtdEi0uFeAmNXXWfHLdhRNEgkGhKX5WziHFqrv_vPkeR2JbcsHK3CONod1EoxRfyxlZ6NSi5HTHA6qsiY8xRjQK8_cNFzJpVdu96cd6Wcra_4UYEOsgkW6R1u5AMbVc4XTMArbNfBu6YEvvq4PzNMNL5_EVemoCWlvtMddE9llpBYaHv_FF77Py1eYQlBtj_R3KsgC7nPaRYDYIUQ');"></div>
+<!-- Dark Overlay -->
+<div class="absolute inset-0 bg-black/60"></div>
+<!-- Content -->
+<div class="relative z-10 p-12 h-full flex flex-col justify-between">
+<!-- Logo area -->
+<div>
+<h1 class="font-headline-lg text-white tracking-tight flex items-center gap-2">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">agriculture</span>
+                    SIGA
+                </h1>
+</div>
+<!-- Bottom Text -->
+<div class="max-w-md">
+<h2 class="text-white font-headline-md mb-stack-sm">Sistema de Registro y Captación de Ganado</h2>
+<p class="text-white/80 font-body-lg">
+                    Plataforma profesional para la gestión de datos en campo, garantizando precisión y trazabilidad en entornos agrícolas.
+                </p>
+</div>
+</div>
+</div>
+<!-- RIGHT PANEL: Login Form -->
+<div class="w-full md:w-1/2 bg-surface flex flex-col justify-center items-center p-8 md:p-16 relative">
+<!-- Mobile Logo (Visible only on small screens) -->
+<div class="md:hidden absolute top-8 left-8 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">agriculture</span>
+<span class="font-headline-md text-primary">SIGA</span>
+</div>
+<div class="w-full max-w-[400px]">
+<!-- Header -->
+<div class="mb-stack-lg">
+<h2 class="font-headline-lg text-on-surface mb-2">Iniciar Sesión</h2>
+<p class="font-body-md text-on-surface-variant">Ingrese sus credenciales para acceder al sistema</p>
+</div>
+<!-- Error Message (Static representation as requested) -->
+<div class="bg-error-container text-on-error-container p-4 rounded-lg mb-stack-md flex items-start gap-3 border border-error/20">
+<span class="material-symbols-outlined text-error mt-0.5">error</span>
+<span class="font-body-md text-error">Correo o contraseña incorrectos</span>
+</div>
+<!-- Form -->
+<form class="space-y-stack-md" onsubmit="event.preventDefault();">
+<!-- Email Field -->
+<div class="flex flex-col gap-base">
+<label class="font-label-md text-on-surface" for="email">Correo Electrónico</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant">mail</span>
+</div>
+<input class="w-full bg-surface-container-lowest border border-outline-variant text-on-surface font-body-lg rounded-lg focus:ring-2 focus:ring-primary focus:border-primary block pl-12 p-3 min-h-[48px] transition-colors" id="email" name="email" placeholder="ejemplo@correo.com" type="email" value="operador@siga.com"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="flex flex-col gap-base">
+<label class="font-label-md text-on-surface" for="password">Contraseña</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant">lock</span>
+</div>
+<input class="w-full bg-surface-container-lowest border border-outline-variant text-on-surface font-body-lg rounded-lg focus:ring-2 focus:ring-primary focus:border-primary block pl-12 pr-12 p-3 min-h-[48px] transition-colors" id="password" name="password" placeholder="Ingrese su contraseña" type="password" value="••••••••"/>
+<button class="absolute inset-y-0 right-0 pr-4 flex items-center cursor-pointer hover:bg-surface-variant/50 rounded-r-lg px-2 transition-colors" type="button">
+<span class="material-symbols-outlined text-on-surface-variant">visibility_off</span>
+</button>
+</div>
+</div>
+<!-- Submit Button -->
+<div class="pt-stack-sm">
+<button class="w-full bg-primary text-on-primary font-button min-h-[48px] rounded-full hover:bg-primary/90 active:scale-[0.98] transition-all duration-200 flex justify-center items-center shadow-sm" type="submit">
+                        Iniciar Sesión
+                    </button>
+</div>
+</form>
+</div>
+<!-- Footer Version -->
+<div class="absolute bottom-8 text-center w-full">
+<span class="font-label-md text-on-surface-variant">v1.0.0</span>
+</div>
+</div>
+</body></html>

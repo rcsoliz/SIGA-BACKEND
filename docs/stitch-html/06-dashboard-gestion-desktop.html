@@ -1,0 +1,345 @@
+<!DOCTYPE html><html class="light" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SIGA - Dashboard de Gestión</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#002114",
+                        "inverse-primary": "#95d4b3",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#b8e3cb",
+                        "tertiary-fixed": "#c1ecd4",
+                        "tertiary-fixed-dim": "#a5d0b9",
+                        "outline-variant": "#bfc9c1",
+                        "on-error": "#ffffff",
+                        "on-background": "#191c1d",
+                        "on-primary-fixed-variant": "#0e5138",
+                        "primary": "#0f5238",
+                        "surface-container-low": "#f3f4f5",
+                        "tertiary": "#274f3d",
+                        "on-surface-variant": "#404943",
+                        "surface-container": "#edeeef",
+                        "secondary-fixed": "#ffdbcf",
+                        "on-tertiary-fixed-variant": "#274e3d",
+                        "primary-fixed": "#b1f0ce",
+                        "background": "#f8f9fa",
+                        "on-secondary-container": "#795548",
+                        "on-secondary-fixed-variant": "#603f33",
+                        "surface-dim": "#d9dadb",
+                        "on-primary-fixed": "#002114",
+                        "on-surface": "#191c1d",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#2e3132",
+                        "secondary-fixed-dim": "#ebbcac",
+                        "inverse-on-surface": "#f0f1f2",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#3f6754",
+                        "outline": "#707973",
+                        "on-error-container": "#93000a",
+                        "surface": "#f8f9fa",
+                        "surface-container-high": "#e7e8e9",
+                        "secondary": "#7a5649",
+                        "surface-bright": "#f8f9fa",
+                        "primary-fixed-dim": "#95d4b3",
+                        "on-secondary-fixed": "#2e150b",
+                        "secondary-container": "#fdcdbc",
+                        "surface-variant": "#e1e3e4",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#a8e7c5",
+                        "primary-container": "#2d6a4f",
+                        "surface-tint": "#2c694e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-mobile": "12px",
+                        "touch-target-min": "48px",
+                        "stack-sm": "8px",
+                        "margin-mobile": "16px",
+                        "base": "4px",
+                        "stack-md": "16px",
+                        "stack-lg": "24px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "button": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background h-screen flex overflow-hidden">
+<!-- NavigationDrawer (Hidden on mobile, block on md and up) -->
+<aside class="hidden md:flex flex-col h-full w-80 rounded-r-xl bg-surface-container-low dark:bg-surface-container-highest shadow-sm py-stack-lg flex-shrink-0 z-40">
+<!-- Header Profile -->
+<div class="px-6 mb-8 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-lg">
+                AS
+            </div>
+<div>
+<h2 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed leading-tight">Admin SIGA</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Oficina Central</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 space-y-2">
+<!-- Active: Dashboard -->
+<a class="flex items-center gap-3 bg-secondary-fixed text-on-secondary-fixed-variant font-bold rounded-full mx-2 px-4 h-touch-target-min" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-button">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant mx-2 px-4 h-touch-target-min hover:bg-surface-variant rounded-full transition-opacity active:opacity-80" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-button">Reportes</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant mx-2 px-4 h-touch-target-min hover:bg-surface-variant rounded-full transition-opacity active:opacity-80" href="#">
+<span class="material-symbols-outlined">precision_manufacturing</span>
+<span class="font-button">Maquinaria</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant mx-2 px-4 h-touch-target-min hover:bg-surface-variant rounded-full transition-opacity active:opacity-80" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-button">Configuración</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<p class="font-label-md text-label-md text-outline">v2.4.0</p>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col h-full overflow-hidden">
+<!-- TopAppBar (Visible on all, nav cluster hidden on md) -->
+<header class="flex items-center justify-between px-margin-mobile h-touch-target-min w-full z-50 bg-surface dark:bg-surface-dim shadow-sm flex-shrink-0">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed md:hidden">menu</span>
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed hidden md:block">agriculture</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed tracking-tight">SIGA</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 bg-primary-container text-on-primary-container px-3 py-1 rounded-full">
+<div class="w-2 h-2 rounded-full bg-primary-fixed"></div>
+<span class="font-label-md text-label-md">Online</span>
+</div>
+</div>
+</header>
+<!-- Scrollable Canvas -->
+<main class="flex-1 overflow-y-auto p-margin-mobile md:p-8">
+<div class="max-w-7xl mx-auto space-y-8">
+<header class="mb-8">
+<h2 class="font-headline-lg text-headline-lg text-on-background">Dashboard de Gestión</h2>
+</header>
+<!-- Section 1: KPIs -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- KPI 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface-variant">Total Cabezas Activas</span>
+<span class="material-symbols-outlined text-primary-container p-2 bg-surface-container rounded-full">pets</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-on-background font-bold mt-2">12,450</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface-variant">Captaciones Activas</span>
+<span class="material-symbols-outlined text-secondary p-2 bg-surface-container rounded-full">location_on</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-on-background font-bold mt-2">48</div>
+<p class="font-label-md text-label-md text-outline mt-1">3 captaciones pendientes de revisión</p>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface-variant">Última Sincronización</span>
+<span class="material-symbols-outlined text-tertiary p-2 bg-surface-container rounded-full">sync</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-on-background font-bold mt-2">hace 10 min</div>
+<div class="w-full bg-surface-container-highest rounded-full h-1.5 mt-2 overflow-hidden">
+<div class="bg-primary h-1.5 rounded-full w-4/5"></div>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Section 2: Cabezas por Categoría -->
+<section class="lg:col-span-1 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm p-6 flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-background mb-6">Cabezas por Categoría</h3>
+<div class="space-y-4 flex-1">
+<!-- Category Item -->
+<div class="space-y-1.5">
+<div class="flex justify-between items-end">
+<span class="font-body-md text-body-md text-on-surface">Toro</span>
+<span class="font-label-md text-label-md text-on-surface-variant">1,200</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-2">
+<div class="bg-primary-container h-2 rounded-full" style="width: 10%"></div>
+</div>
+</div>
+<!-- Category Item -->
+<div class="space-y-1.5">
+<div class="flex justify-between items-end">
+<span class="font-body-md text-body-md text-on-surface">Novillo</span>
+<span class="font-label-md text-label-md text-on-surface-variant">3,500</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-2">
+<div class="bg-primary-container h-2 rounded-full" style="width: 28%"></div>
+</div>
+</div>
+<!-- Category Item -->
+<div class="space-y-1.5">
+<div class="flex justify-between items-end">
+<span class="font-body-md text-body-md text-on-surface">Vaquilla</span>
+<span class="font-label-md text-label-md text-on-surface-variant">2,800</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-2">
+<div class="bg-primary-container h-2 rounded-full" style="width: 22%"></div>
+</div>
+</div>
+<!-- Category Item -->
+<div class="space-y-1.5">
+<div class="flex justify-between items-end">
+<span class="font-body-md text-body-md text-on-surface">Vaca Descarte</span>
+<span class="font-label-md text-label-md text-on-surface-variant">1,450</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-2">
+<div class="bg-primary-container h-2 rounded-full" style="width: 12%"></div>
+</div>
+</div>
+<!-- Category Item -->
+<div class="space-y-1.5">
+<div class="flex justify-between items-end">
+<span class="font-body-md text-body-md text-on-surface">Ternero</span>
+<span class="font-label-md text-label-md text-on-surface-variant">3,500</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-2">
+<div class="bg-primary-container h-2 rounded-full" style="width: 28%"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3 & 4 Container -->
+<div class="lg:col-span-2 space-y-8 flex flex-col">
+<!-- Section 3: Consumo vs Ganancia de Peso (Placeholder for Chart) -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm p-6">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline-md text-headline-md text-on-background">Consumo vs Ganancia de Peso</h3>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-sm bg-primary-container"></div>
+<span class="font-label-md text-label-md text-on-surface-variant">Promedio Consumo (kg)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-sm bg-secondary-fixed-dim"></div>
+<span class="font-label-md text-label-md text-on-surface-variant">Peso Promedio (kg)</span>
+</div>
+</div>
+</div>
+<div class="w-full h-64 bg-surface-container-low rounded-lg border border-outline-variant relative overflow-hidden flex items-end px-4 pt-4 pb-8 gap-4 justify-between">
+<!-- Mock Line Chart Structural Layout -->
+<div class="absolute bottom-0 left-0 w-full h-full border-b border-l border-outline-variant ml-8 mb-8"></div>
+<div class="flex flex-col items-center justify-end h-full z-10 w-full relative group cursor-pointer">
+<div class="w-2 bg-primary-container rounded-t-sm" style="height: 40%"></div>
+<div class="w-2 bg-secondary-fixed-dim rounded-t-sm absolute bottom-0 left-1/2 -ml-2 translate-x-3" style="height: 60%"></div>
+<span class="font-label-md text-label-md text-outline absolute -bottom-6">Ene</span>
+</div>
+<div class="flex flex-col items-center justify-end h-full z-10 w-full relative group cursor-pointer">
+<div class="w-2 bg-primary-container rounded-t-sm" style="height: 45%"></div>
+<div class="w-2 bg-secondary-fixed-dim rounded-t-sm absolute bottom-0 left-1/2 -ml-2 translate-x-3" style="height: 62%"></div>
+<span class="font-label-md text-label-md text-outline absolute -bottom-6">Feb</span>
+</div>
+<div class="flex flex-col items-center justify-end h-full z-10 w-full relative group cursor-pointer">
+<div class="w-2 bg-primary-container rounded-t-sm" style="height: 35%"></div>
+<div class="w-2 bg-secondary-fixed-dim rounded-t-sm absolute bottom-0 left-1/2 -ml-2 translate-x-3" style="height: 65%"></div>
+<span class="font-label-md text-label-md text-outline absolute -bottom-6">Mar</span>
+</div>
+<div class="flex flex-col items-center justify-end h-full z-10 w-full relative group cursor-pointer">
+<div class="w-2 bg-primary-container rounded-t-sm" style="height: 50%"></div>
+<div class="w-2 bg-secondary-fixed-dim rounded-t-sm absolute bottom-0 left-1/2 -ml-2 translate-x-3" style="height: 70%"></div>
+<span class="font-label-md text-label-md text-outline absolute -bottom-6">Abr</span>
+</div>
+<div class="flex flex-col items-center justify-end h-full z-10 w-full relative group cursor-pointer">
+<div class="w-2 bg-primary-container rounded-t-sm" style="height: 55%"></div>
+<div class="w-2 bg-secondary-fixed-dim rounded-t-sm absolute bottom-0 left-1/2 -ml-2 translate-x-3" style="height: 75%"></div>
+<span class="font-label-md text-label-md text-outline absolute -bottom-6">May</span>
+</div>
+<div class="flex flex-col items-center justify-end h-full z-10 w-full relative group cursor-pointer">
+<div class="w-2 bg-primary-container rounded-t-sm" style="height: 60%"></div>
+<div class="w-2 bg-secondary-fixed-dim rounded-t-sm absolute bottom-0 left-1/2 -ml-2 translate-x-3" style="height: 80%"></div>
+<span class="font-label-md text-label-md text-outline absolute -bottom-6">Jun</span>
+</div>
+</div>
+</section>
+<!-- Section 4: Alertas Recientes -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm p-6 flex-1">
+<h3 class="font-headline-md text-headline-md text-on-background mb-6">Alertas Recientes</h3>
+<div class="space-y-4">
+<!-- Alert 1 -->
+<div class="flex items-start gap-4 p-4 rounded-lg bg-error-container text-on-error-container border border-[#ffb4ab]">
+<span class="material-symbols-outlined mt-0.5">warning</span>
+<div>
+<h4 class="font-body-lg text-body-lg font-bold">Bajo Stock de Alimento</h4>
+<p class="font-body-md text-body-md opacity-90 mt-1">Silo A por debajo del 15%</p>
+</div>
+</div>
+<!-- Alert 2 -->
+<div class="flex items-start gap-4 p-4 rounded-lg bg-surface-container-high border border-outline-variant">
+<span class="material-symbols-outlined text-secondary mt-0.5">event</span>
+<div>
+<h4 class="font-body-lg text-body-lg text-on-surface font-bold">Calendario de Vacunación</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Próximo ciclo inicia en 48 horas</p>
+</div>
+</div>
+<!-- Alert 3 -->
+<div class="flex items-start gap-4 p-4 rounded-lg bg-tertiary-fixed border border-tertiary-fixed-dim">
+<span class="material-symbols-outlined text-on-tertiary-fixed-variant mt-0.5">check_circle</span>
+<div>
+<h4 class="font-body-lg text-body-lg text-on-tertiary-fixed-variant font-bold">Sincronización Completa</h4>
+<p class="font-body-md text-body-md text-on-tertiary-fixed mt-1">Todos los captadores de campo están al día</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Visible only on mobile md:hidden) -->
+<nav class="md:hidden fixed bottom-0 w-full rounded-t-xl bg-surface dark:bg-surface-container border-t border-outline-variant shadow-sm z-50 flex justify-around items-center px-gutter-mobile py-base pb-safe">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 h-touch-target-min min-w-[64px] active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-md text-label-md mt-1">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant rounded-full px-4 py-1 h-touch-target-min min-w-[64px] active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md mt-1">Reportes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant rounded-full px-4 py-1 h-touch-target-min min-w-[64px] active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md mt-1">Ajustes</span>
+</a>
+</nav>
+
+
+</body></html>

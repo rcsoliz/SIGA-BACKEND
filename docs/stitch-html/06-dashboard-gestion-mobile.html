@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SIGA - Dashboard de Gestión</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#a5d0b9",
+                      "outline-variant": "#bfc9c1",
+                      "on-tertiary-container": "#b8e3cb",
+                      "on-surface": "#191c1d",
+                      "primary": "#0f5238",
+                      "on-primary-fixed-variant": "#0e5138",
+                      "tertiary": "#274f3d",
+                      "on-surface-variant": "#404943",
+                      "on-background": "#191c1d",
+                      "on-primary-container": "#a8e7c5",
+                      "on-primary-fixed": "#002114",
+                      "on-secondary-fixed-variant": "#603f33",
+                      "inverse-on-surface": "#f0f1f2",
+                      "primary-fixed": "#b1f0ce",
+                      "surface-tint": "#2c694e",
+                      "secondary": "#7a5649",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-highest": "#e1e3e4",
+                      "on-tertiary-fixed-variant": "#274e3d",
+                      "surface-container-low": "#f3f4f5",
+                      "on-secondary-container": "#795548",
+                      "tertiary-fixed": "#c1ecd4",
+                      "surface-dim": "#d9dadb",
+                      "surface": "#f8f9fa",
+                      "surface-bright": "#f8f9fa",
+                      "on-tertiary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "secondary-fixed": "#ffdbcf",
+                      "error-container": "#ffdad6",
+                      "background": "#f8f9fa",
+                      "on-error-container": "#93000a",
+                      "surface-container-high": "#e7e8e9",
+                      "secondary-fixed-dim": "#ebbcac",
+                      "surface-variant": "#e1e3e4",
+                      "tertiary-container": "#3f6754",
+                      "primary-fixed-dim": "#95d4b3",
+                      "inverse-surface": "#2e3132",
+                      "on-secondary-fixed": "#2e150b",
+                      "primary-container": "#2d6a4f",
+                      "on-tertiary-fixed": "#002114",
+                      "outline": "#707973",
+                      "secondary-container": "#fdcdbc",
+                      "surface-container": "#edeeef",
+                      "on-error": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "inverse-primary": "#95d4b3",
+                      "on-primary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "stack-sm": "8px",
+                      "margin-mobile": "16px",
+                      "gutter-mobile": "12px",
+                      "stack-md": "16px",
+                      "touch-target-min": "48px",
+                      "stack-lg": "24px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "button": ["Inter"],
+                      "label-md": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "button": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Hidden scrollbar for cleaner mobile look */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased flex flex-col min-h-screen pb-[80px]">
+<!-- Persistent Sync Progress Bar (Style Guidance) -->
+<div class="fixed top-0 left-0 w-full h-1 bg-surface-variant z-[60]">
+<div class="h-full bg-primary w-2/3"></div>
+</div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface shadow-sm shadow-primary/5 flex justify-between items-center px-margin-mobile h-[64px] mt-1">
+<div class="flex items-center gap-stack-sm">
+<button aria-label="Sincronizar" class="min-w-[48px] min-h-[48px] flex items-center justify-center text-primary active:scale-95 duration-200 hover:bg-surface-container-high transition-colors rounded-full">
+<span class="material-symbols-outlined">sync</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary tracking-tight">SIGA</h1>
+</div>
+<!-- Connectivity Badge -->
+<div class="flex items-center gap-2 bg-primary text-on-primary px-3 py-1.5 rounded-full">
+<span class="w-2 h-2 rounded-full bg-primary-fixed"></span>
+<span class="font-label-md text-label-md">Online</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 mt-[68px] px-margin-mobile py-stack-md flex flex-col gap-stack-lg w-full max-w-md mx-auto">
+<!-- SECCIÓN 1: KPIs -->
+<section class="flex flex-col gap-gutter-mobile">
+<!-- KPI 1: Total Cabezas Activas -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-lg p-margin-mobile shadow-sm shadow-primary/5 flex flex-col justify-center min-h-[100px]">
+<span class="font-body-md text-body-md text-on-surface-variant mb-1">Total Cabezas Activas</span>
+<div class="flex items-end justify-between">
+<span class="font-headline-lg text-headline-lg text-primary">12,450</span>
+<span class="material-symbols-outlined text-primary/40 text-4xl">pets</span>
+</div>
+</div>
+<!-- KPI 2: Captaciones Activas -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-lg p-margin-mobile shadow-sm shadow-primary/5 flex flex-col justify-center min-h-[100px]">
+<span class="font-body-md text-body-md text-on-surface-variant mb-1">Captaciones Activas</span>
+<div class="flex items-end justify-between mb-2">
+<span class="font-headline-lg text-headline-lg text-on-surface">48</span>
+<span class="material-symbols-outlined text-tertiary-container/40 text-4xl">location_on</span>
+</div>
+<div class="flex items-center gap-2 bg-error-container/50 text-error px-2 py-1 rounded w-fit">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+<span class="font-label-md text-label-md">3 captaciones pendientes de revisión</span>
+</div>
+</div>
+<!-- KPI 3: Última Sincronización -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-lg p-margin-mobile shadow-sm shadow-primary/5 flex flex-col justify-center min-h-[100px]">
+<div class="flex justify-between items-center mb-3">
+<span class="font-body-md text-body-md text-on-surface-variant">Última Sincronización</span>
+<span class="font-label-md text-label-md text-outline">hace 10 min</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary icon-fill">cloud_done</span>
+<div class="flex-1 h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-full rounded-full"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECCIÓN 2: Cabezas por Categoría -->
+<section class="flex flex-col gap-stack-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface">Cabezas por Categoría</h2>
+<div class="bg-surface-container-lowest border border-surface-variant rounded-lg p-margin-mobile shadow-sm shadow-primary/5 flex flex-col gap-gutter-mobile">
+<!-- Item: Toro -->
+<div class="flex items-center gap-3">
+<span class="font-body-md text-body-md text-on-surface-variant w-[100px] shrink-0">Toro</span>
+<div class="flex-1 h-[8px] bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 15%;"></div>
+</div>
+<span class="font-button text-button text-on-surface w-[40px] text-right">850</span>
+</div>
+<!-- Item: Novillo -->
+<div class="flex items-center gap-3">
+<span class="font-body-md text-body-md text-on-surface-variant w-[100px] shrink-0">Novillo</span>
+<div class="flex-1 h-[8px] bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 45%;"></div>
+</div>
+<span class="font-button text-button text-on-surface w-[40px] text-right">4,200</span>
+</div>
+<!-- Item: Vaquilla -->
+<div class="flex items-center gap-3">
+<span class="font-body-md text-body-md text-on-surface-variant w-[100px] shrink-0">Vaquilla</span>
+<div class="flex-1 h-[8px] bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container rounded-full" style="width: 35%;"></div>
+</div>
+<span class="font-button text-button text-on-surface w-[40px] text-right">3,100</span>
+</div>
+<!-- Item: Vaca Descarte -->
+<div class="flex items-center gap-3">
+<span class="font-body-md text-body-md text-on-surface-variant w-[100px] shrink-0 leading-tight">Vaca Descarte</span>
+<div class="flex-1 h-[8px] bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 10%;"></div>
+</div>
+<span class="font-button text-button text-on-surface w-[40px] text-right">950</span>
+</div>
+<!-- Item: Ternero -->
+<div class="flex items-center gap-3">
+<span class="font-body-md text-body-md text-on-surface-variant w-[100px] shrink-0">Ternero</span>
+<div class="flex-1 h-[8px] bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-fixed-dim rounded-full" style="width: 30%;"></div>
+</div>
+<span class="font-button text-button text-on-surface w-[40px] text-right">3,350</span>
+</div>
+</div>
+</section>
+<!-- SECCIÓN 3: Consumo vs Ganancia de Peso -->
+<section class="flex flex-col gap-stack-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface">Consumo vs Ganancia</h2>
+<div class="bg-surface-container-lowest border border-surface-variant rounded-lg p-margin-mobile shadow-sm shadow-primary/5">
+<!-- Chart Legend -->
+<div class="flex gap-4 mb-4">
+<div class="flex items-center gap-1">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="font-label-md text-label-md text-on-surface-variant">Peso Prom. (kg)</span>
+</div>
+<div class="flex items-center gap-1">
+<div class="w-3 h-3 rounded-full bg-secondary"></div>
+<span class="font-label-md text-label-md text-on-surface-variant">Consumo (kg)</span>
+</div>
+</div>
+<!-- Compact Line Chart (Visual Representation using SVG) -->
+<div class="w-full h-[140px] relative border-b border-l border-surface-variant/50 pb-2 pl-2">
+<!-- Y Axis Labels -->
+<div class="absolute -left-2 top-0 h-full flex flex-col justify-between items-end py-2">
+<span class="font-label-md text-label-md text-outline text-[10px]">500</span>
+<span class="font-label-md text-label-md text-outline text-[10px]">300</span>
+<span class="font-label-md text-label-md text-outline text-[10px]">100</span>
+</div>
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 300 120">
+<!-- Grid lines -->
+<line stroke="#e1e3e4" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="300" y1="0" y2="0"></line>
+<line stroke="#e1e3e4" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="300" y1="60" y2="60"></line>
+<!-- Line 1: Peso (Primary) -->
+<path d="M0,100 C50,90 100,70 150,60 C200,50 250,30 300,10" fill="none" stroke="#0f5238" stroke-linecap="round" stroke-width="3"></path>
+<!-- Points for Line 1 -->
+<circle cx="0" cy="100" fill="#0f5238" r="4"></circle>
+<circle cx="60" cy="85" fill="#0f5238" r="4"></circle>
+<circle cx="120" cy="65" fill="#0f5238" r="4"></circle>
+<circle cx="180" cy="55" fill="#0f5238" r="4"></circle>
+<circle cx="240" cy="35" fill="#0f5238" r="4"></circle>
+<circle cx="300" cy="10" fill="#0f5238" r="4"></circle>
+<!-- Line 2: Consumo (Secondary) -->
+<path d="M0,110 L60,105 L120,115 L180,100 L240,105 L300,95" fill="none" stroke="#7a5649" stroke-dasharray="6 4" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+<!-- X Axis Labels (6 months) -->
+<div class="absolute -bottom-6 left-2 w-full flex justify-between px-1">
+<span class="font-label-md text-label-md text-outline text-[10px]">Ene</span>
+<span class="font-label-md text-label-md text-outline text-[10px]">Feb</span>
+<span class="font-label-md text-label-md text-outline text-[10px]">Mar</span>
+<span class="font-label-md text-label-md text-outline text-[10px]">Abr</span>
+<span class="font-label-md text-label-md text-outline text-[10px]">May</span>
+<span class="font-label-md text-label-md text-outline text-[10px]">Jun</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECCIÓN 4: Alertas Recientes -->
+<section class="flex flex-col gap-stack-sm mt-4">
+<h2 class="font-headline-md text-headline-md text-on-surface">Alertas Recientes</h2>
+<div class="flex flex-col gap-2">
+<!-- Alerta 1 -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-lg p-3 flex items-center gap-4 min-h-[64px] shadow-sm shadow-primary/5 active:scale-[0.98] transition-transform">
+<div class="w-12 h-12 rounded-full bg-error-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-error">warning</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-bold text-on-surface">Bajo Stock de Alimento</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Silo A</span>
+</div>
+</div>
+<!-- Alerta 2 -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-lg p-3 flex items-center gap-4 min-h-[64px] shadow-sm shadow-primary/5 active:scale-[0.98] transition-transform">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary">calendar_month</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-bold text-on-surface">Calendario de Vacunación</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Próxima en 2 días</span>
+</div>
+</div>
+<!-- Alerta 3 -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-lg p-3 flex items-center gap-4 min-h-[64px] shadow-sm shadow-primary/5 active:scale-[0.98] transition-transform">
+<div class="w-12 h-12 rounded-full bg-primary-container/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">task_alt</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-bold text-on-surface">Sincronización Completa</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Captaciones actualizadas</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-margin-mobile pb-safe bg-surface border-t border-outline-variant/30 h-[80px] z-50">
+<!-- Active: Dashboard -->
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 duration-150 touch-manipulation min-w-[48px] min-h-[48px]">
+<span class="material-symbols-outlined icon-fill">dashboard</span>
+<span class="font-label-md text-label-md mt-1">Dashboard</span>
+</button>
+<!-- Inactive: Registros -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-all rounded-full active:scale-90 duration-150 touch-manipulation min-w-[48px] min-h-[48px]">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-label-md text-label-md mt-1">Registros</span>
+</button>
+<!-- Inactive: Mapa -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-all rounded-full active:scale-90 duration-150 touch-manipulation min-w-[48px] min-h-[48px]">
+<span class="material-symbols-outlined">map</span>
+<span class="font-label-md text-label-md mt-1">Mapa</span>
+</button>
+<!-- Inactive: Perfil -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-all rounded-full active:scale-90 duration-150 touch-manipulation min-w-[48px] min-h-[48px]">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md mt-1">Perfil</span>
+</button>
+</nav>
+</body></html>

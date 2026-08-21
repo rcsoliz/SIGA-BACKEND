@@ -1,0 +1,425 @@
+<!DOCTYPE html><html lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SIGA - Registro de Captación</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#e1e3e4",
+                        "on-tertiary-fixed": "#002114",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#3f6754",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#2d6a4f",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#404943",
+                        "on-primary-fixed-variant": "#0e5138",
+                        "background": "#f8f9fa",
+                        "surface-container-low": "#f3f4f5",
+                        "primary": "#0f5238",
+                        "on-secondary-fixed-variant": "#603f33",
+                        "surface-container-high": "#e7e8e9",
+                        "on-secondary-fixed": "#2e150b",
+                        "on-background": "#191c1d",
+                        "tertiary-fixed": "#c1ecd4",
+                        "on-surface": "#191c1d",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#a5d0b9",
+                        "inverse-surface": "#2e3132",
+                        "surface": "#f8f9fa",
+                        "surface-variant": "#e1e3e4",
+                        "on-tertiary-container": "#b8e3cb",
+                        "on-secondary-container": "#795548",
+                        "surface-tint": "#2c694e",
+                        "surface-bright": "#f8f9fa",
+                        "outline-variant": "#bfc9c1",
+                        "inverse-on-surface": "#f0f1f2",
+                        "secondary": "#7a5649",
+                        "tertiary": "#274f3d",
+                        "primary-fixed-dim": "#95d4b3",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#274e3d",
+                        "on-primary-container": "#a8e7c5",
+                        "error": "#ba1a1a",
+                        "outline": "#707973",
+                        "secondary-container": "#fdcdbc",
+                        "secondary-fixed": "#ffdbcf",
+                        "surface-dim": "#d9dadb",
+                        "inverse-primary": "#95d4b3",
+                        "secondary-fixed-dim": "#ebbcac",
+                        "primary-fixed": "#b1f0ce",
+                        "on-primary-fixed": "#002114",
+                        "surface-container": "#edeeef"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "touch-target-min": "48px",
+                        "base": "4px",
+                        "stack-md": "16px",
+                        "stack-lg": "24px",
+                        "margin-mobile": "16px",
+                        "stack-sm": "8px",
+                        "gutter-mobile": "12px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "button": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "button": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+        }
+        
+        .sync-bar {
+            height: 4px;
+            width: 100%;
+            background: linear-gradient(90deg, #f8f9fa 0%, #2d6a4f 50%, #f8f9fa 100%);
+            background-size: 200% 100%;
+            animation: sync 2s infinite linear;
+        }
+        
+        @keyframes sync {
+            0% { background-position: 100% 0; }
+            100% { background-position: -100% 0; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background flex min-h-screen">
+<!-- Top AppBar (JSON Driven) -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-surface-dim shadow-sm shadow-primary/5 flex justify-between items-center h-16 px-margin-mobile">
+<div class="flex items-center gap-4">
+<!-- Brand -->
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed-dim">SIGA</h1>
+</div>
+<div class="flex items-center gap-2">
+<!-- Trailing Icons -->
+<button class="p-2 text-primary dark:text-primary-fixed-dim hover:bg-surface-container-high transition-colors duration-200 rounded-full active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">sync</span>
+</button>
+<div class="flex items-center bg-primary-container/10 px-3 py-1 rounded-full border border-primary/20">
+<span class="material-symbols-outlined text-primary text-sm mr-1">signal_cellular_alt</span>
+<span class="text-xs font-label-md text-primary">Online</span>
+</div>
+</div>
+</header>
+<!-- SideNavBar (JSON Driven) -->
+<nav class="hidden md:flex flex-col p-stack-md gap-stack-sm bg-surface-container-low dark:bg-surface-container-lowest border-r border-outline-variant h-full w-64 fixed left-0 top-16 pt-8 z-40 overflow-y-auto">
+<!-- User Profile Header -->
+<div class="flex flex-col items-center pb-6 border-b border-outline-variant/30 mb-4">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center mb-2 overflow-hidden shadow-sm">
+<img alt="Usuario SIGA" class="w-full h-full object-cover" data-alt="A clean, professional portrait of a farm administrator in a bright, modern agricultural setting. The lighting is soft and natural, emphasizing a trustworthy and competent demeanor. The color palette incorporates subtle earthy tones, aligning with a reliable corporate brand identity suitable for a high-end agricultural management app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEU1WIVA-bl3reFHP_X0fG6K-5KH0NJu7lYLNY5W_XaCrjMzIHh3Ly-IZfr4sW--nwhBqAQEoTTN4_7_UhqwR1gRm8fSipD0MkWGbHquyuxfCPWGFdN-9KYl_njAdzlh9qExlEmBmz83_uYuBGD4mwQpZWCW8eQoo6u3llm1YsPBo3cmHvY9ecmeE-B2g4axmLqkXafI1syccotmfqsM_A6v9pzvrDlny6gNQc_p087X6OjgG7e86CoA">
+</div>
+<h2 class="font-headline-md text-headline-md font-extrabold text-primary">Admin Ganadero</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Hacienda El Vergel</p>
+</div>
+<!-- Navigation Links -->
+<a class="flex items-center p-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-all duration-200 cursor-pointer active:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center p-3 bg-primary-container text-on-primary-container rounded-lg font-bold transition-all duration-200 cursor-pointer active:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined mr-3">agriculture</span>
+<span class="font-body-md text-body-md">Ganado</span>
+</a>
+<a class="flex items-center p-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-all duration-200 cursor-pointer active:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined mr-3">map</span>
+<span class="font-body-md text-body-md">Potreros</span>
+</a>
+<a class="flex items-center p-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-all duration-200 cursor-pointer active:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined mr-3">inventory_2</span>
+<span class="font-body-md text-body-md">Inventario</span>
+</a>
+<a class="flex items-center p-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-all duration-200 cursor-pointer active:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined mr-3">analytics</span>
+<span class="font-body-md text-body-md">Reportes</span>
+</a>
+<!-- CTA -->
+<div class="mt-auto pt-6">
+<button class="w-full flex items-center justify-center gap-2 bg-primary text-on-primary py-3 rounded-lg font-button text-button shadow-sm hover:opacity-90 active:scale-95 transition-all min-h-[48px]">
+<span class="material-symbols-outlined">add</span>
+                Nuevo Registro
+            </button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 pt-16 min-h-screen">
+<!-- Persistent Sync Indicator -->
+<div class="sync-bar hidden" id="syncProgress"></div>
+<div class="p-6 md:p-8 max-w-7xl mx-auto space-y-8">
+<!-- Page Header -->
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg font-bold text-primary">Registro de Captación</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Ingrese los datos de la nueva captación de ganado.</p>
+</div>
+</div>
+<!-- Section 1: Cabecera (Header Information) -->
+<section class="bg-surface-container-low rounded-xl p-6 shadow-sm border border-outline-variant/50 relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+<h3 class="font-headline-md text-headline-md font-semibold text-on-background mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">location_on</span>
+                    Datos Generales
+                </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Estancia -->
+<div class="bg-surface rounded-lg border border-outline-variant p-2">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1 px-2">Estancia</label>
+<select class="w-full bg-transparent border-none focus:ring-0 font-body-md text-body-md text-on-background p-2 min-h-[48px]">
+<option>Hacienda El Vergel</option>
+<option>Estancia Los Pinos</option>
+<option>Fundo San José</option>
+</select>
+</div>
+<!-- Nombre Captación -->
+<div class="bg-surface rounded-lg border border-outline-variant p-2">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1 px-2">Nombre de la Captación</label>
+<input class="w-full bg-transparent border-none focus:ring-0 font-body-md text-body-md text-on-background p-2 min-h-[48px]" placeholder="Ej. Lote Norte 2024" type="text">
+</div>
+<!-- Potrero -->
+<div class="bg-surface rounded-lg border border-outline-variant p-2">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1 px-2">Potrero Asignado</label>
+<select class="w-full bg-transparent border-none focus:ring-0 font-body-md text-body-md text-on-background p-2 min-h-[48px]">
+<option>Potrero 1 - Alfalfa</option>
+<option>Potrero 2 - Brachiaria</option>
+<option>Potrero 3 - Gatton Panic</option>
+</select>
+</div>
+<!-- Fecha -->
+<div class="bg-surface rounded-lg border border-outline-variant p-2">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1 px-2">Fecha de Captación</label>
+<input class="w-full bg-transparent border-none focus:ring-0 font-body-md text-body-md text-on-background p-2 min-h-[48px]" type="date">
+</div>
+<!-- Observaciones -->
+<div class="bg-surface rounded-lg border border-outline-variant p-2 md:col-span-2">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1 px-2">Observaciones Generales</label>
+<textarea class="w-full bg-transparent border-none focus:ring-0 font-body-md text-body-md text-on-background p-2 resize-none" placeholder="Notas sobre el estado general del lote o condiciones climáticas..." rows="2"></textarea>
+</div>
+</div>
+<!-- GPS Action -->
+<div class="mt-6 flex justify-end">
+<button class="flex items-center gap-2 px-6 py-2 rounded-full border-2 border-primary text-primary font-button text-button hover:bg-primary-container/10 active:scale-95 transition-all min-h-[48px]">
+<span class="material-symbols-outlined">my_location</span>
+                        Capturar Ubicación GPS
+                    </button>
+</div>
+</section>
+<!-- Layout: Grid for Detalle & Lista -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+<!-- Section 2: Detalle Formulario (2 columns wide) -->
+<section class="xl:col-span-2 bg-surface-container-low rounded-xl p-6 shadow-sm border border-outline-variant/50">
+<h3 class="font-headline-md text-headline-md font-semibold text-on-background mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">add_circle</span>
+                        Agregar Grupo Animal
+                    </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Categoría Visual Selectors -->
+<div class="md:col-span-2 mb-2">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-3">Categoría</label>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+<!-- Toro -->
+<div class="cursor-pointer border-2 border-outline-variant rounded-lg p-3 text-center hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-3xl mb-1">male</span>
+<span class="block font-label-md text-on-background">Toro</span>
+</div>
+<!-- Novillo (Active state example) -->
+<div class="cursor-pointer border-2 border-primary bg-primary-container/10 rounded-lg p-3 text-center relative">
+<span class="material-symbols-outlined text-primary text-3xl mb-1">cruelty_free</span>
+<span class="block font-label-md text-primary font-bold">Novillo</span>
+<span class="material-symbols-outlined text-primary absolute top-1 right-1 text-sm">check_circle</span>
+</div>
+<!-- Vaquilla -->
+<div class="cursor-pointer border-2 border-outline-variant rounded-lg p-3 text-center hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-3xl mb-1">female</span>
+<span class="block font-label-md text-on-background">Vaquilla</span>
+</div>
+<!-- Vaca Descarte -->
+<div class="cursor-pointer border-2 border-outline-variant rounded-lg p-3 text-center hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-3xl mb-1">warning</span>
+<span class="block font-label-md text-on-background">Vaca D.</span>
+</div>
+<!-- Ternero -->
+<div class="cursor-pointer border-2 border-outline-variant rounded-lg p-3 text-center hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-3xl mb-1">child_care</span>
+<span class="block font-label-md text-on-background">Ternero</span>
+</div>
+</div>
+</div>
+<!-- Raza -->
+<div class="bg-surface rounded-lg border border-outline-variant p-2">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1 px-2">Raza Principal</label>
+<select class="w-full bg-transparent border-none focus:ring-0 font-body-md text-body-md text-on-background p-2 min-h-[48px]">
+<option>Brahman</option>
+<option>Nelore</option>
+<option>Angus</option>
+<option>Brangus</option>
+<option>Cruza Comercial</option>
+</select>
+</div>
+<!-- Cantidad -->
+<div class="bg-surface rounded-lg border border-outline-variant p-2 relative">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1 px-2">Cant. Cabezas</label>
+<input class="w-full bg-transparent border-none focus:ring-0 font-body-md text-body-md text-on-background p-2 min-h-[48px] pr-10" type="number" value="45">
+<span class="material-symbols-outlined absolute right-3 top-9 text-on-surface-variant">tag</span>
+</div>
+<!-- Peso -->
+<div class="bg-surface rounded-lg border border-outline-variant p-2 relative">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1 px-2">Peso Promedio Est.</label>
+<input class="w-full bg-transparent border-none focus:ring-0 font-body-md text-body-md text-on-background p-2 min-h-[48px] pr-10" type="number" value="380">
+<span class="absolute right-3 top-9 font-body-md text-on-surface-variant font-medium">kg</span>
+</div>
+<!-- Fecha Faena -->
+<div class="bg-surface rounded-lg border border-outline-variant p-2">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1 px-2">Est. Faena</label>
+<input class="w-full bg-transparent border-none focus:ring-0 font-body-md text-body-md text-on-background p-2 min-h-[48px]" type="month">
+</div>
+<!-- Sistema Alimentación (Visual Cards) -->
+<div class="md:col-span-2 mt-2">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-3">Sistema de Alimentación</label>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+<div class="cursor-pointer border-2 border-outline-variant rounded-lg p-4 flex items-center gap-3 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">grass</span>
+<span class="font-body-md font-medium text-on-background">Pastoreo Libre</span>
+</div>
+<div class="cursor-pointer border-2 border-primary bg-primary-container/10 rounded-lg p-4 flex items-center gap-3 relative">
+<span class="material-symbols-outlined text-primary">fence</span>
+<span class="font-body-md font-bold text-primary">Semi-Confinado</span>
+<span class="material-symbols-outlined text-primary absolute right-2 top-2 text-sm">check_circle</span>
+</div>
+<div class="cursor-pointer border-2 border-outline-variant rounded-lg p-4 flex items-center gap-3 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">warehouse</span>
+<span class="font-body-md font-medium text-on-background">Confinamiento</span>
+</div>
+</div>
+</div>
+<!-- Notas -->
+<div class="bg-surface rounded-lg border border-outline-variant p-2 md:col-span-2">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-1 px-2">Notas Zootécnicas</label>
+<textarea class="w-full bg-transparent border-none focus:ring-0 font-body-md text-body-md text-on-background p-2 resize-none" placeholder="Condición corporal, marcas específicas..." rows="2"></textarea>
+</div>
+</div>
+<div class="mt-6">
+<button class="w-full md:w-auto flex items-center justify-center gap-2 px-8 py-3 bg-surface-container-high text-on-background rounded-lg font-button text-button shadow-sm hover:bg-outline-variant/30 active:scale-95 transition-all min-h-[48px]">
+<span class="material-symbols-outlined">add</span>
+                            Agregar a Lista
+                        </button>
+</div>
+</section>
+<!-- Section 3: Lista y Resumen (Side Column) -->
+<section class="xl:col-span-1 bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/50 flex flex-col overflow-hidden">
+<div class="p-4 bg-surface-container-low border-b border-outline-variant/50">
+<h3 class="font-headline-md text-headline-md font-semibold text-on-background flex items-center justify-between">
+                            Grupos Agregados
+                            <span class="bg-primary-container text-on-primary-container text-sm px-2 py-1 rounded-full font-bold">2</span>
+</h3>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-3 min-h-[300px]">
+<!-- ListItem 1 -->
+<div class="bg-surface p-4 rounded-lg border border-outline-variant shadow-sm relative group">
+<button class="absolute top-2 right-2 text-on-surface-variant hover:text-error opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined">delete</span>
+</button>
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary">cruelty_free</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg font-bold text-on-background">45 Novillos</h4>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">Brangus • 380 kg (Prom)</p>
+<div class="flex gap-2 mt-2">
+<span class="text-[10px] bg-surface-container-high px-2 py-1 rounded text-on-surface-variant font-medium">Semi-Conf.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ListItem 2 -->
+<div class="bg-surface p-4 rounded-lg border border-outline-variant shadow-sm relative group">
+<button class="absolute top-2 right-2 text-on-surface-variant hover:text-error opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined">delete</span>
+</button>
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-container/20 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-tertiary">female</span>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg font-bold text-on-background">120 Vaquillas</h4>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">Brahman • 290 kg (Prom)</p>
+<div class="flex gap-2 mt-2">
+<span class="text-[10px] bg-surface-container-high px-2 py-1 rounded text-on-surface-variant font-medium">Pastoreo</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Resumen & Action -->
+<div class="p-4 bg-surface-container-low border-t border-outline-variant/50">
+<div class="flex justify-between items-center mb-4">
+<span class="font-body-lg text-on-surface-variant">Total Cabezas:</span>
+<span class="font-headline-lg text-primary font-bold">165</span>
+</div>
+<button class="w-full flex items-center justify-center gap-2 bg-primary text-on-primary py-4 rounded-lg font-button text-button shadow-md hover:bg-primary/90 active:scale-95 transition-all min-h-[48px]">
+<span class="material-symbols-outlined">save</span>
+                            Confirmar y Guardar Todo
+                        </button>
+</div>
+</section>
+</div>
+<div class="h-8"></div> <!-- Bottom padding -->
+</div>
+</main>
+<!-- BottomNavBar (Hidden on desktop, logic retained for mobile responsiveness) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-20 px-4 pb-safe bg-surface dark:bg-surface-container-lowest border-t border-outline-variant z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high rounded-lg p-2 transition-transform duration-150 active:scale-90" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md mt-1">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-5 py-1 transition-transform duration-150 active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">pets</span>
+<span class="font-label-md text-label-md mt-1 font-bold">Ganado</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high rounded-lg p-2 transition-transform duration-150 active:scale-90" href="#">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-label-md text-label-md mt-1">Tareas</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high rounded-lg p-2 transition-transform duration-150 active:scale-90" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md mt-1">Perfil</span>
+</a>
+</nav>
+
+
+</body></html>

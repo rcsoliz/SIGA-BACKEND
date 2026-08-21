@@ -1,0 +1,257 @@
+<!DOCTYPE html><html class="light" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Registro de Estancia - SIGA</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#404943",
+                    "on-surface": "#191c1d",
+                    "error-container": "#ffdad6",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#d9dadb",
+                    "on-tertiary-fixed-variant": "#274e3d",
+                    "secondary": "#7a5649",
+                    "on-secondary-fixed-variant": "#603f33",
+                    "surface": "#f8f9fa",
+                    "secondary-fixed": "#ffdbcf",
+                    "primary-container": "#2d6a4f",
+                    "on-tertiary-container": "#b8e3cb",
+                    "secondary-fixed-dim": "#ebbcac",
+                    "surface-container-low": "#f3f4f5",
+                    "on-primary-container": "#a8e7c5",
+                    "inverse-surface": "#2e3132",
+                    "tertiary-container": "#3f6754",
+                    "on-primary-fixed-variant": "#0e5138",
+                    "on-tertiary": "#ffffff",
+                    "outline": "#707973",
+                    "surface-tint": "#2c694e",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#f8f9fa",
+                    "tertiary-fixed-dim": "#a5d0b9",
+                    "surface-container": "#edeeef",
+                    "outline-variant": "#bfc9c1",
+                    "primary-fixed-dim": "#95d4b3",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-error": "#ffffff",
+                    "tertiary": "#274f3d",
+                    "primary-fixed": "#b1f0ce",
+                    "on-primary-fixed": "#002114",
+                    "surface-variant": "#e1e3e4",
+                    "surface-container-high": "#e7e8e9",
+                    "on-background": "#191c1d",
+                    "inverse-primary": "#95d4b3",
+                    "error": "#ba1a1a",
+                    "primary": "#0f5238",
+                    "on-secondary-container": "#795548",
+                    "inverse-on-surface": "#f0f1f2",
+                    "background": "#f8f9fa",
+                    "on-secondary-fixed": "#2e150b",
+                    "secondary-container": "#fdcdbc",
+                    "on-tertiary-fixed": "#002114",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#c1ecd4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "8px",
+                    "stack-lg": "24px",
+                    "margin-mobile": "16px",
+                    "gutter-mobile": "12px",
+                    "base": "4px",
+                    "stack-md": "16px",
+                    "touch-target-min": "48px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "button": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "button": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar hiding for clean mobile view */
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-lg antialiased min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar (Shared Component JSON) -->
+<header class="flex justify-between items-center px-margin-mobile h-touch-target-min bg-surface-container-lowest border-b border-outline-variant shadow-sm w-full top-0 sticky z-50">
+<button aria-label="Sync" class="text-primary active:scale-95 duration-150 flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">sync_alt</span>
+</button>
+<h1 class="text-headline-md font-headline-md text-primary">SIGA</h1>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-variant active:scale-95 duration-150">
+<img alt="Profile photo of field technician" class="w-full h-full object-cover" data-alt="A close up professional headshot of an agricultural field technician wearing a green cap, natural lighting, outdoors, highly detailed, realistic, optimistic mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA66lQTjPFi_nFCg9jOzuONu4nbkRSdv92seO52_Wn-5uxYQDZ-raoUFR_aF4EOl2Drw4rBnl_3iGtd1A7rYkCxJ3g1g0HJCb4RTVivmCDOOFJcIpS3k1PVwqD38XtwWdi31sZbjcFtZ4svayV8tn8pdLpgz3722MvMwBav3cjd7c29Ej6cPVpjb7p2IGJRmdHpTq4YTwSuJ4qi5ZFzzY73iWbeY0i6RFQK616r5wQfdXbCR-YznKjSAw">
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 flex flex-col px-margin-mobile py-stack-lg gap-stack-lg pb-32">
+<!-- Page Title & Context -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">agriculture</span>
+<span class="text-label-md font-label-md tracking-widest uppercase">Nuevo Registro</span>
+</div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface">Registro de Estancia</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Complete los datos de la nueva unidad productiva.</p>
+</div>
+<!-- Form Elements -->
+<form class="flex flex-col gap-gutter-mobile w-full">
+<!-- Required: Nombre -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-outline-variant/50 flex flex-col gap-1 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<label class="text-label-md font-label-md text-on-surface-variant uppercase flex items-center gap-1">
+                    Nombre de la Estancia <span class="text-error text-body-lg leading-none">*</span>
+</label>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 text-body-lg font-body-lg text-on-surface placeholder:text-outline/50 h-6" placeholder="Ej. Finca El Progreso" required="" type="text">
+</div>
+<!-- Required: Propietario -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-outline-variant/50 flex flex-col gap-1 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<label class="text-label-md font-label-md text-on-surface-variant uppercase flex items-center gap-1">
+                    Propietario <span class="text-error text-body-lg leading-none">*</span>
+</label>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 text-body-lg font-body-lg text-on-surface placeholder:text-outline/50 h-6" placeholder="Nombre completo" required="" type="text">
+</div>
+<!-- Optional: Representante -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-outline-variant/50 flex flex-col gap-1 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<label class="text-label-md font-label-md text-on-surface-variant uppercase">Representante</label>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 text-body-lg font-body-lg text-on-surface placeholder:text-outline/50 h-6" placeholder="Opcional" type="text">
+</div>
+<!-- Optional: Teléfono (Numeric) -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-outline-variant/50 flex flex-col gap-1 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<label class="text-label-md font-label-md text-on-surface-variant uppercase">Teléfono</label>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 text-body-lg font-body-lg text-on-surface placeholder:text-outline/50 h-6" inputmode="numeric" placeholder="Ej. 11 2345 6789" type="tel">
+</div>
+<!-- Optional: RENSPA -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-outline-variant/50 flex flex-col gap-1 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<label class="text-label-md font-label-md text-on-surface-variant uppercase">RENSPA</label>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 text-body-lg font-body-lg text-on-surface placeholder:text-outline/50 h-6" placeholder="N° de Registro Sanitario" type="text">
+</div>
+<!-- Optional: Hectáreas (Decimal) -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-outline-variant/50 flex flex-col gap-1 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<label class="text-label-md font-label-md text-on-surface-variant uppercase">Hectáreas Totales</label>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 text-body-lg font-body-lg text-on-surface placeholder:text-outline/50 h-6" inputmode="decimal" placeholder="0.00" step="0.01" type="number">
+</div>
+<!-- Optional: Departamento (Select) -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-outline-variant/50 flex flex-col gap-1 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all relative">
+<label class="text-label-md font-label-md text-on-surface-variant uppercase">Departamento</label>
+<select class="w-full bg-transparent border-none p-0 focus:ring-0 text-body-lg font-body-lg text-on-surface appearance-none h-6">
+<option disabled="" selected="" value="">Seleccione</option>
+<option value="1">Departamento Central</option>
+<option value="2">Departamento Norte</option>
+<option value="3">Departamento Sur</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 bottom-4 text-outline pointer-events-none">expand_more</span>
+</div>
+<!-- Optional: Provincia (Select) -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-outline-variant/50 flex flex-col gap-1 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all relative">
+<label class="text-label-md font-label-md text-on-surface-variant uppercase">Provincia</label>
+<select class="w-full bg-transparent border-none p-0 focus:ring-0 text-body-lg font-body-lg text-on-surface appearance-none h-6">
+<option disabled="" selected="" value="">Seleccione</option>
+<option value="1">Provincia A</option>
+<option value="2">Provincia B</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 bottom-4 text-outline pointer-events-none">expand_more</span>
+</div>
+<!-- Optional: Municipio (Select) -->
+<div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-outline-variant/50 flex flex-col gap-1 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all relative">
+<label class="text-label-md font-label-md text-on-surface-variant uppercase">Municipio</label>
+<select class="w-full bg-transparent border-none p-0 focus:ring-0 text-body-lg font-body-lg text-on-surface appearance-none h-6">
+<option disabled="" selected="" value="">Seleccione</option>
+<option value="1">Municipio 1</option>
+<option value="2">Municipio 2</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 bottom-4 text-outline pointer-events-none">expand_more</span>
+</div>
+<!-- GPS Capture Section -->
+<div class="bg-surface-container-low rounded-xl p-4 flex flex-col gap-4 border-2 border-outline-variant border-dashed mt-4">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-label-md font-label-md text-on-surface-variant uppercase">Geolocalización</span>
+<span class="text-body-md text-outline">Requerido para validación de zona</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-[32px]">satellite_alt</span>
+</div>
+<button class="flex items-center justify-center gap-2 h-touch-target-min bg-primary-container text-on-primary-container rounded-xl font-button text-button w-full active:scale-95 transition-transform shadow-sm" id="btn-gps" type="button">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">my_location</span>
+                    Capturar Ubicación GPS
+                </button>
+<!-- Hidden GPS Data (Revealed via JS) -->
+<div class="hidden flex gap-2" id="gps-data">
+<div class="flex-1 bg-surface-container-lowest p-3 rounded-lg border border-primary/30 flex flex-col items-center justify-center">
+<span class="text-[10px] font-label-md text-outline uppercase tracking-wider">Latitud</span>
+<span class="text-body-lg font-button text-primary">-34.603722</span>
+</div>
+<div class="flex-1 bg-surface-container-lowest p-3 rounded-lg border border-primary/30 flex flex-col items-center justify-center">
+<span class="text-[10px] font-label-md text-outline uppercase tracking-wider">Longitud</span>
+<span class="text-body-lg font-button text-primary">-58.381592</span>
+</div>
+</div>
+</div>
+</form>
+</main>
+<!-- Bottom Fixed Action Bar -->
+<div class="fixed bottom-0 left-0 w-full bg-surface-container-lowest border-t border-outline-variant p-margin-mobile pb-6 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-40">
+<button class="w-full h-touch-target-min bg-primary text-on-primary rounded-full font-button text-button flex items-center justify-center gap-2 shadow-md active:scale-[0.98] transition-transform" type="button">
+<span class="material-symbols-outlined">save</span>
+            Guardar Estancia
+        </button>
+</div>
+<!-- Interaction Script -->
+<script>
+        document.getElementById('btn-gps').addEventListener('click', function() {
+            const gpsData = document.getElementById('gps-data');
+            const btn = this;
+            
+            // Simulate loading state
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Obteniendo...';
+            btn.classList.add('opacity-80');
+            
+            setTimeout(() => {
+                // Show data and update button state
+                gpsData.classList.remove('hidden');
+                btn.classList.remove('bg-primary-container', 'text-on-primary-container', 'opacity-80');
+                btn.classList.add('bg-surface-container-highest', 'text-on-surface');
+                btn.innerHTML = '<span class="material-symbols-outlined text-primary">check_circle</span> Ubicación Capturada';
+                btn.disabled = true;
+            }, 1200);
+        });
+    </script>
+
+
+</body></html>

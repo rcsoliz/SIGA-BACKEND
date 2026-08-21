@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SIGA - Mapa de Operaciones</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#ffffff",
+                        "primary": "#0f5238",
+                        "on-surface": "#191c1d",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#95d4b3",
+                        "on-secondary-fixed": "#2e150b",
+                        "surface-container-high": "#e7e8e9",
+                        "on-surface-variant": "#404943",
+                        "surface-container": "#edeeef",
+                        "secondary-fixed": "#ffdbcf",
+                        "surface": "#f8f9fa",
+                        "outline": "#707973",
+                        "on-primary-container": "#a8e7c5",
+                        "tertiary": "#274f3d",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#d9dadb",
+                        "on-tertiary-fixed": "#002114",
+                        "secondary-container": "#fdcdbc",
+                        "on-tertiary-container": "#b8e3cb",
+                        "on-secondary-container": "#795548",
+                        "on-primary-fixed": "#002114",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#274e3d",
+                        "tertiary-fixed": "#c1ecd4",
+                        "on-primary-fixed-variant": "#0e5138",
+                        "secondary-fixed-dim": "#ebbcac",
+                        "inverse-surface": "#2e3132",
+                        "surface-container-low": "#f3f4f5",
+                        "surface-container-highest": "#e1e3e4",
+                        "error": "#ba1a1a",
+                        "on-background": "#191c1d",
+                        "outline-variant": "#bfc9c1",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#b1f0ce",
+                        "surface-tint": "#2c694e",
+                        "primary-container": "#2d6a4f",
+                        "tertiary-container": "#3f6754",
+                        "inverse-primary": "#95d4b3",
+                        "inverse-on-surface": "#f0f1f2",
+                        "surface-bright": "#f8f9fa",
+                        "tertiary-fixed-dim": "#a5d0b9",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "background": "#f8f9fa",
+                        "on-secondary-fixed-variant": "#603f33",
+                        "surface-variant": "#e1e3e4",
+                        "secondary": "#7a5649"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "24px",
+                        "stack-md": "16px",
+                        "base": "4px",
+                        "margin-mobile": "16px",
+                        "touch-target-min": "48px",
+                        "gutter-mobile": "12px",
+                        "stack-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "button": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "button": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-lg overflow-hidden h-screen w-screen flex">
+<!-- SideNavBar -->
+<nav class="h-screen w-64 fixed left-0 top-0 border-r border-outline-variant dark:border-outline shadow-sm dark:shadow-none bg-surface-container-lowest dark:bg-surface-dim z-20 flex flex-col p-4">
+<div class="mb-8 flex items-center gap-4 px-2">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined filled">agriculture</span>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg text-primary dark:text-primary-fixed-dim tracking-tight">SIGA</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Gestión Ganadera</p>
+</div>
+</div>
+<div class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-button text-button">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="pets">pets</span>
+<span class="font-button text-button">Ganado</span>
+</a>
+<!-- Intent mapping: 'Mapa de Operaciones' maps closest to the general spatial view, but 'Potreros' is specifically spatial. Using intent fallback, we highlight the closest relevant structural tab. Since this is an operations map focusing on Estancias (locations), we highlight 'Potreros' (spatial mapping) as it's the closest fit in the JSON, or if we consider 'Mapa de Operaciones' a high-level view, we might have mapped it to Dashboard. However, the JSON has 'Potreros' as the closest geographic entity. Let's assume Map=Potreros intent. Wait, 'Potreros' means paddocks. Let's use Dashboard if it's the main entry. The prompt asks for "Mapa de Operaciones". I will highlight Potreros as it's landscape/spatial. -->
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg font-bold transition-all duration-200 ease-in-out active:scale-95" href="#">
+<span class="material-symbols-outlined filled" data-icon="landscape">landscape</span>
+<span class="font-button text-button">Potreros</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-button text-button">Reportes</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-on-surface hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+<span class="font-button text-button">Seguridad</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="ml-64 flex flex-col w-full h-full">
+<!-- TopAppBar -->
+<header class="h-16 fixed top-0 right-0 left-64 z-10 border-b border-outline-variant dark:border-outline flat no shadows bg-surface dark:bg-background flex justify-between items-center px-6">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim">Mapa de Operaciones</h2>
+</div>
+<div class="flex items-center gap-6">
+<!-- Sync Badge (Global) -->
+<div class="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-[18px]">cloud_done</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Sistema Sincronizado</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant dark:text-on-surface hover:text-primary dark:hover:text-primary-fixed cursor-pointer transition-opacity active:opacity-70 p-2 rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+</button>
+<button class="text-on-surface-variant dark:text-on-surface hover:text-primary dark:hover:text-primary-fixed cursor-pointer transition-opacity active:opacity-70 p-2 rounded-full hover:bg-surface-container relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="text-on-surface-variant dark:text-on-surface hover:text-primary dark:hover:text-primary-fixed cursor-pointer transition-opacity active:opacity-70 p-2 rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant overflow-hidden cursor-pointer">
+<img alt="Admin Profile" class="w-full h-full object-cover" data-alt="A professional headshot of an agricultural administrator, clean lighting, wearing a subtle green collared shirt, set against a neutral grey studio background. High-quality professional portrait style, signaling trust and reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSbrOKS92bGLDo_IQNcmHJQyrChQCyQHRRdcp23cMRKskYtDAGlDYnjkdhKNZS_vn_xaWiAr-4kYlpWrAgit0faE6H-i75J8JFb1r44y8ALxWRY6QXk3HcUHI9UtRuxzD4OHgDH9A2zZ4U4IHFJBDd3SnuQNlr7Ns13sW1iLkZq9iVCbU8h0AhBe0g6Az_UDwxWd76Xvp-YvddEVKCbEv63L4ToZzodG3n5nZ2s43HcmBN-1O9mdfQrw"/>
+</div>
+</div>
+<button class="hidden md:flex items-center justify-center h-touch-target-min px-6 rounded-full border-2 border-outline text-primary font-button text-button hover:bg-surface-container transition-colors">
+                    Descargar Reporte
+                </button>
+</div>
+</header>
+<!-- Content Canvas (Map + Sidebar) -->
+<main class="mt-16 flex-1 flex relative overflow-hidden bg-surface-container-low">
+<!-- Map Section (70-75%) -->
+<section class="flex-1 relative">
+<!-- Map Background -->
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A detailed aerial satellite map view of agricultural land in Santa Cruz, Bolivia. The landscape features patchwork fields in varying shades of green and brown, with dirt access roads carving through the terrain. The lighting is clear daylight, providing a highly realistic, high-resolution topographical aesthetic suitable for a professional agricultural software dashboard." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCgfeqDHxdHLfDatL1j4ib1UJ0HG3qXVuYfbcqiRC66104fjW-d9TYy3MbqB_p3Ykm6vWBkz9vYvgmLcNxmuwMZzDOLH_sqZ5n3wiKRfwWzJlZItRTSEKzl8ZYSMMd1lgjTTZeBLtTHgqkBImaSiocw6erR0yQkuSF9NLC3hIee9_i-bkhKJVjsqaiZZGJmBCeK9ndu0jjCogdI9W0RHjL_4POFawXkv4_JPFdQ0Jk5QC0r8g9OIaYIgg')"></div>
+<!-- Map Overlay Gradient for legibility -->
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low/40 to-transparent pointer-events-none"></div>
+<!-- Floating Search -->
+<div class="absolute top-6 left-6 right-6 lg:right-auto lg:w-96 z-10">
+<div class="flex items-center bg-surface-container-lowest shadow-md rounded-full px-4 h-touch-target-min border border-outline-variant focus-within:border-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant mr-3">search</span>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-body-lg text-on-surface placeholder:text-on-surface-variant p-0 outline-none" placeholder="Buscar estancia..." type="text"/>
+</div>
+</div>
+<!-- Map Markers -->
+<!-- Unselected Marker 1 -->
+<div class="absolute top-1/4 left-1/3 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group">
+<div class="relative flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest border-2 border-outline-variant shadow-sm flex items-center justify-center group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-outline">location_on</span>
+</div>
+<div class="absolute top-full mt-1 bg-inverse-surface text-inverse-on-surface px-3 py-1 rounded-lg font-label-md text-label-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                            Estancia Los Pinos
+                        </div>
+</div>
+</div>
+<!-- Selected Marker (Hacienda El Vergel) -->
+<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 cursor-pointer">
+<div class="relative flex flex-col items-center">
+<div class="absolute -inset-2 bg-primary/20 rounded-full animate-ping"></div>
+<div class="w-12 h-12 rounded-full bg-primary border-4 border-surface-container-lowest shadow-md flex items-center justify-center relative z-10">
+<span class="material-symbols-outlined filled text-on-primary text-[28px]">location_on</span>
+</div>
+<div class="absolute top-full mt-2 bg-surface-container-lowest px-4 py-2 rounded-lg shadow-md border border-outline-variant font-label-md text-label-md whitespace-nowrap flex flex-col items-center">
+<span class="text-on-surface font-bold text-body-md">Hacienda El Vergel</span>
+<span class="text-primary text-[10px] uppercase tracking-wider mt-0.5">Seleccionado</span>
+</div>
+</div>
+</div>
+<!-- Unselected Marker 2 -->
+<div class="absolute bottom-1/3 right-1/4 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer group">
+<div class="relative flex flex-col items-center">
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest border-2 border-outline-variant shadow-sm flex items-center justify-center group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-outline">location_on</span>
+</div>
+<div class="absolute top-full mt-1 bg-inverse-surface text-inverse-on-surface px-3 py-1 rounded-lg font-label-md text-label-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                            Cabaña La Esperanza
+                        </div>
+</div>
+</div>
+</section>
+<!-- Detail Sidebar (Right Panel) - 25-30% -->
+<aside class="w-96 bg-surface-container-lowest border-l border-outline-variant shadow-sm z-10 flex flex-col overflow-y-auto">
+<!-- Sidebar Header -->
+<div class="p-6 border-b border-outline-variant relative">
+<button class="absolute top-4 right-4 text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-full p-2 transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div class="mt-4 flex items-start gap-4">
+<div class="w-14 h-14 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container shrink-0">
+<span class="material-symbols-outlined text-[32px]">home_work</span>
+</div>
+<div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">Hacienda El Vergel</h3>
+<div class="flex items-center gap-1.5 mt-1 text-on-surface-variant font-body-md text-body-md">
+<span class="material-symbols-outlined text-[16px]">person</span>
+<span>Roberto Soliz</span>
+</div>
+</div>
+</div>
+<!-- Sync Status Badge -->
+<div class="mt-6 flex items-center">
+<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-tertiary-container/10 border border-tertiary-container/20">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="font-label-md text-label-md text-primary tracking-wider uppercase">Sincronizado</span>
+</div>
+</div>
+</div>
+<!-- Sidebar Content -->
+<div class="p-6 flex-1 flex flex-col gap-6">
+<!-- Location Info Card -->
+<div class="bg-surface-container rounded-xl p-4 border border-outline-variant">
+<h4 class="font-label-md text-label-md text-on-surface-variant uppercase mb-3">Ubicación Registrada</h4>
+<ul class="space-y-3 font-body-md text-body-md text-on-surface">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline text-[20px]">map</span>
+<span><strong>Dpto:</strong> Santa Cruz</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline text-[20px]">signpost</span>
+<span><strong>Provincia:</strong> Andrés Ibáñez</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline text-[20px]">location_city</span>
+<span><strong>Municipio:</strong> El Torno</span>
+</li>
+</ul>
+</div>
+<!-- Stats Cards (Bento-style Grid) -->
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center text-center hover:border-primary/50 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-tertiary text-[28px] mb-2">assignment</span>
+<span class="font-headline-lg text-headline-lg text-on-surface">8</span>
+<span class="font-label-md text-label-md text-on-surface-variant mt-1">CAPTACIONES</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col items-center justify-center text-center hover:border-primary/50 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-tertiary text-[28px] mb-2">pets</span>
+<span class="font-headline-lg text-headline-lg text-on-surface">450</span>
+<span class="font-label-md text-label-md text-on-surface-variant mt-1">TOTAL CABEZAS</span>
+</div>
+</div>
+<!-- Additional Context (Placeholder for future metrics) -->
+<div class="flex-1"></div>
+</div>
+<!-- Sidebar Footer Action -->
+<div class="p-6 border-t border-outline-variant bg-surface-container-lowest">
+<button class="w-full h-touch-target-min bg-primary text-on-primary font-button text-button rounded-full shadow-sm hover:bg-primary/90 transition-colors flex items-center justify-center gap-2 active:scale-[0.98]">
+<span class="material-symbols-outlined">visibility</span>
+                        Ver Captaciones de esta Estancia
+                    </button>
+</div>
+</aside>
+</main>
+</div>
+</body></html>

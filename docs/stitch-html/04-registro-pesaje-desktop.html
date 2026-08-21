@@ -1,0 +1,433 @@
+<!DOCTYPE html><html class="light" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SIGA - Registro de Pesaje</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-bright": "#f8f9fa",
+                      "outline": "#707973",
+                      "on-error-container": "#93000a",
+                      "surface-container-low": "#f3f4f5",
+                      "tertiary-fixed": "#c1ecd4",
+                      "inverse-primary": "#95d4b3",
+                      "surface-tint": "#2c694e",
+                      "error-container": "#ffdad6",
+                      "on-error": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "secondary-fixed-dim": "#ebbcac",
+                      "on-tertiary-container": "#b8e3cb",
+                      "error": "#ba1a1a",
+                      "surface-variant": "#e1e3e4",
+                      "tertiary": "#274f3d",
+                      "outline-variant": "#bfc9c1",
+                      "on-primary-fixed-variant": "#0e5138",
+                      "primary": "#0f5238",
+                      "primary-fixed": "#b1f0ce",
+                      "on-secondary-fixed-variant": "#603f33",
+                      "surface-container-highest": "#e1e3e4",
+                      "inverse-surface": "#2e3132",
+                      "on-secondary-container": "#795548",
+                      "on-secondary-fixed": "#2e150b",
+                      "secondary-container": "#fdcdbc",
+                      "on-primary-fixed": "#002114",
+                      "on-surface-variant": "#404943",
+                      "on-background": "#191c1d",
+                      "secondary": "#7a5649",
+                      "inverse-on-surface": "#f0f1f2",
+                      "on-tertiary-fixed": "#002114",
+                      "tertiary-fixed-dim": "#a5d0b9",
+                      "on-surface": "#191c1d",
+                      "surface-container": "#edeeef",
+                      "secondary-fixed": "#ffdbcf",
+                      "background": "#f8f9fa",
+                      "surface-dim": "#d9dadb",
+                      "surface-container-high": "#e7e8e9",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed-dim": "#95d4b3",
+                      "primary-container": "#2d6a4f",
+                      "on-tertiary": "#ffffff",
+                      "surface": "#f8f9fa",
+                      "tertiary-container": "#3f6754",
+                      "on-tertiary-fixed-variant": "#274e3d",
+                      "on-primary-container": "#a8e7c5",
+                      "on-secondary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "gutter-mobile": "12px",
+                      "stack-sm": "8px",
+                      "margin-mobile": "16px",
+                      "stack-lg": "24px",
+                      "stack-md": "16px",
+                      "touch-target-min": "48px"
+              },
+              "fontFamily": {
+                      "button": ["Inter"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "label-md": ["Inter"]
+              },
+              "fontSize": {
+                      "button": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+                      "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                      "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                      "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                      "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                      "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        /* Base styles */
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Webkit scrollbar styles */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #bfc9c1; /* outline-variant */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #707973; /* outline */
+        }
+    </style>
+</head>
+<body class="bg-surface-bright text-on-background min-h-screen flex">
+<!-- SideNavBar (Desktop) -->
+<aside class="hidden md:flex flex-col bg-surface-container-low h-full w-64 rounded-r-xl shadow-sm fixed left-0 top-0 py-stack-lg z-20">
+<div class="px-margin-mobile mb-8 flex flex-col items-center">
+<div class="w-20 h-20 rounded-full bg-surface-variant flex items-center justify-center mb-4 overflow-hidden border-2 border-primary">
+<img alt="Usuario SIGA" class="w-full h-full object-cover" data-alt="A portrait photograph of a confident professional agricultural worker or farm manager outdoors in bright natural light, wearing a modern uniform. The setting is subtly out of focus in the background, featuring hints of greenery and modern farm structures. Clean corporate photography style with a professional, robust tone suitable for a modern business application avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRp1Eu9RS7NpHfYlg2UvpuNbf4PS0A6FgwSowTD8wnRAtUeM0WXd7qQj_6HGfJleHL372OmN7iyw_uygWq_8lPSR06QNwGDjzqwdzBmxjf5-mkTpMDrVduCkwPoJ8-iZ2HNJgrETSl-T0aO5o1swEVBzhHaQgWctcOYtgy1nI3KDsrQKRlj4hELlyaUpPbyZqhkObM-VYG-etvHBECRrCz6iG8phR6Gku3hVY_mPflMtgcNGYoPka8IA">
+</div>
+<h1 class="font-headline-md text-headline-md text-primary text-center">SIGA</h1>
+<p class="font-body-md text-body-md text-on-surface-variant text-center mt-1">Gestión Ganadera</p>
+</div>
+<nav class="flex-1 overflow-y-auto px-2 space-y-2">
+<a class="text-on-surface-variant px-4 py-3 mx-2 flex items-center gap-4 hover:bg-surface-variant rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="font-button text-button">Dashboard</span>
+</a>
+<a class="bg-primary-fixed text-on-primary-fixed font-bold rounded-full px-4 py-3 mx-2 flex items-center gap-4 active:scale-98 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">agriculture</span>
+<span class="font-button text-button">Ganado</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 mx-2 flex items-center gap-4 hover:bg-surface-variant rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">switch_camera</span>
+<span class="font-button text-button">Potreros</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 mx-2 flex items-center gap-4 hover:bg-surface-variant rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">assessment</span>
+<span class="font-button text-button">Reportes</span>
+</a>
+<a class="text-on-surface-variant px-4 py-3 mx-2 flex items-center gap-4 hover:bg-surface-variant rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">security</span>
+<span class="font-button text-button">Seguridad</span>
+</a>
+</nav>
+<div class="px-margin-mobile mt-auto pt-4">
+<button class="w-full h-touch-target-min flex items-center justify-center gap-2 bg-secondary-container text-on-secondary-container rounded-full hover:bg-secondary-fixed transition-colors active:scale-95">
+<span class="material-symbols-outlined">sync</span>
+<span class="font-button text-button">Sincronizar Datos</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col md:ml-64 min-h-screen">
+<!-- TopNavBar (Mobile mainly, but acts as header here) -->
+<header class="bg-surface-bright shadow-sm docked full-width top-0 z-10 sticky">
+<!-- Sync Progress Bar (Systematic) -->
+<div class="w-full h-1 bg-surface-variant absolute top-0 left-0">
+<div class="h-full bg-primary w-0" id="sync-progress"></div>
+</div>
+<div class="flex justify-between items-center w-full px-margin-mobile h-touch-target-min">
+<!-- Mobile Menu Button (Visible only on mobile) -->
+<button class="md:hidden text-on-surface-variant hover:bg-surface-variant p-2 rounded-full flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<!-- Brand / Title (Mobile fallback) -->
+<div class="font-headline-md text-headline-md-mobile text-primary md:hidden">SIGA</div>
+<!-- Desktop Breadcrumb / Title -->
+<div class="hidden md:flex items-center gap-2 text-on-surface-variant">
+<span class="font-body-md text-body-md">Ganado</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="font-button text-button text-on-background">Registro de Pesaje</span>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-2">
+<!-- Connectivity Badge -->
+<div class="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed text-label-md font-label-md">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                        Online
+                    </div>
+<button class="text-on-surface-variant hover:bg-surface-variant p-2 rounded-full flex items-center justify-center transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined">sync</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-variant p-2 rounded-full flex items-center justify-center transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined">wifi</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-variant p-2 rounded-full flex items-center justify-center transition-colors active:scale-95 duration-200 md:hidden">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<main class="flex-1 p-margin-mobile md:p-stack-lg max-w-7xl mx-auto w-full">
+<div class="mb-stack-lg">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background mb-1">Registro de Pesaje</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Ingrese los datos de peso para el grupo seleccionado.</p>
+</div>
+<!-- Main Layout Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-stack-lg">
+<!-- Left Column: Form (Registrar Nuevo Pesaje) -->
+<div class="lg:col-span-4 xl:col-span-4 flex flex-col gap-stack-md">
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/30 p-stack-md relative overflow-hidden">
+<!-- Decorative subtle gradient top border -->
+<div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-primary-container"></div>
+<h3 class="font-headline-md text-headline-md mb-stack-md flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined">add_circle</span>
+                            Nuevo Pesaje
+                        </h3>
+<form class="flex flex-col gap-gutter-mobile">
+<!-- Selector Captación -->
+<div class="flex flex-col gap-base">
+<label class="font-label-md text-label-md text-on-surface-variant" for="captacion">Captación <span class="text-error">*</span></label>
+<div class="relative">
+<select class="w-full h-touch-target-min bg-surface-bright border border-outline-variant rounded-lg px-4 appearance-none focus:ring-2 focus:ring-primary focus:border-primary font-body-md text-body-md text-on-background" id="captacion">
+<option disabled="" selected="" value="">Seleccione una captación</option>
+<option value="1">Lote Norte 2024 - Hacienda El Vergel</option>
+<option value="2">Sur Pasturas - Finca San José</option>
+<option value="3">Levante B - Hacienda El Vergel</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">arrow_drop_down</span>
+</div>
+</div>
+<!-- Fecha del Pesaje -->
+<div class="flex flex-col gap-base">
+<label class="font-label-md text-label-md text-on-surface-variant" for="fecha">Fecha del Pesaje <span class="text-error">*</span></label>
+<div class="relative">
+<input class="w-full h-touch-target-min bg-surface-bright border border-outline-variant rounded-lg px-4 focus:ring-2 focus:ring-primary focus:border-primary font-body-md text-body-md text-on-background" id="fecha" required="" type="date">
+</div>
+</div>
+<!-- Peso Promedio -->
+<div class="flex flex-col gap-base">
+<label class="font-label-md text-label-md text-on-surface-variant" for="peso">Peso Promedio (Kg) <span class="text-error">*</span></label>
+<div class="relative">
+<input class="w-full h-touch-target-min bg-surface-bright border border-outline-variant rounded-lg pl-4 pr-12 focus:ring-2 focus:ring-primary focus:border-primary font-body-md text-body-md text-on-background" id="peso" min="0" placeholder="0.0" required="" step="0.1" type="number">
+<span class="absolute right-4 top-1/2 -translate-y-1/2 font-body-md text-body-md text-on-surface-variant">kg</span>
+</div>
+</div>
+<!-- Cantidad de Cabezas Pesadas (Opcional) -->
+<div class="flex flex-col gap-base">
+<label class="font-label-md text-label-md text-on-surface-variant" for="cabezas">Cantidad de Cabezas Pesadas</label>
+<input class="w-full h-touch-target-min bg-surface-bright border border-outline-variant rounded-lg px-4 focus:ring-2 focus:ring-primary focus:border-primary font-body-md text-body-md text-on-background" id="cabezas" min="0" placeholder="Ej: 45" step="1" type="number">
+</div>
+<!-- Observaciones -->
+<div class="flex flex-col gap-base">
+<label class="font-label-md text-label-md text-on-surface-variant" for="observaciones">Observaciones</label>
+<textarea class="w-full bg-surface-bright border border-outline-variant rounded-lg p-4 focus:ring-2 focus:ring-primary focus:border-primary font-body-md text-body-md text-on-background resize-none" id="observaciones" placeholder="Notas adicionales sobre el pesaje..." rows="3"></textarea>
+</div>
+<!-- Action Button -->
+<button class="mt-2 w-full h-touch-target-min flex items-center justify-center gap-2 bg-primary-container text-on-primary-container rounded-full hover:bg-primary hover:text-on-primary transition-colors active:scale-95 font-button text-button shadow-sm" type="button">
+<span class="material-symbols-outlined">save</span>
+                                Registrar Pesaje
+                            </button>
+</form>
+</div>
+<!-- Quick Stats Card (Contextual info) -->
+<div class="bg-surface-container-low rounded-xl p-stack-md border border-outline-variant/20 flex items-start gap-4 hidden md:flex">
+<div class="p-2 bg-tertiary-fixed rounded-full text-on-tertiary-fixed">
+<span class="material-symbols-outlined">info</span>
+</div>
+<div>
+<h4 class="font-button text-button text-on-surface mb-1">Última sincronización</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Hace 15 minutos. Todos los registros locales están respaldados en la nube.</p>
+</div>
+</div>
+</div>
+<!-- Right Column: History Table -->
+<div class="lg:col-span-8 xl:col-span-8 flex flex-col gap-stack-md">
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/30 flex flex-col h-full overflow-hidden">
+<!-- Table Header/Toolbar -->
+<div class="p-stack-md border-b border-outline-variant/30 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-surface-bright/50">
+<h3 class="font-headline-md text-headline-md flex items-center gap-2 text-on-background">
+<span class="material-symbols-outlined text-primary">history</span>
+                                Historial de Pesajes
+                            </h3>
+<!-- Filter/Search mock -->
+<div class="flex items-center gap-2 w-full sm:w-auto">
+<div class="relative flex-1 sm:w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="w-full h-10 bg-surface-bright border border-outline-variant rounded-full pl-10 pr-4 focus:ring-1 focus:ring-primary focus:border-primary font-body-md text-body-md" placeholder="Buscar captación..." type="text">
+</div>
+<button class="h-10 px-3 flex items-center justify-center gap-1 border border-outline-variant rounded-full text-on-surface-variant hover:bg-surface-variant transition-colors bg-surface-bright">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+<span class="font-label-md hidden sm:inline">Filtrar</span>
+</button>
+</div>
+</div>
+<!-- Table Container -->
+<div class="flex-1 overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[700px]">
+<thead>
+<tr class="bg-surface-container border-b border-outline-variant/50">
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Fecha</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Peso Promedio (Kg)</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider text-center">Cabezas Pesadas</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Observaciones</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider w-16">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-variant/30 transition-colors group">
+<td class="p-4 font-body-md text-body-md text-on-background whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">calendar_today</span>
+                                                10/05/2024
+                                            </div>
+</td>
+<td class="p-4 font-body-lg text-body-lg font-semibold text-primary">
+                                            420.5
+                                        </td>
+<td class="p-4 font-body-md text-body-md text-on-surface-variant text-center">
+<span class="inline-flex items-center justify-center bg-surface-container-high px-2 py-1 rounded-md min-w-[2.5rem]">45</span>
+</td>
+<td class="p-4 font-body-md text-body-md text-on-surface-variant max-w-xs truncate" title="Control mensual rutinario">
+                                            Control mensual rutinario
+                                        </td>
+<td class="p-4">
+<button class="text-on-surface-variant hover:text-primary p-1 rounded-full hover:bg-surface-variant transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-sm">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-variant/30 transition-colors group">
+<td class="p-4 font-body-md text-body-md text-on-background whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">calendar_today</span>
+                                                12/04/2024
+                                            </div>
+</td>
+<td class="p-4 font-body-lg text-body-lg font-semibold text-primary">
+                                            385.0
+                                        </td>
+<td class="p-4 font-body-md text-body-md text-outline text-center">
+                                            —
+                                        </td>
+<td class="p-4 font-body-md text-body-md text-on-surface-variant max-w-xs truncate" title="Pesaje parcial de grupo">
+                                            Pesaje parcial de grupo
+                                        </td>
+<td class="p-4">
+<button class="text-on-surface-variant hover:text-primary p-1 rounded-full hover:bg-surface-variant transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-sm">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-variant/30 transition-colors group">
+<td class="p-4 font-body-md text-body-md text-on-background whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">calendar_today</span>
+                                                15/03/2024
+                                            </div>
+</td>
+<td class="p-4 font-body-lg text-body-lg font-semibold text-primary">
+                                            350.2
+                                        </td>
+<td class="p-4 font-body-md text-body-md text-on-surface-variant text-center">
+<span class="inline-flex items-center justify-center bg-surface-container-high px-2 py-1 rounded-md min-w-[2.5rem]">45</span>
+</td>
+<td class="p-4 font-body-md text-body-md text-outline text-center">
+                                            —
+                                        </td>
+<td class="p-4">
+<button class="text-on-surface-variant hover:text-primary p-1 rounded-full hover:bg-surface-variant transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-sm">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-variant/30 transition-colors group">
+<td class="p-4 font-body-md text-body-md text-on-background whitespace-nowrap">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">calendar_today</span>
+                                                10/02/2024
+                                            </div>
+</td>
+<td class="p-4 font-body-lg text-body-lg font-semibold text-primary">
+                                            315.8
+                                        </td>
+<td class="p-4 font-body-md text-body-md text-on-surface-variant text-center">
+<span class="inline-flex items-center justify-center bg-surface-container-high px-2 py-1 rounded-md min-w-[2.5rem]">40</span>
+</td>
+<td class="p-4 font-body-md text-body-md text-on-surface-variant max-w-xs truncate" title="Inicio de etapa de engorde">
+                                            Inicio de etapa de engorde
+                                        </td>
+<td class="p-4">
+<button class="text-on-surface-variant hover:text-primary p-1 rounded-full hover:bg-surface-variant transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-sm">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination (Decorative) -->
+<div class="p-4 border-t border-outline-variant/30 flex justify-between items-center bg-surface-bright/50">
+<span class="font-body-md text-body-md text-on-surface-variant">Mostrando 4 de 24 registros</span>
+<div class="flex gap-1">
+<button class="w-8 h-8 flex items-center justify-center rounded-md border border-outline-variant/50 text-on-surface-variant hover:bg-surface-variant disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-md bg-primary text-on-primary font-button text-button">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-md border border-outline-variant/50 text-on-surface-variant hover:bg-surface-variant font-button text-button">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-md border border-outline-variant/50 text-on-surface-variant hover:bg-surface-variant font-button text-button">3</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-md border border-outline-variant/50 text-on-surface-variant hover:bg-surface-variant">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Script for setting today's date in date picker -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dateInput = document.getElementById('fecha');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.value = today;
+            }
+        });
+    </script>
+
+
+</body></html>

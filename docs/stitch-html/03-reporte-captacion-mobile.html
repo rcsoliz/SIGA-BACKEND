@@ -1,0 +1,232 @@
+<!DOCTYPE html><html class="light" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Reporte de Captación - SIGA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#c1ecd4",
+                        "surface-container-high": "#e7e8e9",
+                        "on-tertiary-fixed-variant": "#274e3d",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-surface": "#191c1d",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#ebbcac",
+                        "inverse-on-surface": "#f0f1f2",
+                        "surface-variant": "#e1e3e4",
+                        "secondary": "#7a5649",
+                        "primary-fixed": "#b1f0ce",
+                        "on-background": "#191c1d",
+                        "tertiary-fixed-dim": "#a5d0b9",
+                        "on-primary-container": "#a8e7c5",
+                        "on-primary-fixed-variant": "#0e5138",
+                        "outline": "#707973",
+                        "surface-container-low": "#f3f4f5",
+                        "on-tertiary-fixed": "#002114",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#edeeef",
+                        "primary": "#0f5238",
+                        "primary-fixed-dim": "#95d4b3",
+                        "surface-tint": "#2c694e",
+                        "on-secondary-fixed": "#2e150b",
+                        "surface": "#f8f9fa",
+                        "inverse-primary": "#95d4b3",
+                        "secondary-container": "#fdcdbc",
+                        "tertiary": "#274f3d",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#3f6754",
+                        "primary-container": "#2d6a4f",
+                        "outline-variant": "#bfc9c1",
+                        "secondary-fixed": "#ffdbcf",
+                        "surface-dim": "#d9dadb",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#f8f9fa",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#b8e3cb",
+                        "on-primary-fixed": "#002114",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#2e3132",
+                        "on-secondary-fixed-variant": "#603f33",
+                        "background": "#f8f9fa",
+                        "on-secondary-container": "#795548",
+                        "on-surface-variant": "#404943",
+                        "on-primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "gutter-mobile": "12px",
+                        "margin-mobile": "16px",
+                        "stack-lg": "24px",
+                        "base": "4px",
+                        "touch-target-min": "48px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "button": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "button": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .pb-safe { padding-bottom: calc(env(safe-area-inset-bottom, 20px) + 80px); }
+        .min-touch-target { min-height: 48px; min-width: 48px; }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased md:hidden flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="docked full-width top-0 bg-surface dark:bg-inverse-surface shadow-sm shadow-primary/5 flex items-center justify-between px-margin-mobile w-full h-touch-target-min sticky z-40">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" data-icon="agriculture" data-weight="fill" style="font-variation-settings: 'FILL' 1;">agriculture</span>
+<h1 class="font-headline-lg text-headline-lg text-primary dark:text-primary-fixed-dim tracking-tight">SIGA</h1>
+</div>
+<button aria-label="Sync" class="min-touch-target flex items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors rounded-full active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col px-margin-mobile py-stack-lg gap-stack-lg pb-safe">
+<!-- Header Section -->
+<section class="flex flex-col gap-stack-sm">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase">Identificador de Captación</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Captación Norte A - Invernada</h2>
+<button class="mt-stack-sm bg-primary text-on-primary font-button text-button rounded-full min-touch-target flex items-center justify-center gap-2 w-full active:scale-95 transition-transform shadow-sm shadow-primary/20">
+<span class="material-symbols-outlined">edit</span>
+                Editar Captación
+            </button>
+</section>
+<!-- Metrics Section (2-Column Grid) -->
+<section class="grid grid-cols-2 gap-gutter-mobile">
+<!-- Metric Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant/50 rounded-lg p-stack-md flex flex-col gap-1 shadow-sm shadow-primary/5">
+<span class="font-label-md text-label-md text-on-surface-variant">Cabezas Totales</span>
+<span class="font-headline-md text-headline-md text-on-surface">150</span>
+</div>
+<!-- Metric Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant/50 rounded-lg p-stack-md flex flex-col gap-1 shadow-sm shadow-primary/5">
+<span class="font-label-md text-label-md text-on-surface-variant">Peso Promedio</span>
+<span class="font-headline-md text-headline-md text-on-surface">420.5 kg</span>
+</div>
+<!-- Metric Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant/50 rounded-lg p-stack-md flex flex-col gap-1 shadow-sm shadow-primary/5">
+<span class="font-label-md text-label-md text-on-surface-variant">Estado Sanitario</span>
+<div class="inline-flex items-center gap-1 bg-tertiary-fixed text-on-tertiary-fixed rounded-full px-3 py-1 w-fit mt-1">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span class="font-label-md text-label-md">Óptimo</span>
+</div>
+</div>
+<!-- Metric Card 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant/50 rounded-lg p-stack-md flex flex-col gap-1 shadow-sm shadow-primary/5">
+<span class="font-label-md text-label-md text-on-surface-variant">Días en Potrero</span>
+<span class="font-headline-md text-headline-md text-on-surface">45</span>
+</div>
+</section>
+<!-- Event Log (Bitácora) Section -->
+<section class="flex flex-col gap-stack-md mt-stack-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Bitácora Recurrente de Eventos</h3>
+<div class="flex flex-col gap-gutter-mobile relative">
+<!-- Timeline decorative line -->
+<div class="absolute left-6 top-4 bottom-4 w-[2px] bg-outline-variant/30 -z-10"></div>
+<!-- Event: Formation -->
+<article class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-stack-md flex gap-stack-md shadow-sm shadow-primary/5 items-start"><div class="bg-primary-container text-on-primary-container rounded-full min-w-[48px] h-[48px] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<div class="flex flex-col flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-md text-label-md text-on-surface-variant">01/10/2023</span>
+<span class="bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded-full text-[10px] font-label-md uppercase tracking-wider">Formación</span>
+</div>
+<h4 class="font-button text-button text-on-surface">Apertura de la captación y recepción de animales</h4>
+<span class="font-body-md text-body-md text-on-surface-variant mt-1">Registrado por: Roberto Salinas</span>
+</div></article>
+<!-- Event: Sanitation -->
+<article class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-stack-md flex gap-stack-md shadow-sm shadow-primary/5 items-start"><div class="bg-surface-container-high text-on-surface rounded-full min-w-[48px] h-[48px] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">vaccines</span>
+</div>
+<div class="flex flex-col flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-md text-label-md text-on-surface-variant">15/10/2023</span>
+<span class="bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded-full text-[10px] font-label-md uppercase tracking-wider">Sanidad</span>
+</div>
+<h4 class="font-button text-button text-on-surface">Aplicación de refuerzo anual</h4>
+<span class="font-body-md text-body-md text-on-surface-variant mt-1">Registrado por: Dra. Martínez</span>
+</div></article>
+<!-- Event: Movement -->
+<article class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-stack-md flex gap-stack-md shadow-sm shadow-primary/5 items-start"><div class="bg-surface-container-high text-on-surface rounded-full min-w-[48px] h-[48px] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">local_shipping</span>
+</div>
+<div class="flex flex-col flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-md text-label-md text-on-surface-variant">20/10/2023</span>
+<span class="bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded-full text-[10px] font-label-md uppercase tracking-wider">Movimiento</span>
+</div>
+<h4 class="font-button text-button text-on-surface">Traslado a Sector Cuarentena</h4>
+<span class="font-body-md text-body-md text-on-surface-variant mt-1">Registrado por: Carlos Ruiz</span>
+</div></article>
+<!-- Event: Weighing -->
+<article class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-stack-md flex gap-stack-md shadow-sm shadow-primary/5 items-start"><div class="bg-surface-container-high text-on-surface rounded-full min-w-[48px] h-[48px] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">scale</span>
+</div>
+<div class="flex flex-col flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label-md text-label-md text-on-surface-variant">25/10/2023</span>
+<span class="bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded-full text-[10px] font-label-md uppercase tracking-wider">Pesaje</span>
+</div>
+<h4 class="font-button text-button text-on-surface">Control de peso rutinario</h4>
+<span class="font-body-md text-body-md text-on-surface-variant mt-1">Registrado por: Juan Pérez</span>
+</div></article>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-surface-container dark:bg-surface-dim border-t border-outline-variant/30 shadow-lg rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-5 py-1 hover:bg-surface-container-highest transition-all active:scale-90 transition-transform duration-200 min-touch-target">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md mt-1">Inicio</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container dark:bg-primary dark:text-on-primary rounded-full px-5 py-1 hover:bg-surface-container-highest transition-all active:scale-90 transition-transform duration-200 min-touch-target">
+<span class="material-symbols-outlined" data-icon="assignment" data-weight="fill" style="font-variation-settings: 'FILL' 1;">assignment</span>
+<span class="font-label-md text-label-md mt-1">Registros</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-5 py-1 hover:bg-surface-container-highest transition-all active:scale-90 transition-transform duration-200 min-touch-target">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-label-md text-label-md mt-1">Mapa</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-5 py-1 hover:bg-surface-container-highest transition-all active:scale-90 transition-transform duration-200 min-touch-target">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md mt-1">Perfil</span>
+</button>
+</nav>
+
+
+</body></html>
