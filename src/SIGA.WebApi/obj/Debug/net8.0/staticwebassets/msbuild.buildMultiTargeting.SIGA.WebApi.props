@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\SIGA.WebApi.props" />
-</Project>
