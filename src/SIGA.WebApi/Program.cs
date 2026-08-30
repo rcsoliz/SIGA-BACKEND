@@ -1,5 +1,6 @@
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SIGA.Application;
@@ -86,6 +87,11 @@ if (app.Environment.IsDevelopment())
     await SIGA.Infrastructure.Persistence.DbInitializer.SeedAsync(db, hasher);
 }
 
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+});
+
 app.UseHttpsRedirection();
 
 app.UseCors(corsPolicyName);
@@ -93,6 +99,7 @@ app.UseCors(corsPolicyName);
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapGet("/", () => Results.Ok(new { status = "ok", service = "SIGA API" }));
 app.MapControllers();
 
 app.Run();

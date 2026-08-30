@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: siga-backend
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: free
+    region: oregon
+    autoDeploy: true
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      # Cadena de conexión Npgsql (NO la URI postgresql://) construida a partir de la
+      # Internal Database URL de Render. Definir manualmente en el dashboard del Web
+      # Service (Environment > Add Environment Variable) — nunca se guarda en este repo.
+      # Formato: Host=<host-interno>;Port=5432;Database=<db>;Username=<user>;Password=<password>;SSL Mode=Require;Trust Server Certificate=true
+      - key: ConnectionStrings__SigaDatabase
+        sync: false
+      - key: Jwt__Secret
+        sync: false
+      - key: Jwt__Issuer
+        value: SIGA.Api
+      - key: Jwt__Audience
+        value: SIGA.Frontend
+      - key: Jwt__ExpiracionMinutos
+        value: "480"
+      # Agregar un índice por cada origen permitido (0, 1, 2...) cuando el frontend
+      # tenga su URL definitiva (ej. https://siga-frontend.vercel.app).
+      - key: Cors__OrigenesPermitidos__0
+        value: http://localhost:5173
