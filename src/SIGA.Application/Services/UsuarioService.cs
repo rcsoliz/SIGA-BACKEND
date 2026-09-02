@@ -81,9 +81,7 @@ public class UsuarioService(
             ?? throw new NotFoundException(nameof(Usuario), usuarioId);
 
         var sector = new SectorAsignado { UsuarioId = usuarioId, NombreSector = dto.NombreSector, Zona = dto.Zona };
-        usuario.SectoresAsignados.Add(sector);
-
-        usuarioRepository.Update(usuario);
+        await usuarioRepository.AgregarSectorAsync(sector, ct);
         await usuarioRepository.SaveChangesAsync(ct);
         await auditoriaService.RegistrarAsync(AccionAuditoria.Modificacion, "Usuario.Sectores", usuarioId, dto.NombreSector, ct);
 
@@ -131,9 +129,7 @@ public class UsuarioService(
         }
 
         var permiso = new PermisoUsuario { UsuarioId = usuarioId, TipoPermiso = tipoPermiso };
-        usuario.Permisos.Add(permiso);
-
-        usuarioRepository.Update(usuario);
+        await usuarioRepository.AgregarPermisoAsync(permiso, ct);
         await usuarioRepository.SaveChangesAsync(ct);
         await auditoriaService.RegistrarAsync(AccionAuditoria.Modificacion, "Usuario.Permisos", usuarioId, tipoPermiso.ToString(), ct);
 
