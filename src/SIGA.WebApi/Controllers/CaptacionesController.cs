@@ -16,7 +16,7 @@ public class CaptacionesController(ICaptacionGanadoService captacionService) : C
 {
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<CaptacionGanadoDto>>> ListarPorEstancia(
-        [FromQuery] Guid estanciaId, CancellationToken ct) =>
+        [FromQuery] Guid? estanciaId, CancellationToken ct) =>
         Ok(await captacionService.ListarPorEstanciaAsync(estanciaId, ct));
 
     [HttpGet("{id:guid}")]

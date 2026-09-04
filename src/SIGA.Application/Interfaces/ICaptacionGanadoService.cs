@@ -4,7 +4,8 @@ namespace SIGA.Application.Interfaces;
 
 public interface ICaptacionGanadoService
 {
-    Task<IReadOnlyList<CaptacionGanadoDto>> ListarPorEstanciaAsync(Guid estanciaId, CancellationToken ct = default);
+    /// <summary>Si estanciaId es null, devuelve las captaciones de todas las Estancias.</summary>
+    Task<IReadOnlyList<CaptacionGanadoDto>> ListarPorEstanciaAsync(Guid? estanciaId, CancellationToken ct = default);
     Task<CaptacionGanadoDto> ObtenerPorIdAsync(Guid id, CancellationToken ct = default);
     Task<CaptacionGanadoDto> CrearAsync(CreateCaptacionGanadoDto dto, CancellationToken ct = default);
     Task<CaptacionGanadoDto> ActualizarAsync(Guid id, UpdateCaptacionGanadoDto dto, CancellationToken ct = default);

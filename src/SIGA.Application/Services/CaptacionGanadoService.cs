@@ -14,9 +14,11 @@ public class CaptacionGanadoService(
     ICurrentUserService currentUserService,
     IAuditoriaService auditoriaService) : ICaptacionGanadoService
 {
-    public async Task<IReadOnlyList<CaptacionGanadoDto>> ListarPorEstanciaAsync(Guid estanciaId, CancellationToken ct = default)
+    public async Task<IReadOnlyList<CaptacionGanadoDto>> ListarPorEstanciaAsync(Guid? estanciaId, CancellationToken ct = default)
     {
-        var captaciones = await captacionRepository.GetByEstanciaAsync(estanciaId, ct);
+        var captaciones = estanciaId is null
+            ? await captacionRepository.GetAllAsync(ct)
+            : await captacionRepository.GetByEstanciaAsync(estanciaId.Value, ct);
         var dtos = new List<CaptacionGanadoDto>();
         foreach (var captacion in captaciones)
         {
