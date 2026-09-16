@@ -40,5 +40,20 @@ public class EstanciaConfiguration : IEntityTypeConfiguration<Estancia>
             .WithMany()
             .HasForeignKey(e => e.ModificadoPorUsuarioId)
             .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasOne(e => e.DepartamentoCatalogo)
+            .WithMany()
+            .HasForeignKey(e => e.DepartamentoId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasOne(e => e.ProvinciaCatalogo)
+            .WithMany()
+            .HasForeignKey(e => e.ProvinciaId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasOne(e => e.MunicipioCatalogo)
+            .WithMany()
+            .HasForeignKey(e => e.MunicipioId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }

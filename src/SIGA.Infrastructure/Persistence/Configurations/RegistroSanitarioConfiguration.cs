@@ -30,5 +30,10 @@ public class RegistroSanitarioConfiguration : IEntityTypeConfiguration<RegistroS
             .WithMany()
             .HasForeignKey(r => r.RegistradoPorUsuarioId)
             .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasOne(r => r.ProductoTratamientoCatalogo)
+            .WithMany()
+            .HasForeignKey(r => r.ProductoTratamientoId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }

@@ -28,5 +28,10 @@ public class DetalleLoteGanadoConfiguration : IEntityTypeConfiguration<DetalleLo
             .WithMany()
             .HasForeignKey(d => d.ActualizadoPor)
             .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasOne(d => d.RazaCatalogo)
+            .WithMany()
+            .HasForeignKey(d => d.RazaId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }

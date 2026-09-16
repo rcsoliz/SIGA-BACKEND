@@ -21,5 +21,13 @@ public class Estancia : AuditableEntity
     public string? Provincia { get; set; }
     public string? Municipio { get; set; }
 
+    /// <summary>Catálogo normalizado, opcional — las columnas string de arriba se mantienen como legado.</summary>
+    public Guid? DepartamentoId { get; set; }
+    public Departamento? DepartamentoCatalogo { get; set; }
+    public Guid? ProvinciaId { get; set; }
+    public Provincia? ProvinciaCatalogo { get; set; }
+    public Guid? MunicipioId { get; set; }
+    public Municipio? MunicipioCatalogo { get; set; }
+
     public ICollection<CaptacionGanado> Captaciones { get; set; } = new List<CaptacionGanado>();
 }

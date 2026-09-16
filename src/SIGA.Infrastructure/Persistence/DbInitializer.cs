@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using SIGA.Application.Interfaces;
 using SIGA.Domain.Entities;
@@ -12,12 +13,75 @@ namespace SIGA.Infrastructure.Persistence;
 /// </summary>
 public static class DbInitializer
 {
+    private sealed record CatalogoSemilla(
+        Provincia Warnes,
+        Provincia AndresIbanez,
+        Municipio MunicipioWarnes,
+        Municipio SantaCruzDeLaSierra,
+        Raza Nelore,
+        Raza Brangus,
+        Raza Brahman,
+        Raza CruzaComercial,
+        ProductoTratamiento VacunaAftosa);
+
     public static async Task SeedAsync(SigaDbContext context, IPasswordHasher passwordHasher)
     {
         await context.Database.MigrateAsync();
 
         var captador = await SeedUsuariosAsync(context, passwordHasher);
-        await SeedDatosDeCampoAsync(context, captador);
+        var catalogos = await SeedCatalogosAsync(context);
+        await SeedDatosDeCampoAsync(context, captador, catalogos);
+    }
+
+    private static async Task<CatalogoSemilla> SeedCatalogosAsync(SigaDbContext context)
+    {
+        var santaCruz = await GetOrCreateAsync(context.Departamentos,
+            d => d.Nombre == "Santa Cruz",
+            () => new Departamento { Nombre = "Santa Cruz" });
+
+        var warnes = await GetOrCreateAsync(context.Provincias,
+            p => p.Nombre == "Warnes" && p.DepartamentoId == santaCruz.Id,
+            () => new Provincia { Nombre = "Warnes", DepartamentoId = santaCruz.Id });
+
+        var andresIbanez = await GetOrCreateAsync(context.Provincias,
+            p => p.Nombre == "Andrés Ibáñez" && p.DepartamentoId == santaCruz.Id,
+            () => new Provincia { Nombre = "Andrés Ibáñez", DepartamentoId = santaCruz.Id });
+
+        var municipioWarnes = await GetOrCreateAsync(context.Municipios,
+            m => m.Nombre == "Warnes" && m.ProvinciaId == warnes.Id,
+            () => new Municipio { Nombre = "Warnes", ProvinciaId = warnes.Id });
+
+        var santaCruzDeLaSierra = await GetOrCreateAsync(context.Municipios,
+            m => m.Nombre == "Santa Cruz de la Sierra" && m.ProvinciaId == andresIbanez.Id,
+            () => new Municipio { Nombre = "Santa Cruz de la Sierra", ProvinciaId = andresIbanez.Id });
+
+        var nelore = await GetOrCreateAsync(context.Razas, r => r.Nombre == "Nelore", () => new Raza { Nombre = "Nelore" });
+        var brangus = await GetOrCreateAsync(context.Razas, r => r.Nombre == "Brangus", () => new Raza { Nombre = "Brangus" });
+        var brahman = await GetOrCreateAsync(context.Razas, r => r.Nombre == "Brahman", () => new Raza { Nombre = "Brahman" });
+        var cruzaComercial = await GetOrCreateAsync(context.Razas, r => r.Nombre == "Cruza Comercial", () => new Raza { Nombre = "Cruza Comercial" });
+
+        var vacunaAftosa = await GetOrCreateAsync(context.ProductosTratamiento,
+            p => p.Nombre == "Vacuna Aftosa",
+            () => new ProductoTratamiento { Nombre = "Vacuna Aftosa" });
+
+        await context.SaveChangesAsync();
+
+        return new CatalogoSemilla(warnes, andresIbanez, municipioWarnes, santaCruzDeLaSierra, nelore, brangus, brahman, cruzaComercial, vacunaAftosa);
+    }
+
+    private static async Task<TEntity> GetOrCreateAsync<TEntity>(
+        DbSet<TEntity> set, Expression<Func<TEntity, bool>> predicate, Func<TEntity> factory)
+        where TEntity : class
+    {
+        var existente = await set.FirstOrDefaultAsync(predicate);
+        if (existente is not null)
+        {
+            return existente;
+        }
+
+        var nuevo = factory();
+        set.Add(nuevo);
+        return nuevo;
     }
 
     private static async Task<Captador> SeedUsuariosAsync(SigaDbContext context, IPasswordHasher passwordHasher)
@@ -77,7 +141,7 @@ public static class DbInitializer
         return captador;
     }
 
-    private static async Task SeedDatosDeCampoAsync(SigaDbContext context, Captador captador)
+    private static async Task SeedDatosDeCampoAsync(SigaDbContext context, Captador captador, CatalogoSemilla catalogos)
     {
         if (await context.Estancias.AnyAsync())
         {
@@ -100,6 +164,9 @@ public static class DbInitializer
             Departamento = "Santa Cruz",
             Provincia = "Andrés Ibáñez",
             Municipio = "Santa Cruz de la Sierra",
+            DepartamentoId = catalogos.AndresIbanez.DepartamentoId,
+            ProvinciaId = catalogos.AndresIbanez.Id,
+            MunicipioId = catalogos.SantaCruzDeLaSierra.Id,
             CreadoPorUsuarioId = captador.Id,
             FechaCreacionLocal = ahora,
             EstadoSync = EstadoSync.Sincronizado
@@ -119,6 +186,9 @@ public static class DbInitializer
             Departamento = "Santa Cruz",
             Provincia = "Warnes",
             Municipio = "Warnes",
+            DepartamentoId = catalogos.Warnes.DepartamentoId,
+            ProvinciaId = catalogos.Warnes.Id,
+            MunicipioId = catalogos.MunicipioWarnes.Id,
             CreadoPorUsuarioId = captador.Id,
             FechaCreacionLocal = ahora,
             EstadoSync = EstadoSync.Sincronizado
@@ -184,6 +254,7 @@ public static class DbInitializer
                 CaptacionGanadoId = captacionNorte.Id,
                 Categoria = CategoriaGanado.Novillo,
                 Raza = "Brangus",
+                RazaId = catalogos.Brangus.Id,
                 CantidadCabezas = 45,
                 PesoPromedioEstimadoKg = 380,
                 SistemaAlimentacion = TipoManejoAlimentario.SemiConfinamiento,
@@ -195,6 +266,7 @@ public static class DbInitializer
                 CaptacionGanadoId = captacionNorte.Id,
                 Categoria = CategoriaGanado.Vaquilla,
                 Raza = "Brahman",
+                RazaId = catalogos.Brahman.Id,
                 CantidadCabezas = 30,
                 PesoPromedioEstimadoKg = 290,
                 SistemaAlimentacion = TipoManejoAlimentario.PastoreoLibre,
@@ -205,6 +277,7 @@ public static class DbInitializer
                 CaptacionGanadoId = captacionCuarentena.Id,
                 Categoria = CategoriaGanado.Toro,
                 Raza = "Nelore",
+                RazaId = catalogos.Nelore.Id,
                 CantidadCabezas = 6,
                 PesoPromedioEstimadoKg = 620,
                 SistemaAlimentacion = TipoManejoAlimentario.Confinamiento,
@@ -216,6 +289,7 @@ public static class DbInitializer
                 CaptacionGanadoId = captacionSur.Id,
                 Categoria = CategoriaGanado.Ternero,
                 Raza = "Cruza Comercial",
+                RazaId = catalogos.CruzaComercial.Id,
                 CantidadCabezas = 60,
                 PesoPromedioEstimadoKg = 160,
                 SistemaAlimentacion = TipoManejoAlimentario.PastoreoLibre,
@@ -226,6 +300,7 @@ public static class DbInitializer
                 CaptacionGanadoId = captacionSur.Id,
                 Categoria = CategoriaGanado.VacaDescarte,
                 Raza = "Nelore",
+                RazaId = catalogos.Nelore.Id,
                 CantidadCabezas = 12,
                 PesoPromedioEstimadoKg = 410,
                 SistemaAlimentacion = TipoManejoAlimentario.PastoreoLibre,
@@ -262,6 +337,7 @@ public static class DbInitializer
                 Fecha = ahora.AddDays(-9),
                 TipoEvento = TipoEventoSanitario.Vacunacion,
                 ProductoTratamiento = "Vacuna Aftosa",
+                ProductoTratamientoId = catalogos.VacunaAftosa.Id,
                 RegistradoPorUsuarioId = captador.Id,
                 CreadoPorUsuarioId = captador.Id,
                 FechaCreacionLocal = ahora.AddDays(-9),

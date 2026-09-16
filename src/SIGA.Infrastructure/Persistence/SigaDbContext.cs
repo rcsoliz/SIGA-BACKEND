@@ -17,6 +17,11 @@ public class SigaDbContext(DbContextOptions<SigaDbContext> options) : DbContext(
     public DbSet<Dispositivo> Dispositivos => Set<Dispositivo>();
     public DbSet<PermisoUsuario> PermisosUsuario => Set<PermisoUsuario>();
     public DbSet<LogAuditoria> LogsAuditoria => Set<LogAuditoria>();
+    public DbSet<Departamento> Departamentos => Set<Departamento>();
+    public DbSet<Provincia> Provincias => Set<Provincia>();
+    public DbSet<Municipio> Municipios => Set<Municipio>();
+    public DbSet<Raza> Razas => Set<Raza>();
+    public DbSet<ProductoTratamiento> ProductosTratamiento => Set<ProductoTratamiento>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

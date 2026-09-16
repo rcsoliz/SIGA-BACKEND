@@ -15,6 +15,11 @@ public class DetalleLoteGanado : BaseEntity
 
     public CategoriaGanado Categoria { get; set; }
     public string? Raza { get; set; }
+
+    /// <summary>Catálogo normalizado, opcional — la columna Raza de arriba se mantiene como legado.</summary>
+    public Guid? RazaId { get; set; }
+    public Raza? RazaCatalogo { get; set; }
+
     public int CantidadCabezas { get; set; }
     public double? PesoPromedioEstimadoKg { get; set; }
     public TipoManejoAlimentario SistemaAlimentacion { get; set; }
