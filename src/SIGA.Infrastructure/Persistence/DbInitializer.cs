@@ -99,7 +99,10 @@ public static class DbInitializer
             HectareasTotales = 850,
             Departamento = "Santa Cruz",
             Provincia = "Andrés Ibáñez",
-            Municipio = "Santa Cruz de la Sierra"
+            Municipio = "Santa Cruz de la Sierra",
+            CreadoPorUsuarioId = captador.Id,
+            FechaCreacionLocal = ahora,
+            EstadoSync = EstadoSync.Sincronizado
         };
 
         var estanciaLosPinos = new Estancia
@@ -115,7 +118,10 @@ public static class DbInitializer
             HectareasTotales = 620,
             Departamento = "Santa Cruz",
             Provincia = "Warnes",
-            Municipio = "Warnes"
+            Municipio = "Warnes",
+            CreadoPorUsuarioId = captador.Id,
+            FechaCreacionLocal = ahora,
+            EstadoSync = EstadoSync.Sincronizado
         };
 
         context.Estancias.AddRange(estanciaElVergel, estanciaLosPinos);
@@ -131,7 +137,10 @@ public static class DbInitializer
             Potrero = "Potrero 1 - Alfalfa",
             Fecha = ahora.AddDays(-25),
             Latitud = -17.7840,
-            Longitud = -63.1815
+            Longitud = -63.1815,
+            CreadoPorUsuarioId = captador.Id,
+            FechaCreacionLocal = ahora.AddDays(-25),
+            EstadoSync = EstadoSync.Sincronizado
         };
 
         var captacionCuarentena = new CaptacionGanado
@@ -144,7 +153,10 @@ public static class DbInitializer
             Potrero = "Corral de Cuarentena",
             Fecha = ahora.AddDays(-10),
             Latitud = -17.7855,
-            Longitud = -63.1802
+            Longitud = -63.1802,
+            CreadoPorUsuarioId = captador.Id,
+            FechaCreacionLocal = ahora.AddDays(-10),
+            EstadoSync = EstadoSync.Sincronizado
         };
 
         var captacionSur = new CaptacionGanado
@@ -157,7 +169,10 @@ public static class DbInitializer
             Potrero = "Potrero 3 - Gatton Panic",
             Fecha = ahora.AddDays(-5),
             Latitud = -17.6495,
-            Longitud = -63.3890
+            Longitud = -63.3890,
+            CreadoPorUsuarioId = captador.Id,
+            FechaCreacionLocal = ahora.AddDays(-5),
+            EstadoSync = EstadoSync.Sincronizado
         };
 
         context.CaptacionesGanado.AddRange(captacionNorte, captacionCuarentena, captacionSur);

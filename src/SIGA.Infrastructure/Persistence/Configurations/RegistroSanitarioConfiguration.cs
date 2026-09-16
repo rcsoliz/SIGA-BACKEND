@@ -10,6 +10,16 @@ public class RegistroSanitarioConfiguration : IEntityTypeConfiguration<RegistroS
     {
         builder.ToTable("RegistrosSanitarios");
 
+        builder.HasOne<Usuario>()
+            .WithMany()
+            .HasForeignKey(r => r.CreadoPorUsuarioId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasOne<Usuario>()
+            .WithMany()
+            .HasForeignKey(r => r.ModificadoPorUsuarioId)
+            .OnDelete(DeleteBehavior.Restrict);
+
         builder.Property(r => r.TipoEvento).HasConversion<string>().HasMaxLength(30);
         builder.Property(r => r.EstadoSync).HasConversion<string>().HasMaxLength(20);
         builder.Property(r => r.ProductoTratamiento).HasMaxLength(200);

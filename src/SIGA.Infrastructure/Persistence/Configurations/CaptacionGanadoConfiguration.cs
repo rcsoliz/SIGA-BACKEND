@@ -8,7 +8,11 @@ public class CaptacionGanadoConfiguration : IEntityTypeConfiguration<CaptacionGa
 {
     public void Configure(EntityTypeBuilder<CaptacionGanado> builder)
     {
-        builder.ToTable("CaptacionesGanado");
+        builder.ToTable("CaptacionesGanado", t =>
+        {
+            t.HasCheckConstraint("CK_CaptacionesGanado_Latitud", "\"Latitud\" IS NULL OR \"Latitud\" BETWEEN -90 AND 90");
+            t.HasCheckConstraint("CK_CaptacionesGanado_Longitud", "\"Longitud\" IS NULL OR \"Longitud\" BETWEEN -180 AND 180");
+        });
 
         builder.Property(c => c.Nombre).IsRequired().HasMaxLength(150);
         builder.Property(c => c.Observaciones).HasMaxLength(1000);
@@ -41,5 +45,15 @@ public class CaptacionGanadoConfiguration : IEntityTypeConfiguration<CaptacionGa
             .WithOne(r => r.CaptacionGanado)
             .HasForeignKey(r => r.CaptacionGanadoId)
             .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasOne<Usuario>()
+            .WithMany()
+            .HasForeignKey(c => c.CreadoPorUsuarioId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasOne<Usuario>()
+            .WithMany()
+            .HasForeignKey(c => c.ModificadoPorUsuarioId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }
