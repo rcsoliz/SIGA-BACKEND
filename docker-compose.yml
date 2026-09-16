@@ -1,6 +1,6 @@
 services:
   siga-db:
-    image: postgres:16
+    image: postgis/postgis:16-3.4
     container_name: siga-postgres
     restart: unless-stopped
     environment:

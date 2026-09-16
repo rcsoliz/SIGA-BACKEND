@@ -7,6 +7,7 @@ using SIGA.Application;
 using SIGA.Application.Interfaces;
 using SIGA.Infrastructure;
 using SIGA.WebApi.Middleware;
+using SIGA.WebApi.ModelBinding;
 using SIGA.WebApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,7 +19,8 @@ builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+    options.ModelBinderProviders.Insert(0, new UtcDateTimeModelBinderProvider()));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
