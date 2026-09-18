@@ -10,6 +10,7 @@ public class DispositivoConfiguration : IEntityTypeConfiguration<Dispositivo>
     {
         builder.ToTable("Dispositivos");
         builder.Property(d => d.IdentificadorDispositivo).IsRequired().HasMaxLength(150);
+        builder.HasIndex(d => d.IdentificadorDispositivo).IsUnique();
         builder.Property(d => d.UbicacionActual).HasMaxLength(150);
         builder.Property(d => d.Estado).HasConversion<string>().HasMaxLength(20);
     }

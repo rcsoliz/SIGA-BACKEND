@@ -1,0 +1,331 @@
+From e0bbbe687cc8d8b28f037448a5a6930844c60e7d Mon Sep 17 00:00:00 2001
+From: Claude <claude@anthropic.com>
+Date: Fri, 18 Sep 2026 00:49:27 +0000
+Subject: [PATCH] Completa validaciones CHECK pendientes de la Fase 1
+
+- CHECK constraints para las columnas enum que habian quedado fuera de la
+  implementacion de Fase 1 (defensa en profundidad ademas del tipado de C#):
+  Usuarios.Rol/Estado/TipoUsuario, Dispositivos.Estado, Estancias.EstadoSync,
+  CaptacionesGanado.Estado/EstadoSanitario/EstadoSync, DetallesLoteGanado.Categoria/
+  SistemaAlimentacion, MovimientosGanado.TipoGanado/EstadoSync,
+  RegistrosAlimentacion.TipoAlimentacion/EstadoSync, RegistrosPesaje.EstadoSync,
+  RegistrosSanitarios.TipoEvento/EstadoSync, PermisosUsuario.TipoPermiso,
+  LogsAuditoria.Accion.
+- Indice unico en Dispositivos.IdentificadorDispositivo.
+- Indice unico case-insensitive sobre lower(Usuarios.Email).
+- Migracion escrita a mano (mismo motivo que la de Fase 1: sin acceso a NuGet en
+  el entorno de preparacion) - correr 'dotnet ef migrations add CompletarValidacionesEnum'
+  para que EF regenere Designer.cs/ModelSnapshot.cs.
+---
+ .../CaptacionGanadoConfiguration.cs           |   6 +
+ .../DetalleLoteGanadoConfiguration.cs         |   4 +
+ .../DispositivoConfiguration.cs               |   6 +-
+ .../Configurations/EstanciaConfiguration.cs   |   1 +
+ .../LogAuditoriaConfiguration.cs              |   5 +-
+ .../MovimientoGanadoConfiguration.cs          |   4 +
+ .../PermisoUsuarioConfiguration.cs            |   6 +-
+ .../RegistroAlimentacionConfiguration.cs      |   4 +
+ .../RegistroPesajeConfiguration.cs            |   1 +
+ .../RegistroSanitarioConfiguration.cs         |   8 +-
+ .../Configurations/UsuarioConfiguration.cs    |   7 +-
+ ...0260916120000_CompletarValidacionesEnum.cs | 115 ++++++++++++++++++
+ 12 files changed, 162 insertions(+), 5 deletions(-)
+ create mode 100644 src/SIGA.Infrastructure/Persistence/Migrations/20260916120000_CompletarValidacionesEnum.cs
+
+diff --git a/src/SIGA.Infrastructure/Persistence/Configurations/CaptacionGanadoConfiguration.cs b/src/SIGA.Infrastructure/Persistence/Configurations/CaptacionGanadoConfiguration.cs
+index 89b94f7..71845f9 100644
+--- a/src/SIGA.Infrastructure/Persistence/Configurations/CaptacionGanadoConfiguration.cs
++++ b/src/SIGA.Infrastructure/Persistence/Configurations/CaptacionGanadoConfiguration.cs
+@@ -12,6 +12,12 @@ public class CaptacionGanadoConfiguration : IEntityTypeConfiguration<CaptacionGa
+         {
+             t.HasCheckConstraint("CK_CaptacionesGanado_Latitud", "\"Latitud\" IS NULL OR \"Latitud\" BETWEEN -90 AND 90");
+             t.HasCheckConstraint("CK_CaptacionesGanado_Longitud", "\"Longitud\" IS NULL OR \"Longitud\" BETWEEN -180 AND 180");
++            t.HasCheckConstraint("CK_CaptacionesGanado_Estado",
++                "\"Estado\" IN ('BorradorLocal','Registrado','EnPlanificacionFaena','Procesado')");
++            t.HasCheckConstraint("CK_CaptacionesGanado_EstadoSanitario",
++                "\"EstadoSanitario\" IN ('Optimo','EnObservacion','Critico')");
++            t.HasCheckConstraint("CK_CaptacionesGanado_EstadoSync",
++                "\"EstadoSync\" IN ('Pendiente','Sincronizado','Error')");
+         });
+ 
+         builder.Property(c => c.Nombre).IsRequired().HasMaxLength(150);
+diff --git a/src/SIGA.Infrastructure/Persistence/Configurations/DetalleLoteGanadoConfiguration.cs b/src/SIGA.Infrastructure/Persistence/Configurations/DetalleLoteGanadoConfiguration.cs
+index 6e7d030..b681a9e 100644
+--- a/src/SIGA.Infrastructure/Persistence/Configurations/DetalleLoteGanadoConfiguration.cs
++++ b/src/SIGA.Infrastructure/Persistence/Configurations/DetalleLoteGanadoConfiguration.cs
+@@ -12,6 +12,10 @@ public class DetalleLoteGanadoConfiguration : IEntityTypeConfiguration<DetalleLo
+         {
+             t.HasCheckConstraint("CK_DetallesLoteGanado_CantidadCabezas", "\"CantidadCabezas\" > 0");
+             t.HasCheckConstraint("CK_DetallesLoteGanado_PesoPromedioEstimadoKg", "\"PesoPromedioEstimadoKg\" IS NULL OR \"PesoPromedioEstimadoKg\" > 0");
++            t.HasCheckConstraint("CK_DetallesLoteGanado_Categoria",
++                "\"Categoria\" IN ('Toro','Novillo','Vaquilla','VacaDescarte','Ternero')");
++            t.HasCheckConstraint("CK_DetallesLoteGanado_SistemaAlimentacion",
++                "\"SistemaAlimentacion\" IN ('PastoreoLibre','SemiConfinamiento','Confinamiento')");
+         });
+ 
+         builder.Property(d => d.Categoria).HasConversion<string>().HasMaxLength(20);
+diff --git a/src/SIGA.Infrastructure/Persistence/Configurations/DispositivoConfiguration.cs b/src/SIGA.Infrastructure/Persistence/Configurations/DispositivoConfiguration.cs
+index 3ec061f..1d0bbe2 100644
+--- a/src/SIGA.Infrastructure/Persistence/Configurations/DispositivoConfiguration.cs
++++ b/src/SIGA.Infrastructure/Persistence/Configurations/DispositivoConfiguration.cs
+@@ -8,7 +8,11 @@ public class DispositivoConfiguration : IEntityTypeConfiguration<Dispositivo>
+ {
+     public void Configure(EntityTypeBuilder<Dispositivo> builder)
+     {
+-        builder.ToTable("Dispositivos");
++        builder.ToTable("Dispositivos", t =>
++        {
++            t.HasCheckConstraint("CK_Dispositivos_Estado", "\"Estado\" IN ('Activo','Revocado')");
++        });
++        builder.HasIndex(d => d.IdentificadorDispositivo).IsUnique();
+         builder.Property(d => d.IdentificadorDispositivo).IsRequired().HasMaxLength(150);
+         builder.Property(d => d.UbicacionActual).HasMaxLength(150);
+         builder.Property(d => d.Estado).HasConversion<string>().HasMaxLength(20);
+diff --git a/src/SIGA.Infrastructure/Persistence/Configurations/EstanciaConfiguration.cs b/src/SIGA.Infrastructure/Persistence/Configurations/EstanciaConfiguration.cs
+index 1db50aa..9c56d06 100644
+--- a/src/SIGA.Infrastructure/Persistence/Configurations/EstanciaConfiguration.cs
++++ b/src/SIGA.Infrastructure/Persistence/Configurations/EstanciaConfiguration.cs
+@@ -13,6 +13,7 @@ public class EstanciaConfiguration : IEntityTypeConfiguration<Estancia>
+             t.HasCheckConstraint("CK_Estancias_Latitud", "\"Latitud\" BETWEEN -90 AND 90");
+             t.HasCheckConstraint("CK_Estancias_Longitud", "\"Longitud\" BETWEEN -180 AND 180");
+             t.HasCheckConstraint("CK_Estancias_HectareasTotales", "\"HectareasTotales\" IS NULL OR \"HectareasTotales\" > 0");
++            t.HasCheckConstraint("CK_Estancias_EstadoSync", "\"EstadoSync\" IN ('Pendiente','Sincronizado','Error')");
+         });
+ 
+         builder.Property(e => e.Nombre).IsRequired().HasMaxLength(200);
+diff --git a/src/SIGA.Infrastructure/Persistence/Configurations/LogAuditoriaConfiguration.cs b/src/SIGA.Infrastructure/Persistence/Configurations/LogAuditoriaConfiguration.cs
+index 8051366..3fcd31a 100644
+--- a/src/SIGA.Infrastructure/Persistence/Configurations/LogAuditoriaConfiguration.cs
++++ b/src/SIGA.Infrastructure/Persistence/Configurations/LogAuditoriaConfiguration.cs
+@@ -8,7 +8,10 @@ public class LogAuditoriaConfiguration : IEntityTypeConfiguration<LogAuditoria>
+ {
+     public void Configure(EntityTypeBuilder<LogAuditoria> builder)
+     {
+-        builder.ToTable("LogsAuditoria");
++        builder.ToTable("LogsAuditoria", t =>
++        {
++            t.HasCheckConstraint("CK_LogsAuditoria_Accion", "\"Accion\" IN ('Creacion','Modificacion','Eliminacion')");
++        });
+         builder.Property(l => l.Accion).HasConversion<string>().HasMaxLength(20);
+         builder.Property(l => l.Modulo).IsRequired().HasMaxLength(100);
+         builder.Property(l => l.Detalle).HasMaxLength(500);
+diff --git a/src/SIGA.Infrastructure/Persistence/Configurations/MovimientoGanadoConfiguration.cs b/src/SIGA.Infrastructure/Persistence/Configurations/MovimientoGanadoConfiguration.cs
+index cd37189..db8866f 100644
+--- a/src/SIGA.Infrastructure/Persistence/Configurations/MovimientoGanadoConfiguration.cs
++++ b/src/SIGA.Infrastructure/Persistence/Configurations/MovimientoGanadoConfiguration.cs
+@@ -11,6 +11,10 @@ public class MovimientoGanadoConfiguration : IEntityTypeConfiguration<Movimiento
+         builder.ToTable("MovimientosGanado", t =>
+         {
+             t.HasCheckConstraint("CK_MovimientosGanado_CantidadCabezas", "\"CantidadCabezas\" > 0");
++            t.HasCheckConstraint("CK_MovimientosGanado_TipoGanado",
++                "\"TipoGanado\" IN ('Toro','Novillo','Vaquilla','VacaDescarte','Ternero')");
++            t.HasCheckConstraint("CK_MovimientosGanado_EstadoSync",
++                "\"EstadoSync\" IN ('Pendiente','Sincronizado','Error')");
+         });
+ 
+         builder.Property(m => m.TipoGanado).HasConversion<string>().HasMaxLength(20);
+diff --git a/src/SIGA.Infrastructure/Persistence/Configurations/PermisoUsuarioConfiguration.cs b/src/SIGA.Infrastructure/Persistence/Configurations/PermisoUsuarioConfiguration.cs
+index 0763d3b..d3b4ebe 100644
+--- a/src/SIGA.Infrastructure/Persistence/Configurations/PermisoUsuarioConfiguration.cs
++++ b/src/SIGA.Infrastructure/Persistence/Configurations/PermisoUsuarioConfiguration.cs
+@@ -8,7 +8,11 @@ public class PermisoUsuarioConfiguration : IEntityTypeConfiguration<PermisoUsuar
+ {
+     public void Configure(EntityTypeBuilder<PermisoUsuario> builder)
+     {
+-        builder.ToTable("PermisosUsuario");
++        builder.ToTable("PermisosUsuario", t =>
++        {
++            t.HasCheckConstraint("CK_PermisosUsuario_TipoPermiso",
++                "\"TipoPermiso\" IN ('EntradaDatos','RegistrosHistoricos','ConfiguracionSistema')");
++        });
+         builder.Property(p => p.TipoPermiso).HasConversion<string>().HasMaxLength(30);
+     }
+ }
+diff --git a/src/SIGA.Infrastructure/Persistence/Configurations/RegistroAlimentacionConfiguration.cs b/src/SIGA.Infrastructure/Persistence/Configurations/RegistroAlimentacionConfiguration.cs
+index 4caf28f..6d5d21d 100644
+--- a/src/SIGA.Infrastructure/Persistence/Configurations/RegistroAlimentacionConfiguration.cs
++++ b/src/SIGA.Infrastructure/Persistence/Configurations/RegistroAlimentacionConfiguration.cs
+@@ -12,6 +12,10 @@ public class RegistroAlimentacionConfiguration : IEntityTypeConfiguration<Regist
+         {
+             t.HasCheckConstraint("CK_RegistrosAlimentacion_RacionBaseKgAnimal", "\"RacionBaseKgAnimal\" IS NULL OR \"RacionBaseKgAnimal\" >= 0");
+             t.HasCheckConstraint("CK_RegistrosAlimentacion_SuplementoProteicoKgAnimal", "\"SuplementoProteicoKgAnimal\" IS NULL OR \"SuplementoProteicoKgAnimal\" >= 0");
++            t.HasCheckConstraint("CK_RegistrosAlimentacion_TipoAlimentacion",
++                "\"TipoAlimentacion\" IN ('PastoreoLibre','SemiConfinamiento','Confinamiento')");
++            t.HasCheckConstraint("CK_RegistrosAlimentacion_EstadoSync",
++                "\"EstadoSync\" IN ('Pendiente','Sincronizado','Error')");
+         });
+ 
+         builder.Property(r => r.TipoAlimentacion).HasConversion<string>().HasMaxLength(30);
+diff --git a/src/SIGA.Infrastructure/Persistence/Configurations/RegistroPesajeConfiguration.cs b/src/SIGA.Infrastructure/Persistence/Configurations/RegistroPesajeConfiguration.cs
+index abf0105..1539fe4 100644
+--- a/src/SIGA.Infrastructure/Persistence/Configurations/RegistroPesajeConfiguration.cs
++++ b/src/SIGA.Infrastructure/Persistence/Configurations/RegistroPesajeConfiguration.cs
+@@ -12,6 +12,7 @@ public class RegistroPesajeConfiguration : IEntityTypeConfiguration<RegistroPesa
+         {
+             t.HasCheckConstraint("CK_RegistrosPesaje_PesoPromedioKg", "\"PesoPromedioKg\" > 0");
+             t.HasCheckConstraint("CK_RegistrosPesaje_CantidadCabezasPesadas", "\"CantidadCabezasPesadas\" IS NULL OR \"CantidadCabezasPesadas\" > 0");
++            t.HasCheckConstraint("CK_RegistrosPesaje_EstadoSync", "\"EstadoSync\" IN ('Pendiente','Sincronizado','Error')");
+         });
+ 
+         builder.Property(r => r.EstadoSync).HasConversion<string>().HasMaxLength(20);
+diff --git a/src/SIGA.Infrastructure/Persistence/Configurations/RegistroSanitarioConfiguration.cs b/src/SIGA.Infrastructure/Persistence/Configurations/RegistroSanitarioConfiguration.cs
+index ed6f3ae..7a40eb6 100644
+--- a/src/SIGA.Infrastructure/Persistence/Configurations/RegistroSanitarioConfiguration.cs
++++ b/src/SIGA.Infrastructure/Persistence/Configurations/RegistroSanitarioConfiguration.cs
+@@ -8,7 +8,13 @@ public class RegistroSanitarioConfiguration : IEntityTypeConfiguration<RegistroS
+ {
+     public void Configure(EntityTypeBuilder<RegistroSanitario> builder)
+     {
+-        builder.ToTable("RegistrosSanitarios");
++        builder.ToTable("RegistrosSanitarios", t =>
++        {
++            t.HasCheckConstraint("CK_RegistrosSanitarios_TipoEvento",
++                "\"TipoEvento\" IN ('Vacunacion','Antiparasitario','ControlRutina','Tratamiento')");
++            t.HasCheckConstraint("CK_RegistrosSanitarios_EstadoSync",
++                "\"EstadoSync\" IN ('Pendiente','Sincronizado','Error')");
++        });
+ 
+         builder.HasOne<Usuario>()
+             .WithMany()
+diff --git a/src/SIGA.Infrastructure/Persistence/Configurations/UsuarioConfiguration.cs b/src/SIGA.Infrastructure/Persistence/Configurations/UsuarioConfiguration.cs
+index 69423bd..8e51c0b 100644
+--- a/src/SIGA.Infrastructure/Persistence/Configurations/UsuarioConfiguration.cs
++++ b/src/SIGA.Infrastructure/Persistence/Configurations/UsuarioConfiguration.cs
+@@ -8,7 +8,12 @@ public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario>
+ {
+     public void Configure(EntityTypeBuilder<Usuario> builder)
+     {
+-        builder.ToTable("Usuarios");
++        builder.ToTable("Usuarios", t =>
++        {
++            t.HasCheckConstraint("CK_Usuarios_Rol", "\"Rol\" IN ('Captador','Administrador')");
++            t.HasCheckConstraint("CK_Usuarios_Estado", "\"Estado\" IN ('Activo','Pendiente','Suspendido')");
++            t.HasCheckConstraint("CK_Usuarios_TipoUsuario", "\"TipoUsuario\" IN ('Captador','Administrador')");
++        });
+ 
+         builder.HasDiscriminator<string>("TipoUsuario")
+             .HasValue<Captador>("Captador")
+diff --git a/src/SIGA.Infrastructure/Persistence/Migrations/20260916120000_CompletarValidacionesEnum.cs b/src/SIGA.Infrastructure/Persistence/Migrations/20260916120000_CompletarValidacionesEnum.cs
+new file mode 100644
+index 0000000..05420e2
+--- /dev/null
++++ b/src/SIGA.Infrastructure/Persistence/Migrations/20260916120000_CompletarValidacionesEnum.cs
+@@ -0,0 +1,115 @@
++using Microsoft.EntityFrameworkCore;
++using Microsoft.EntityFrameworkCore.Migrations;
++using SIGA.Infrastructure.Persistence;
++
++#nullable disable
++
++namespace SIGA.Infrastructure.Persistence.Migrations
++{
++    /// <inheritdoc />
++    /// <remarks>
++    /// Migración escrita a mano por la misma razón que AgregarTrazabilidadFksYValidaciones:
++    /// sin acceso a NuGet en el entorno donde se preparó no se pudo compilar el proyecto
++    /// para correr `dotnet ef migrations add` de verdad. Antes de mergear, correr:
++    ///   dotnet ef migrations add CompletarValidacionesEnum
++    /// Si genera un diff vacío (o casi vacío), confirma que este archivo ya refleja el
++    /// modelo — bórralo y usa este. Si genera algo distinto, usa lo que generó EF (compiló
++    /// contra el modelo real) y descarta este archivo.
++    /// </remarks>
++    [DbContext(typeof(SigaDbContext))]
++    [Migration("20260916120000_CompletarValidacionesEnum")]
++    public partial class CompletarValidacionesEnum : Migration
++    {
++        /// <inheritdoc />
++        protected override void Up(MigrationBuilder migrationBuilder)
++        {
++            migrationBuilder.AddCheckConstraint(name: "CK_Usuarios_Rol", table: "Usuarios",
++                sql: "\"Rol\" IN ('Captador','Administrador')");
++            migrationBuilder.AddCheckConstraint(name: "CK_Usuarios_Estado", table: "Usuarios",
++                sql: "\"Estado\" IN ('Activo','Pendiente','Suspendido')");
++            migrationBuilder.AddCheckConstraint(name: "CK_Usuarios_TipoUsuario", table: "Usuarios",
++                sql: "\"TipoUsuario\" IN ('Captador','Administrador')");
++
++            migrationBuilder.AddCheckConstraint(name: "CK_Dispositivos_Estado", table: "Dispositivos",
++                sql: "\"Estado\" IN ('Activo','Revocado')");
++            migrationBuilder.CreateIndex(
++                name: "IX_Dispositivos_IdentificadorDispositivo",
++                table: "Dispositivos",
++                column: "IdentificadorDispositivo",
++                unique: true);
++
++            migrationBuilder.AddCheckConstraint(name: "CK_Estancias_EstadoSync", table: "Estancias",
++                sql: "\"EstadoSync\" IN ('Pendiente','Sincronizado','Error')");
++
++            migrationBuilder.AddCheckConstraint(name: "CK_CaptacionesGanado_Estado", table: "CaptacionesGanado",
++                sql: "\"Estado\" IN ('BorradorLocal','Registrado','EnPlanificacionFaena','Procesado')");
++            migrationBuilder.AddCheckConstraint(name: "CK_CaptacionesGanado_EstadoSanitario", table: "CaptacionesGanado",
++                sql: "\"EstadoSanitario\" IN ('Optimo','EnObservacion','Critico')");
++            migrationBuilder.AddCheckConstraint(name: "CK_CaptacionesGanado_EstadoSync", table: "CaptacionesGanado",
++                sql: "\"EstadoSync\" IN ('Pendiente','Sincronizado','Error')");
++
++            migrationBuilder.AddCheckConstraint(name: "CK_DetallesLoteGanado_Categoria", table: "DetallesLoteGanado",
++                sql: "\"Categoria\" IN ('Toro','Novillo','Vaquilla','VacaDescarte','Ternero')");
++            migrationBuilder.AddCheckConstraint(name: "CK_DetallesLoteGanado_SistemaAlimentacion", table: "DetallesLoteGanado",
++                sql: "\"SistemaAlimentacion\" IN ('PastoreoLibre','SemiConfinamiento','Confinamiento')");
++
++            migrationBuilder.AddCheckConstraint(name: "CK_MovimientosGanado_TipoGanado", table: "MovimientosGanado",
++                sql: "\"TipoGanado\" IN ('Toro','Novillo','Vaquilla','VacaDescarte','Ternero')");
++            migrationBuilder.AddCheckConstraint(name: "CK_MovimientosGanado_EstadoSync", table: "MovimientosGanado",
++                sql: "\"EstadoSync\" IN ('Pendiente','Sincronizado','Error')");
++
++            migrationBuilder.AddCheckConstraint(name: "CK_RegistrosAlimentacion_TipoAlimentacion", table: "RegistrosAlimentacion",
++                sql: "\"TipoAlimentacion\" IN ('PastoreoLibre','SemiConfinamiento','Confinamiento')");
++            migrationBuilder.AddCheckConstraint(name: "CK_RegistrosAlimentacion_EstadoSync", table: "RegistrosAlimentacion",
++                sql: "\"EstadoSync\" IN ('Pendiente','Sincronizado','Error')");
++
++            migrationBuilder.AddCheckConstraint(name: "CK_RegistrosPesaje_EstadoSync", table: "RegistrosPesaje",
++                sql: "\"EstadoSync\" IN ('Pendiente','Sincronizado','Error')");
++
++            migrationBuilder.AddCheckConstraint(name: "CK_RegistrosSanitarios_TipoEvento", table: "RegistrosSanitarios",
++                sql: "\"TipoEvento\" IN ('Vacunacion','Antiparasitario','ControlRutina','Tratamiento')");
++            migrationBuilder.AddCheckConstraint(name: "CK_RegistrosSanitarios_EstadoSync", table: "RegistrosSanitarios",
++                sql: "\"EstadoSync\" IN ('Pendiente','Sincronizado','Error')");
++
++            migrationBuilder.AddCheckConstraint(name: "CK_PermisosUsuario_TipoPermiso", table: "PermisosUsuario",
++                sql: "\"TipoPermiso\" IN ('EntradaDatos','RegistrosHistoricos','ConfiguracionSistema')");
++
++            migrationBuilder.AddCheckConstraint(name: "CK_LogsAuditoria_Accion", table: "LogsAuditoria",
++                sql: "\"Accion\" IN ('Creacion','Modificacion','Eliminacion')");
++
++            // Índice único case-insensitive de email — Fluent API no modela índices por
++            // expresión, por eso va en SQL crudo (igual que en la Fase 1).
++            migrationBuilder.Sql(
++                "CREATE UNIQUE INDEX \"IX_Usuarios_Email_Lower\" ON \"Usuarios\" (lower(\"Email\"));");
++        }
++
++        /// <inheritdoc />
++        protected override void Down(MigrationBuilder migrationBuilder)
++        {
++            migrationBuilder.Sql("DROP INDEX IF EXISTS \"IX_Usuarios_Email_Lower\";");
++
++            migrationBuilder.DropCheckConstraint(name: "CK_LogsAuditoria_Accion", table: "LogsAuditoria");
++            migrationBuilder.DropCheckConstraint(name: "CK_PermisosUsuario_TipoPermiso", table: "PermisosUsuario");
++            migrationBuilder.DropCheckConstraint(name: "CK_RegistrosSanitarios_EstadoSync", table: "RegistrosSanitarios");
++            migrationBuilder.DropCheckConstraint(name: "CK_RegistrosSanitarios_TipoEvento", table: "RegistrosSanitarios");
++            migrationBuilder.DropCheckConstraint(name: "CK_RegistrosPesaje_EstadoSync", table: "RegistrosPesaje");
++            migrationBuilder.DropCheckConstraint(name: "CK_RegistrosAlimentacion_EstadoSync", table: "RegistrosAlimentacion");
++            migrationBuilder.DropCheckConstraint(name: "CK_RegistrosAlimentacion_TipoAlimentacion", table: "RegistrosAlimentacion");
++            migrationBuilder.DropCheckConstraint(name: "CK_MovimientosGanado_EstadoSync", table: "MovimientosGanado");
++            migrationBuilder.DropCheckConstraint(name: "CK_MovimientosGanado_TipoGanado", table: "MovimientosGanado");
++            migrationBuilder.DropCheckConstraint(name: "CK_DetallesLoteGanado_SistemaAlimentacion", table: "DetallesLoteGanado");
++            migrationBuilder.DropCheckConstraint(name: "CK_DetallesLoteGanado_Categoria", table: "DetallesLoteGanado");
++            migrationBuilder.DropCheckConstraint(name: "CK_CaptacionesGanado_EstadoSync", table: "CaptacionesGanado");
++            migrationBuilder.DropCheckConstraint(name: "CK_CaptacionesGanado_EstadoSanitario", table: "CaptacionesGanado");
++            migrationBuilder.DropCheckConstraint(name: "CK_CaptacionesGanado_Estado", table: "CaptacionesGanado");
++            migrationBuilder.DropCheckConstraint(name: "CK_Estancias_EstadoSync", table: "Estancias");
++
++            migrationBuilder.DropIndex(name: "IX_Dispositivos_IdentificadorDispositivo", table: "Dispositivos");
++            migrationBuilder.DropCheckConstraint(name: "CK_Dispositivos_Estado", table: "Dispositivos");
++
++            migrationBuilder.DropCheckConstraint(name: "CK_Usuarios_TipoUsuario", table: "Usuarios");
++            migrationBuilder.DropCheckConstraint(name: "CK_Usuarios_Estado", table: "Usuarios");
++            migrationBuilder.DropCheckConstraint(name: "CK_Usuarios_Rol", table: "Usuarios");
++        }
++    }
++}
+-- 
+2.43.0
+

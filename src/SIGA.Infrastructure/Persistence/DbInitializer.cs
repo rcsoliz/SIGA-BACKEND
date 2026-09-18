@@ -26,8 +26,6 @@ public static class DbInitializer
 
     public static async Task SeedAsync(SigaDbContext context, IPasswordHasher passwordHasher)
     {
-        await context.Database.MigrateAsync();
-
         var captador = await SeedUsuariosAsync(context, passwordHasher);
         var catalogos = await SeedCatalogosAsync(context);
         await SeedDatosDeCampoAsync(context, captador, catalogos);

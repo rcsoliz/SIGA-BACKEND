@@ -1,6 +1,7 @@
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SIGA.Application;
@@ -77,6 +78,15 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 app.UseMiddleware<ExceptionHandlingMiddleware>();
+
+// Aplica migraciones pendientes en todo ambiente (incluida Production) al arrancar, para
+// que un deploy nunca quede con el esquema desactualizado. Los datos semilla de prueba
+// siguen siendo solo para Development.
+using (var migrationScope = app.Services.CreateScope())
+{
+    var migrationDb = migrationScope.ServiceProvider.GetRequiredService<SIGA.Infrastructure.Persistence.SigaDbContext>();
+    await migrationDb.Database.MigrateAsync();
+}
 
 if (app.Environment.IsDevelopment())
 {
