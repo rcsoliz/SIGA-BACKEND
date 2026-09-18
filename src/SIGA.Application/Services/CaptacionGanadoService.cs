@@ -69,6 +69,7 @@ public class CaptacionGanadoService(
             {
                 Categoria = EnumParser.Parse<CategoriaGanado>(detalleDto.Categoria, nameof(detalleDto.Categoria)),
                 Raza = detalleDto.Raza,
+                RazaId = detalleDto.RazaId,
                 CantidadCabezas = detalleDto.CantidadCabezas,
                 PesoPromedioEstimadoKg = detalleDto.PesoPromedioEstimadoKg,
                 SistemaAlimentacion = EnumParser.Parse<TipoManejoAlimentario>(detalleDto.SistemaAlimentacion, nameof(detalleDto.SistemaAlimentacion)),
@@ -128,6 +129,7 @@ public class CaptacionGanadoService(
         {
             Categoria = EnumParser.Parse<CategoriaGanado>(dto.Categoria, nameof(dto.Categoria)),
             Raza = dto.Raza,
+            RazaId = dto.RazaId,
             CantidadCabezas = dto.CantidadCabezas,
             PesoPromedioEstimadoKg = dto.PesoPromedioEstimadoKg,
             SistemaAlimentacion = EnumParser.Parse<TipoManejoAlimentario>(dto.SistemaAlimentacion, nameof(dto.SistemaAlimentacion)),
@@ -203,5 +205,6 @@ public class CaptacionGanadoService(
         d.FechaEstimadaFaena,
         d.NotasZootecnicas,
         d.CalcularPesoLote(),
-        d.GetDiasRestantesFaena());
+        d.GetDiasRestantesFaena(),
+        d.RazaId);
 }

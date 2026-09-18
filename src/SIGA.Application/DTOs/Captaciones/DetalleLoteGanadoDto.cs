@@ -10,7 +10,8 @@ public record DetalleLoteGanadoDto(
     DateTime? FechaEstimadaFaena,
     string? NotasZootecnicas,
     double PesoLoteCalculado,
-    int? DiasRestantesFaena);
+    int? DiasRestantesFaena,
+    Guid? RazaId);
 
 public record CreateDetalleLoteGanadoDto(
     string Categoria,
@@ -19,4 +20,5 @@ public record CreateDetalleLoteGanadoDto(
     double? PesoPromedioEstimadoKg,
     string SistemaAlimentacion,
     DateTime? FechaEstimadaFaena,
-    string? NotasZootecnicas);
+    string? NotasZootecnicas,
+    Guid? RazaId);

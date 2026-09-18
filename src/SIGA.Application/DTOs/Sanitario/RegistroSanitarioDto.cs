@@ -9,7 +9,8 @@ public record RegistroSanitarioDto(
     Guid RegistradoPorUsuarioId,
     string RegistradoPorNombre,
     string? Observaciones,
-    string EstadoSync);
+    string EstadoSync,
+    Guid? ProductoTratamientoId);
 
 public record CreateRegistroSanitarioDto(
     Guid CaptacionGanadoId,
@@ -17,4 +18,5 @@ public record CreateRegistroSanitarioDto(
     string TipoEvento,
     string? ProductoTratamiento,
     string? Observaciones,
-    DateTime FechaCreacionLocal);
+    DateTime FechaCreacionLocal,
+    Guid? ProductoTratamientoId);

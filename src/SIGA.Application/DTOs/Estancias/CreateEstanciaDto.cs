@@ -12,4 +12,7 @@ public record CreateEstanciaDto(
     string? Departamento,
     string? Provincia,
     string? Municipio,
-    DateTime FechaCreacionLocal);
+    DateTime FechaCreacionLocal,
+    Guid? DepartamentoId,
+    Guid? ProvinciaId,
+    Guid? MunicipioId);

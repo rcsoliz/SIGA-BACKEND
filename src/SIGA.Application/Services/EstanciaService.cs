@@ -47,6 +47,9 @@ public class EstanciaService(
             Departamento = dto.Departamento,
             Provincia = dto.Provincia,
             Municipio = dto.Municipio,
+            DepartamentoId = dto.DepartamentoId,
+            ProvinciaId = dto.ProvinciaId,
+            MunicipioId = dto.MunicipioId,
             CreadoPorUsuarioId = captadorId,
             FechaCreacionLocal = dto.FechaCreacionLocal,
             EstadoSync = EstadoSync.Sincronizado
@@ -73,6 +76,9 @@ public class EstanciaService(
         estancia.Departamento = dto.Departamento;
         estancia.Provincia = dto.Provincia;
         estancia.Municipio = dto.Municipio;
+        estancia.DepartamentoId = dto.DepartamentoId;
+        estancia.ProvinciaId = dto.ProvinciaId;
+        estancia.MunicipioId = dto.MunicipioId;
         estancia.ModificadoPorUsuarioId = currentUserService.UsuarioId;
         estancia.FechaModificacion = DateTime.UtcNow;
 
@@ -108,5 +114,8 @@ public class EstanciaService(
         e.Municipio,
         e.Captaciones?.Count ?? 0,
         e.Captaciones?.Sum(c => c.CalcularTotalCabezas()) ?? 0,
-        e.EstadoSync.ToString());
+        e.EstadoSync.ToString(),
+        e.DepartamentoId,
+        e.ProvinciaId,
+        e.MunicipioId);
 }

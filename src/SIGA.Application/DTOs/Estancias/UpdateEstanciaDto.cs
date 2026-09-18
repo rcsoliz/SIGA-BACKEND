@@ -9,4 +9,7 @@ public record UpdateEstanciaDto(
     double? HectareasTotales,
     string? Departamento,
     string? Provincia,
-    string? Municipio);
+    string? Municipio,
+    Guid? DepartamentoId,
+    Guid? ProvinciaId,
+    Guid? MunicipioId);

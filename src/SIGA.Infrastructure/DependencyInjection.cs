@@ -25,6 +25,7 @@ public static class DependencyInjection
         services.AddScoped<IRegistroSanitarioRepository, RegistroSanitarioRepository>();
         services.AddScoped<IRegistroPesajeRepository, RegistroPesajeRepository>();
         services.AddScoped<ILogAuditoriaRepository, LogAuditoriaRepository>();
+        services.AddScoped<ICatalogoService, CatalogoService>();
 
         services.AddScoped<IPasswordHasher, PasswordHasher>();
         services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();

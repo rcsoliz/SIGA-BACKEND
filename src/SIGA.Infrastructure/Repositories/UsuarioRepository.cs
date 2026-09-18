@@ -8,10 +8,10 @@ namespace SIGA.Infrastructure.Repositories;
 public class UsuarioRepository(SigaDbContext context) : Repository<Usuario>(context), IUsuarioRepository
 {
     public async Task<Usuario?> GetByEmailAsync(string email, CancellationToken ct = default) =>
-        await DbSet.FirstOrDefaultAsync(u => u.Email == email, ct);
+        await DbSet.FirstOrDefaultAsync(u => u.Email.ToLower() == email.ToLower(), ct);
 
     public async Task<bool> ExistsByEmailAsync(string email, CancellationToken ct = default) =>
-        await DbSet.AnyAsync(u => u.Email == email, ct);
+        await DbSet.AnyAsync(u => u.Email.ToLower() == email.ToLower(), ct);
 
     public async Task<Usuario?> GetConDetalleAsync(Guid id, CancellationToken ct = default) =>
         await DbSet

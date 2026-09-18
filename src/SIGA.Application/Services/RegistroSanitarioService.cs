@@ -44,6 +44,7 @@ public class RegistroSanitarioService(
             Fecha = dto.Fecha,
             TipoEvento = EnumParser.Parse<TipoEventoSanitario>(dto.TipoEvento, nameof(dto.TipoEvento)),
             ProductoTratamiento = dto.ProductoTratamiento,
+            ProductoTratamientoId = dto.ProductoTratamientoId,
             RegistradoPorUsuarioId = usuarioId,
             Observaciones = dto.Observaciones,
             CreadoPorUsuarioId = usuarioId,
@@ -70,5 +71,6 @@ public class RegistroSanitarioService(
         r.RegistradoPorUsuarioId,
         registradoPorNombre,
         r.Observaciones,
-        r.EstadoSync.ToString());
+        r.EstadoSync.ToString(),
+        r.ProductoTratamientoId);
 }
